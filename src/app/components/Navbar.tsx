@@ -71,9 +71,14 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
-          {/* Logo */}
           <Link href="/" className="flex items-center">
-            <h1 className={`${playfair.className} text-2xl lg:text-3xl font-bold cursor-pointer`}>
+            <img
+              src={theme === "dark" ? "/logo_white.svg" : "/logo_black.svg"}
+              alt="Stoic Pips Academy"
+              className="h-13 lg:h-15"
+            />
+
+            <h1 className={`${playfair.className} text-2xl lg:text-3xl font-bold cursor-pointer ml-2`}>
               <span className={theme === "dark" ? "text-white" : "text-gray-900"}>
                 Stoic Pips{" "}
               </span>
