@@ -104,7 +104,7 @@ export default function AboutSection() {
               </p>
 
               <p>
-                Founded by <span className={theme === "dark" ? "text-pink-300" : "text-purple-600"}>Anguzu Daniel</span>, 
+                Founded by <span className={theme === "dark" ? "text-pink-300" : "text-purple-600"}>Daniel</span>, 
                 our philosophy centers on discipline, mindset, and strategy for sustainable trading success.
               </p>
             </div>
