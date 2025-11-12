@@ -28,6 +28,11 @@ export default function MentorshipPage() {
     setMounted(true);
   }, []);
 
+  if (!mounted) return null;
+
+  const currentTheme = mounted ? theme : 'light';
+
+
   if (!mounted) {
     return (
       <SubPageLayout>
@@ -43,21 +48,21 @@ export default function MentorshipPage() {
     );
   }
 
-  const sectionBg = theme === "dark" 
+  const sectionBg = currentTheme === "dark" 
     ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" 
     : "bg-gradient-to-br from-white via-blue-50 to-purple-50";
 
-  const headingColor = theme === "dark" ? "text-white" : "text-gray-900";
-  const textColor = theme === "dark" ? "text-gray-300" : "text-gray-600";
-  const cardBg = theme === "dark"
+  const headingColor = currentTheme === "dark" ? "text-white" : "text-gray-900";
+  const textColor = currentTheme === "dark" ? "text-gray-300" : "text-gray-600";
+  const cardBg = currentTheme === "dark"
     ? "bg-gray-800/50 backdrop-blur-sm border border-gray-700"
     : "bg-white/80 backdrop-blur-sm border border-gray-200";
 
-  const gradientText = theme === "dark" 
+  const gradientText = currentTheme === "dark" 
     ? "bg-gradient-to-r from-purple-400 via-pink-400 to-red-400"
     : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600";
 
-  const buttonGradient = theme === "dark"
+  const buttonGradient = currentTheme === "dark"
     ? "bg-gradient-to-r from-purple-500 to-pink-500"
     : "bg-gradient-to-r from-blue-500 to-purple-600";
 

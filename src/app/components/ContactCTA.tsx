@@ -1,5 +1,3 @@
-"use client";
-
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import ContactForm from "./ContactForm";
@@ -18,10 +16,9 @@ const inter = Inter({
 export default function ContactCTA() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
 
   const currentTheme = mounted ? theme : 'light';
 

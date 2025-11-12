@@ -7,6 +7,8 @@ import Button from "../button/Button";
 import { services } from "@/data/services";
 import { Playfair_Display, Inter } from "next/font/google";
 import { Service } from "./Service";
+import ServiceCard from "./card/ServicePricingCard";
+import Carousel from "./Carousel/Carousel";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -20,7 +22,6 @@ const inter = Inter({
 
 export default function PricingServices() {
   const { theme } = useTheme();
-  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
@@ -28,7 +29,7 @@ export default function PricingServices() {
     setMounted(true);
   }, []);
 
-  const currentTheme = mounted ? theme : 'light';
+  const currentTheme = mounted ? (theme || 'light') : 'light';
   
   const sectionBg = currentTheme === "dark" 
     ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" 
@@ -120,136 +121,19 @@ export default function PricingServices() {
           </p>
         </div>
 
-        {/* Pricing Cards Container */}
-        <div className="relative">
-          {/* Main Container */}
-          <div className={`
-            grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 rounded-3xl overflow-hidden border-2 backdrop-blur-sm
-            ${currentTheme === "dark" 
-              ? "border-gray-700 bg-gray-800/50 shadow-2xl" 
-              : "border-gray-200 bg-white/80 shadow-2xl"
-            }
-          `}>
-            {servicesArray.map((service, index) => {
-              const isHovered = hoveredCard === service.id;
-              const isLast = index === servicesArray.length - 1;
-              
-              return (
-                <div
-                  key={service.id}
-                  className={`
-                    relative group transition-all duration-500 ease-out
-                    ${isHovered ? 'scale-105 z-10' : ''}
-                    ${!isLast ? `
-                      ${currentTheme === "dark" 
-                        ? "border-r-2 border-gray-700" 
-                        : "border-r-2 border-gray-200"
-                      }
-                    ` : ''}
-                    ${currentTheme === "dark"
-                      ? "bg-gray-800/50 hover:bg-gray-700/50"
-                      : "bg-white/60 hover:bg-white/80"
-                    }
-                  `}
-                  onMouseEnter={() => setHoveredCard(service.id)}
-                  onMouseLeave={() => setHoveredCard(null)}
-                >
-                  {/* Hover Gradient Overlay */}
-                  {isHovered && (
-                    <div className={`absolute inset-0 rounded-3xl opacity-100 transition-opacity duration-500 ${
-                      currentTheme === "dark"
-                        ? "bg-gradient-to-br from-purple-500/10 to-pink-500/10"
-                        : "bg-gradient-to-br from-blue-500/10 to-purple-500/10"
-                    }`} />
-                  )}
-
-                  <div className="relative p-8 flex flex-col h-full">
-                    {/* Service Header */}
-                    <div className="text-center mb-8">
-                      {/* Icon */}
-                      <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 transition-all duration-300 ${
-                        currentTheme === "dark"
-                          ? "bg-purple-500/20 border border-purple-500/30"
-                          : "bg-blue-500/20 border border-blue-500/30"
-                      } ${isHovered ? 'scale-110' : ''}`}>
-                          <span className="text-2xl">
-                            {service.icon ? <service.icon size={24} color={service.iconColor} /> : "🚀"}
-                          </span>
-                      </div>
-                      
-                      <h3 className={`text-xl font-bold mb-3 transition-colors duration-300 ${inter.className} ${
-                        isHovered 
-                          ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600'
-                          : currentTheme === "dark" ? 'text-white' : 'text-gray-900'
-                      }`}>
-                        {service.title}
-                      </h3>
-                      
-                      <p className={`text-sm leading-relaxed transition-colors duration-300 ${inter.className} ${
-                        currentTheme === "dark" ? 'text-gray-400' : 'text-gray-600'
-                      }`}>
-                        {service.description}
-                      </p>
-                    </div>
-
-                    {/* Pricing */}
-                    <div className="text-center mb-8">
-                      {service.originalPrice && (
-                        <p className={`text-sm line-through mb-2 transition-colors duration-300 ${inter.className} ${
-                          currentTheme === "dark" ? 'text-gray-500' : 'text-gray-400'
-                        }`}>
-                          {service.originalPrice}
-                        </p>
-                      )}
-                      <p className={`text-3xl font-bold transition-all duration-300 ${inter.className} ${
-                        isHovered 
-                          ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 scale-110'
-                          : currentTheme === "dark" ? 'text-white' : 'text-gray-900'
-                      }`}>
-                        {service.price}
-                      </p>
-                    </div>
-
-                    {/* Features List */}
-                    <div className="flex-1 mb-8">
-                      <ul className="space-y-3">
-                        {service.features.map((feature, idx) => (
-                          <li 
-                            key={idx} 
-                            className="flex items-start gap-3 group/item transition-all duration-300 hover:translate-x-1"
-                          >
-                            <span className={`text-lg flex-shrink-0 ${
-                              currentTheme === "dark" ? "text-purple-400" : "text-blue-500"
-                            }`}>✓</span>
-                            <span className={`text-sm leading-relaxed transition-colors duration-300 ${inter.className} ${
-                              currentTheme === "dark" ? 'text-gray-300' : 'text-gray-700'
-                            }`}>
-                              {feature}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* CTA Button */}
-                    <Button 
-                      onClick={() => router.push(`/get-started/${service.id}`)}
-                      className={`
-                        w-full py-3 font-semibold rounded-2xl transition-all duration-300 transform border-2
-                        ${isHovered 
-                          ? 'shadow-lg scale-105' 
-                          : ''
-                        } text-white ${buttonGradient} hover:shadow-xl
-                      `}
-                    >
-                      Get Started
-                    </Button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        {/* Carousel Container */}
+        <Carousel className="mb-16">
+          {servicesArray.map((service) => (
+            <div key={service.id} className="snap-start flex-shrink-0">
+              <ServiceCard
+                service={service}
+                isHovered={hoveredCard === service.id}
+                onHover={setHoveredCard}
+                theme={currentTheme}
+              />
+            </div>
+          ))}
+        </Carousel>
 
         {/* Trust Badge */}
         <div className="text-center mt-16">

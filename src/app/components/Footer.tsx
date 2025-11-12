@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
-import { FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
+import { FaTelegramPlane, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { Playfair_Display, Inter } from "next/font/google";
 
 const playfair = Playfair_Display({
@@ -68,65 +68,92 @@ export default function Footer() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Content */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mb-8">
-          {/* Brand Section */}
-          <div className="text-center lg:text-left">
-            <h1 className={`${playfair.className} text-3xl font-bold mb-2 ${textColor}`}>
-              Stoic Pips{" "}
-              <span className={`bg-clip-text text-transparent ${gradientText}`}>
-                Academy
-              </span>
-            </h1>
-            <p className={`text-lg max-w-md ${subTextColor} ${inter.className}`}>
-              Transforming traders through disciplined strategies and proven mentorship.
-            </p>
-          </div>
-
-          {/* Contact Links */}
-          <div className="flex flex-col sm:flex-row items-center gap-6">
-            <a
-              href="mailto:info@stoicpips.com"
-              className={`group flex items-center gap-3 px-4 py-3 rounded-2xl backdrop-blur-sm border transition-all duration-300 hover:scale-105 ${
-                theme === "dark"
-                  ? "border-purple-500/30 bg-purple-500/10 text-purple-200 hover:bg-purple-500/20"
-                  : "border-blue-500/30 bg-blue-500/10 text-blue-700 hover:bg-blue-500/20"
-              }`}
-            >
-              <EnvelopeIcon className="w-5 h-5" />
-              <span className={`font-medium ${inter.className}`}>Email Us</span>
-            </a>
-            
-            <a
-              href="https://t.me/YourTelegramUsername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group flex items-center gap-3 px-4 py-3 rounded-2xl backdrop-blur-sm border transition-all duration-300 hover:scale-105 ${
-                theme === "dark"
-                  ? "border-blue-500/30 bg-blue-500/10 text-blue-200 hover:bg-blue-500/20"
-                  : "border-blue-500/30 bg-blue-500/10 text-blue-700 hover:bg-blue-500/20"
-              }`}
-            >
-              <FaTelegramPlane className="w-5 h-5" />
-              <span className={`font-medium ${inter.className}`}>Telegram</span>
-            </a>
-            
-            <a
-              href="https://wa.me/YourWhatsAppNumber"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group flex items-center gap-3 px-4 py-3 rounded-2xl backdrop-blur-sm border transition-all duration-300 hover:scale-105 ${
-                theme === "dark"
-                  ? "border-green-500/30 bg-green-500/10 text-green-200 hover:bg-green-500/20"
-                  : "border-green-500/30 bg-green-500/10 text-green-700 hover:bg-green-500/20"
-              }`}
-            >
-              <FaWhatsapp className="w-5 h-5" />
-              <span className={`font-medium ${inter.className}`}>WhatsApp</span>
-            </a>
-          </div>
+            {/* Main Footer Content */}
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mb-8">
+        {/* Brand Section */}
+        <div className="text-center lg:text-left">
+          <h1 className={`${playfair.className} text-3xl font-bold mb-2 ${textColor}`}>
+            Stoic Pips{" "}
+            <span className={`bg-clip-text text-transparent ${gradientText}`}>
+              Academy
+            </span>
+          </h1>
+          <p className={`text-lg max-w-md ${subTextColor} ${inter.className}`}>
+            Transforming traders through disciplined strategies and proven mentorship.
+          </p>
         </div>
 
+        {/* Social Links - Modern Design */}
+        <div className="flex flex-col sm:flex-row items-center gap-3">
+          {[
+            {
+              icon: <EnvelopeIcon className="w-5 h-5" />,
+              href: "mailto:stoicpips@gmail.com",
+              label: "Email",
+              color: "blue",
+              gradient: "from-blue-500 to-blue-600"
+            },
+            {
+              icon: <FaYoutube className="w-5 h-5" />,
+              href: "https://www.youtube.com/channel/UCyYDnMSj6e1rTdOvn7whuvw",
+              label: "YouTube",
+              color: "red",
+              gradient: "from-red-500 to-red-600"
+            },
+            {
+              icon: <FaTelegramPlane className="w-5 h-5" />,
+              href: "https://t.me/+Syr6WpolrV1iZjhk",
+              label: "Telegram",
+              color: "blue",
+              gradient: "from-blue-400 to-blue-500"
+            },
+            {
+              icon: <FaWhatsapp className="w-5 h-5" />,
+              href: "https://wa.me/+256706045809",
+              label: "WhatsApp",
+              color: "green",
+              gradient: "from-green-500 to-green-600"
+            }
+          ].map((social, index) => (
+            <a
+              key={index}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group relative flex items-center gap-3 px-4 py-3 rounded-2xl backdrop-blur-sm border transition-all duration-300 hover:scale-105 ${
+                theme === "dark"
+                  ? `border-${social.color}-500/30 bg-${social.color}-500/10 text-${social.color}-200 hover:bg-${social.color}-500/20`
+                  : `border-${social.color}-500/30 bg-${social.color}-500/10 text-${social.color}-700 hover:bg-${social.color}-500/20`
+              }`}
+            >
+              {/* Animated Background on Hover */}
+              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${social.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+              
+              {/* Icon */}
+              <div className={`relative z-10 ${theme === "dark" ? `text-${social.color}-400` : `text-${social.color}-600`}`}>
+                {social.icon}
+              </div>
+              
+              {/* Label */}
+              <span className={`relative z-10 font-medium ${inter.className}`}>
+                {social.label}
+              </span>
+
+              {/* Hover Arrow */}
+              <svg 
+                className={`w-4 h-4 relative z-10 transform transition-transform duration-300 group-hover:translate-x-1 ${
+                  theme === "dark" ? `text-${social.color}-400` : `text-${social.color}-600`
+                } opacity-0 group-hover:opacity-100`}
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          ))}
+        </div>
+        </div>
         {/* Additional Links */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 py-6 border-t border-gray-200 dark:border-gray-700">
           <div className="flex flex-wrap justify-center gap-6">

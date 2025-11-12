@@ -1,7 +1,7 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { Service } from "@/data/Service";
 import PriceSummary from "./components/PriceSummary";
 import ServiceDetails from "./components/ServiceDetails";
@@ -49,7 +49,10 @@ export default function GetStartedPage({
 
   useEffect(() => {
     setMounted(true);
+    console.log("Get Started page mounted - Theme:", theme);
   }, []);
+
+  if (!mounted) return null;
 
   // Use default values if props are undefined
   const safeTitle = title || defaultService.title || "Trading Course";
@@ -77,22 +80,21 @@ export default function GetStartedPage({
     );
   }
 
-  const sectionBg = theme === "dark" 
-    ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" 
-    : "bg-gradient-to-br from-white via-blue-50 to-purple-50";
-
   const headingColor = theme === "dark" ? "text-white" : "text-gray-900";
   const textColor = theme === "dark" ? "text-gray-300" : "text-gray-600";
   const borderColor = theme === "dark" ? "border-gray-700" : "border-gray-200";
-  const cardBg = theme === "dark" ? "bg-gray-800/50 backdrop-blur-sm" : "bg-white/80 backdrop-blur-sm";
 
   const gradientText = theme === "dark" 
     ? "bg-gradient-to-r from-purple-400 via-pink-400 to-red-400"
     : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600";
 
-  const buttonGradient = theme === "dark"
-    ? "bg-gradient-to-r from-purple-500 to-pink-500"
-    : "bg-gradient-to-r from-blue-500 to-purple-600";
+  const sectionBg = theme === "dark" 
+    ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" 
+    : "bg-gradient-to-br from-white via-blue-50 to-purple-50";
+
+  const cardBg = theme === "dark"
+    ? "bg-gray-800/50 border-gray-700"
+    : "bg-white/80 border-gray-200";
 
   const handlePaymentSuccess = (txId: string) => {
     setPaymentStatus('success');
@@ -126,7 +128,7 @@ export default function GetStartedPage({
           }`} />
         </div>
 
-        <div className="relative max-w-7xl mx-auto z-10">
+        <div className={`relative max-w-7xl mx-auto z-10 ${sectionBg}`}>
           {/* Header Section */}
           <div className="text-center mb-16">
             {/* Section Badge */}
@@ -356,12 +358,12 @@ export default function GetStartedPage({
                     }`}>
                       Need help with Tron payment? Contact:{' '}
                       <a 
-                        href="mailto:support@stoicpips.com" 
+                        href="mailto:stoicpip@gmail.com" 
                         className={`font-semibold hover:underline ${
                           theme === "dark" ? "text-purple-400" : "text-blue-600"
                         }`}
                       >
-                        support@stoicpips.com
+                        stoicpip@gmail.com
                       </a>
                     </p>
                   </div>
@@ -369,7 +371,6 @@ export default function GetStartedPage({
               </div>
             </div>
 
-            {/* Right Side - Service Details */}
             <ServiceDetails
               title={safeTitle} 
               description={safeDescription} 

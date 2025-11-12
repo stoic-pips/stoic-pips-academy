@@ -21,6 +21,7 @@ export default function Hero() {
 
   useEffect(() => {
     setMounted(true);
+    console.log("Home page mounted - Theme:", theme);
   }, []);
 
   if (!mounted) {

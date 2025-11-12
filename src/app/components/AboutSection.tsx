@@ -38,7 +38,6 @@ export default function AboutSection() {
 
   return (
     <section id="about" className={`relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden ${sectionBg}`}>
-      
       <div className="relative max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
           
@@ -105,7 +104,7 @@ export default function AboutSection() {
               </p>
 
               <p>
-                Founded by <span className={theme === "dark" ? "text-pink-300" : "text-purple-600"}>Anguzu Daniel</span>, 
+                Founded by <span className={theme === "dark" ? "text-pink-300" : "text-purple-600"}>Daniel</span>, 
                 our philosophy centers on discipline, mindset, and strategy for sustainable trading success.
               </p>
             </div>

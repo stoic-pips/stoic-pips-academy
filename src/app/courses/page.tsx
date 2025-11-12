@@ -47,13 +47,33 @@ export default function Courses() {
     ? "bg-gradient-to-r from-purple-400 via-pink-400 to-red-400"
     : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600";
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      // Here you would typically send the email to your backend
-      console.log("Subscribed email:", email);
-      setIsSubscribed(true);
-      setEmail("");
+    if (!email) return;
+
+    try {
+      // Send to Formspree
+      const response = await fetch("https://formspree.io/f/meorkqzl", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          _subject: "New Course Waitlist Subscriber",
+          _replyto: email,
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubscribed(true);
+        setEmail("");
+        console.log("Successfully subscribed:", email);
+      } else {
+        console.error("Subscription failed");
+      }
+    } catch (error) {
+      console.error("Error subscribing:", error);
     }
   };
 
@@ -122,7 +142,7 @@ export default function Courses() {
                 <p className={`text-sm ${inter.className} ${
                   theme === "dark" ? "text-gray-400" : "text-gray-600"
                 }`}>
-                  Estimated launch: Q1 2024
+                  Estimated launch: Q1 2026
                 </p>
               </div>
             </div>

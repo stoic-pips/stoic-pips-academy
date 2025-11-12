@@ -1,66 +1,86 @@
-"use client";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { Inter } from "next/font/google";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
+import { inter } from "./layout";
 
 export default function ContactForm() {
-  const { theme } = useTheme();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [service, setService] = useState("");
-  const [message, setMessage] = useState("");
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: ''
+  });
 
-  const currentTheme = theme || 'light';
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  if (!mounted) return null;
+
+  const currentTheme = theme === 'system' ? systemTheme : theme || 'light';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    const formData = {
-      name,
-      email,
-      phone,
-      service,
-      message,
-    };
-
     try {
-      const response = await fetch("/api/send-email", {
+      const response = await fetch("https://formspree.io/f/meorkqzl", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+          _subject: `New Contact: ${formData.name} - ${formData.service || 'General Inquiry'}`,
+          _replyto: formData.email,
+        })
       });
 
+      console.log('Response status:', response.status);
+
       if (response.ok) {
+        const result = await response.json();
+        console.log('Formspree response:', result);
+        
         setSubmitStatus("success");
-        setName("");
-        setEmail("");
-        setPhone("");
-        setService("");
-        setMessage("");
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
       } else {
+        console.error('Formspree error:', await response.text());
         setSubmitStatus("error");
       }
     } catch (error) {
+      console.error('Fetch error:', error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Input classes with the previous color scheme
+  // Input classes
   const inputClasses = `w-full p-3 rounded-xl border-2 ${inter.className} ${
     currentTheme === "dark" 
       ? "border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 focus:border-purple-500" 
@@ -75,7 +95,7 @@ export default function ContactForm() {
     currentTheme === "dark"
       ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
       : "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
-  } ${isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:scale-105"} ${inter.className}`;
+  } hover:scale-105 ${inter.className} ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`;
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -86,7 +106,7 @@ export default function ContactForm() {
             ? "bg-green-900/20 border-green-700/50 text-green-300" 
             : "bg-green-50 border-green-200 text-green-800"
         }`}>
-          ✅ Thank you! Your message has been sent successfully.
+          ✅ Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
         </div>
       )}
 
@@ -109,8 +129,8 @@ export default function ContactForm() {
             type="text"
             id="name"
             name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={formData.name}
+            onChange={handleChange}
             className={inputClasses}
             placeholder="John Doe"
             required
@@ -126,8 +146,8 @@ export default function ContactForm() {
             type="email"
             id="email"
             name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formData.email}
+            onChange={handleChange}
             className={inputClasses}
             placeholder="john@example.com"
             required
@@ -145,8 +165,8 @@ export default function ContactForm() {
             type="tel"
             id="phone"
             name="phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            value={formData.phone}
+            onChange={handleChange}
             className={inputClasses}
             placeholder="+256 712 345 678"
             disabled={isSubmitting}
@@ -160,8 +180,8 @@ export default function ContactForm() {
           <select
             id="service"
             name="service"
-            value={service}
-            onChange={(e) => setService(e.target.value)}
+            value={formData.service}
+            onChange={handleChange}
             className={inputClasses}
             disabled={isSubmitting}
           >
@@ -181,10 +201,10 @@ export default function ContactForm() {
         <textarea
           id="message"
           name="message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          value={formData.message}
+          onChange={handleChange}
           rows={5}
-          className={`${inputClasses} resize-none`} // Add resize-none here
+          className={`${inputClasses} resize-none`}
           placeholder="Tell us about your trading goals and how we can help you..."
           required
           disabled={isSubmitting}
@@ -193,8 +213,8 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        disabled={isSubmitting}
         className={buttonClasses}
+        disabled={isSubmitting}
       >
         {isSubmitting ? (
           <span className="flex items-center justify-center">

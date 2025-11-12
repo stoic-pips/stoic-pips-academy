@@ -17,7 +17,7 @@ export default function DarkModeToggle() {
     setTheme(newTheme);
     
     if (typeof window !== 'undefined') {
-      localStorage.setItem("stoic-pips-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
     }
   };
 
