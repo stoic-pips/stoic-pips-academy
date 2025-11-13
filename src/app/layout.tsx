@@ -15,19 +15,8 @@ export const metadata = {
   title: "Stoic Pips Academy",
   description: "Learn professional price action trading with Stoic Pips Academy.",
   icons: {
-    icon: [
-      {
-        url: "/logo_black.svg",
-        type: "image/svg+xml",
-      }
-    ],
-    apple: [
-      {
-        url: "/apple-touch-icon.png",
-        sizes: "180x180",
-        type: "image/png",
-      },
-    ],
+    icon: "/favicon.ico", // ✅ simple and consistent
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -36,9 +25,6 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.ico" type="image/svg+xml" />
-      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Providers>{children}</Providers>
       </body>
