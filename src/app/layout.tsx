@@ -1,4 +1,3 @@
-import DynamicFavicon from "./components/DynamicFavicon";
 import { Providers } from "./components/provider/providers";
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -20,11 +19,7 @@ export const metadata = {
       {
         url: "/logo_black.svg",
         type: "image/svg+xml",
-      },
-      {
-        url: "/favicon.ico",
-        sizes: "any",
-      },
+      }
     ],
     apple: [
       {
