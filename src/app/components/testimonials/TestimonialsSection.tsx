@@ -75,12 +75,12 @@ export default function TestimonialsSection() {
               className={`group luminous-card p-8 hover:-translate-y-2`}
             >
               <div className={`absolute -top-3 -left-3 w-8 h-8 rounded-full flex items-center justify-center bg-primary text-matte-charcoal`}>
-                <span className="text-lg">"</span>
+                <span className="text-lg">&quot;</span>
               </div>
 
               <p className={`text-lg leading-relaxed mb-6 italic ${inter.className} ${theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}>
-                "{testimonial.text}"
+                &quot;{testimonial.text}&quot;
               </p>
 
               <div className="flex items-center gap-4">

@@ -1,10 +1,11 @@
 import { Service } from "./Service";
 
 // Safe service validator
-export default function isValidService(service: any): service is Service {
-  return service && 
-         typeof service.id === 'string' && 
-         service.title && 
-         service.price && 
-         Array.isArray(service.features);
+export default function isValidService(service: unknown): service is Service {
+  return typeof service === 'object' &&
+    service !== null &&
+    'title' in service &&
+    'price' in service &&
+    'features' in service &&
+    Array.isArray((service as { features: unknown }).features);
 }

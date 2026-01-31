@@ -129,10 +129,10 @@ export default function MentorshipPage() {
             <div className="grid md:grid-cols-2 gap-8">
               <div className={`p-8 rounded-3xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 ${cardBg} ${theme === "dark" ? "hover:border-emerald-500/50" : "hover:border-blue-500/50"
                 }`}>
-                <div className={`text-6xl mb-4 text-center ${theme === "dark" ? "text-purple-400" : "text-blue-500"}`}>"</div>
+                <div className={`text-6xl mb-4 text-center ${theme === "dark" ? "text-purple-400" : "text-blue-500"}`}>&quot;</div>
                 <p className={`text-lg leading-relaxed italic mb-6 ${inter.className} ${textColor}`}>
-                  "I used to blow accounts, but now I trade with discipline and patience.
-                  I made my first 20% month thanks to this mentorship's structured approach."
+                  &quot;I used to blow accounts, but now I trade with discipline and patience.
+                  I made my first 20% month thanks to this mentorship&apos;s structured approach.&quot;
                 </p>
                 <div className="flex items-center gap-4">
                   <div className={`w-12 h-12 rounded-full flex items-center justify-center ${theme === "dark" ? "bg-emerald-500/20" : "bg-blue-500/20"
@@ -149,10 +149,10 @@ export default function MentorshipPage() {
 
               <div className={`p-8 rounded-3xl backdrop-blur-sm border-2 transition-all duration-300 hover:scale-105 ${cardBg} ${theme === "dark" ? "hover:border-blue-500/50" : "hover:border-emerald-500/50"
                 }`}>
-                <div className={`text-6xl mb-4 text-center ${theme === "dark" ? "text-pink-400" : "text-purple-500"}`}>"</div>
+                <div className={`text-6xl mb-4 text-center ${theme === "dark" ? "text-pink-400" : "text-purple-500"}`}>&quot;</div>
                 <p className={`text-lg leading-relaxed italic mb-6 ${inter.className} ${textColor}`}>
-                  "Daniel's mentorship gave me clarity on supply & demand. I now wait for quality setups
-                  and avoid overtrading. My consistency has improved dramatically."
+                  &quot;Daniel&apos;s mentorship gave me clarity on supply &amp; demand. I now wait for quality setups
+                  and avoid overtrading. My consistency has improved dramatically.&quot;
                 </p>
                 <div className="flex items-center gap-4">
                   <div className={`w-12 h-12 rounded-full flex items-center justify-center ${theme === "dark" ? "bg-blue-500/20" : "bg-emerald-500/20"

@@ -82,7 +82,7 @@ export default function AboutSection() {
             <div className="absolute -bottom-10 -right-10 hidden md:block animate-bounce shadow-2xl">
               <div className={`luminous-card p-6 border ${theme === "dark" ? "border-primary/20 bg-primary/5" : "border-slate-200 bg-background"} backdrop-blur-3xl rounded-2xl`}>
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-2 text-primary tech-tracking">Master Level</p>
-                <p className={`text-sm font-medium italic ${theme === "dark" ? "opacity-80 text-white" : "text-gray-900"}`}>"Consistency is the currency of the professional."</p>
+                <p className={`text-sm font-medium italic ${theme === "dark" ? "opacity-80 text-white" : "text-gray-900"}`}>&quot;Consistency is the currency of the professional.&quot;</p>
               </div>
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function AboutSection() {
 
             <div className={`${inter.className} space-y-8 text-lg md:text-xl leading-relaxed opacity-80`}>
               <p className={theme === "dark" ? "text-slate-300" : "text-gray-600"}>
-                At <span className={`${theme === "dark" ? "text-white" : "text-gray-900"} font-black`}>Stoic Pips Inc.</span>, we don't just teach trading; we engineer <span className="text-primary font-black">Emotionless Profitability</span>.
+                At <span className={`${theme === "dark" ? "text-white" : "text-gray-900"} font-black`}>Stoic Pips Inc.</span>, we don&apos;t just teach trading; we engineer <span className="text-primary font-black">Emotionless Profitability</span>.
               </p>
 
               <p className={`border-l-4 border-primary pl-8 italic ${theme === "dark" ? "text-slate-300" : "text-gray-600 font-medium"}`}>
@@ -110,7 +110,7 @@ export default function AboutSection() {
               </p>
 
               <p className={theme === "dark" ? "text-slate-300" : "text-gray-600"}>
-                Founded on the principles of Stoicism and precision, we've built a sanctuary for traders who are tired of the noise and ready for the results.
+                Founded on the principles of Stoicism and precision, we&apos;ve built a sanctuary for traders who are tired of the noise and ready for the results.
               </p>
             </div>
 

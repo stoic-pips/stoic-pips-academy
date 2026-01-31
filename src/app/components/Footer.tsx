@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
 import { FaTelegramPlane, FaWhatsapp, FaYoutube } from "react-icons/fa";
+import Link from "next/link";
 import { Playfair_Display, Inter } from "next/font/google";
 
 const playfair = Playfair_Display({
@@ -116,9 +117,9 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary tech-tracking">Governance</h4>
             <div className={`flex flex-col gap-4 text-[10px] font-black uppercase tracking-[0.2em] tech-tracking opacity-60 ${textColor}`}>
-              <a href="/terms" className="hover:text-secondary hover:opacity-100 transition-all">Terms of Service</a>
-              <a href="/privacy" className="hover:text-secondary hover:opacity-100 transition-all">Privacy Policy</a>
-              <a href="/risk" className="hover:text-secondary hover:opacity-100 transition-all">Risk Disclaimer</a>
+              <Link href="/terms" className="hover:text-secondary hover:opacity-100 transition-all">Terms of Service</Link>
+              <Link href="/privacy" className="hover:text-secondary hover:opacity-100 transition-all">Privacy Policy</Link>
+              <Link href="/risk" className="hover:text-secondary hover:opacity-100 transition-all">Risk Disclaimer</Link>
             </div>
           </div>
 
@@ -126,7 +127,7 @@ export default function Footer() {
             <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-primary tech-tracking">Support</h4>
             <div className={`flex flex-col gap-4 text-[10px] font-black uppercase tracking-[0.2em] tech-tracking opacity-60 ${textColor}`}>
               <a href="mailto:support@stoicpips.com" className="hover:text-primary hover:opacity-100 transition-all">Executive Desk</a>
-              <a href="/status" className="hover:text-primary hover:opacity-100 transition-all">System Status</a>
+              <Link href="/status" className="hover:text-secondary hover:opacity-100 transition-all">System Status</Link>
               <a href="https://doc.stoicpips.com/faq" className="hover:text-primary hover:opacity-100 transition-all">Intelligence Base</a>
             </div>
           </div>
@@ -152,7 +153,7 @@ export default function Footer() {
 
           <div className="flex lg:justify-end">
             <div className={`px-6 py-2 glass-pill italic text-sm opacity-60 border ${borderColor} ${textColor}`}>
-              "Trade Emotionless."
+              &quot;Trade Emotionless.&quot;
             </div>
           </div>
         </div>

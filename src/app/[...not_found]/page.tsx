@@ -80,8 +80,8 @@ export default function Custom404() {
         {/* Message */}
         <p className={`max-w-md mx-auto text-lg md:text-xl leading-relaxed mb-8 ${inter.className} ${theme === "dark" ? "text-gray-300" : "text-gray-600"
           }`}>
-          The page you're looking for doesn't exist or is still under development.
-          Let's get you back to trading success!
+          The page you&apos;re looking for doesn&apos;t exist or is still under development.
+          Let&apos;s get you back to trading success!
         </p>
 
         {/* Illustration/Icon */}

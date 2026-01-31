@@ -155,8 +155,8 @@ export async function POST(request: Request) {
       message: 'Successfully subscribed to newsletter. Welcome email sent!'
     });
 
-  } catch (error: any) {
-    console.error('❌ Newsletter subscription error:', error);
+  } catch (error: unknown) {
+    console.error('❌ Newsletter subscription error:', error instanceof Error ? error.message : error);
 
     return NextResponse.json(
       { error: 'Failed to subscribe. Please try again.' },

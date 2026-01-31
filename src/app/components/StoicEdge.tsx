@@ -49,7 +49,7 @@ export default function StoicEdge() {
                     </h2>
 
                     <p className={`text-xl leading-relaxed opacity-70 mb-12 ${inter.className}`}>
-                        We've taken the timeless principles of Marcus Aurelius and engineered them into the very core of Dunam AI. Risk management is no longer a choice—it's an algorithm.
+                        We&apos;ve taken the timeless principles of Marcus Aurelius and engineered them into the very core of Dunam AI. Risk management is no longer a choice—it&apos;s an algorithm.
                     </p>
 
                     <div className="space-y-6">
@@ -98,12 +98,12 @@ export default function StoicEdge() {
                                     <p className="pl-8"><span className="text-primary/70">if</span> (this.<span className="text-secondary">isLogical</span>(signal) && this.<span className="text-secondary">withinRisk</span>()) &#123;</p>
                                     <p className="pl-12">return this.<span className="text-secondary">openPosition</span>(signal);</p>
                                     <p className="pl-8">&#125;</p>
-                                    <p className="pl-8">return <span className="text-primary">"Stay Disciplined"</span>;</p>
+                                    <p className="pl-8">return <span className="text-primary">&quot;Stay Disciplined&quot;</span>;</p>
                                     <p className="pl-4">&#125;</p>
                                     <p>&#125;</p>
                                 </div>
                                 <div className={`mt-12 p-6 border-l-2 border-primary ${theme === "dark" ? "bg-primary/5" : "bg-primary/10"} italic transition-colors`}>
-                                    <p className={`text-sm ${theme === "dark" ? "opacity-80 text-white" : "text-gray-900 font-medium"}`}>"You have power over your mind - not outside events. Realize this, and you will find strength."</p>
+                                    <p className={`text-sm ${theme === "dark" ? "opacity-80 text-white" : "text-gray-900 font-medium"}`}>&quot;You have power over your mind - not outside events. Realize this, and you will find strength.&quot;</p>
                                     <p className={`text-[10px] font-black mt-3 uppercase tracking-[0.2em] tech-tracking text-primary`}>— Marcus Aurelius</p>
                                 </div>
                             </div>

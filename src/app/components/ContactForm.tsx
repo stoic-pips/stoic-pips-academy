@@ -102,7 +102,7 @@ export default function ContactForm() {
           ? "bg-green-900/20 border-green-700/50 text-green-300"
           : "bg-green-50 border-green-200 text-green-800"
           }`}>
-          ✅ Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+          ✅ Thank you! Your message has been sent successfully. We&apos;ll get back to you within 24 hours.
         </div>
       )}
 
@@ -226,7 +226,7 @@ export default function ContactForm() {
 
       <p className={`text-center text-sm ${inter.className} ${currentTheme === "dark" ? "text-gray-400" : "text-gray-600"
         }`}>
-        We'll get back to you within 24 hours
+        We&apos;ll get back to you within 24 hours
       </p>
     </form>
   );

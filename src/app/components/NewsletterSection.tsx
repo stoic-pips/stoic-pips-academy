@@ -53,9 +53,9 @@ export default function NewsletterSection() {
         console.error("❌ Subscription failed:", result.error);
         alert(result.error || 'Subscription failed. Please try again.');
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("❌ Error subscribing:", error);
-      alert(error.message || 'Network error. Please check your connection and try again.');
+      alert(error instanceof Error ? error.message : 'Network error. Please check your connection and try again.');
     } finally {
       setIsLoading(false);
     }

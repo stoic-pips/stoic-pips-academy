@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { Service } from "../Service";
 import Button from "../../button/Button";
 import { Inter, Playfair_Display } from "next/font/google";
@@ -25,7 +26,7 @@ export default function PricingCard({
   theme: string;
   isHovered: boolean;
   onHover: (id: string | null) => void;
-  router: any;
+  router: AppRouterInstance;
 }) {
   const buttonGradient = "bg-primary text-matte-charcoal hover:bg-brand-gold/90";
 

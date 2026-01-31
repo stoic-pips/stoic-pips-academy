@@ -1,5 +1,6 @@
 "use client";
 
+import { Service } from "@/data/Service";
 import { services } from "@/data/services";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -7,7 +8,7 @@ import GetStartedPage from "../page";
 
 export default function GetStartedServicePage() {
   const params = useParams();
-  const [service, setService] = useState<any>(null);
+  const [service, setService] = useState<Service | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export default function GetStartedServicePage() {
             Service Not Found
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            The service you're looking for doesn't exist.
+            The service you&apos;re looking for doesn&apos;t exist.
           </p>
         </div>
       </div>
