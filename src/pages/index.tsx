@@ -44,13 +44,20 @@ export default function Home() {
       <StoicEdge />
 
       {/* Academy Dedicated Section */}
-      <section id="academy" className="scroll-mt-20">
-        <div className="bg-slate-900/10 py-20">
-          <div className="max-w-7xl mx-auto px-6 text-center mb-16">
-            <h2 className={`${playfair.className} text-4xl md:text-5xl font-black mb-4`}>
+      <section id="academy" className={`scroll-mt-20 border-y ${theme === "dark" ? "border-white/5 bg-slate-950/30" : "border-slate-200 bg-slate-50/50"}`}>
+        <div className="py-32">
+          <div className="max-w-7xl mx-auto px-6 text-center mb-24">
+            <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-full border mb-8 ${theme === "dark" ? "border-white/10 glass-pill text-[#708090]" : "border-slate-200 text-[#708090]"}`}>
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] tech-tracking">Knowledge Institution</span>
+            </div>
+
+            <h2 className={`${playfair.className} text-4xl md:text-5xl lg:text-6xl font-black mb-8 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
               The Stoic <span className="text-gradient-emerald-gold italic">Academy.</span>
             </h2>
-            <p className="opacity-60 tech-tracking uppercase text-xs font-bold">Legacy Education & Mentorship</p>
+
+            <p className={`tech-tracking uppercase text-[10px] font-black tracking-[0.3em] ${theme === "dark" ? "text-[#C5A059]" : "text-[#C5A059]"}`}>
+              Legacy Education & Mentorship
+            </p>
           </div>
           <OurServices />
           <PricingServices />
