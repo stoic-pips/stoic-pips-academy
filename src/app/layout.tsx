@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Stoic Pips Academy",
-  description: "Learn professional price action trading with Stoic Pips Academy.",
+  title: "Stoic Pips Inc. | Dunam Ai - Future of Algorithmic Trading",
+  description: "Stoic Pips Inc. pioneered the fusion of ancient Stoic philosophy with high-frequency AI trading. Discover Dunam Ai—our institutional-grade ecosystem designed for precision, discipline, and consistent profitability.",
   icons: {
     icon: "/favicon.ico", // ✅ simple and consistent
     apple: "/apple-touch-icon.png",

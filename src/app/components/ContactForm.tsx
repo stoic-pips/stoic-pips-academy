@@ -58,7 +58,7 @@ export default function ContactForm() {
       if (response.ok) {
         const result = await response.json();
         console.log('Formspree response:', result);
-        
+
         setSubmitStatus("success");
         // Reset form
         setFormData({
@@ -81,41 +81,36 @@ export default function ContactForm() {
   };
 
   // Input classes
-  const inputClasses = `w-full p-3 rounded-xl border-2 ${inter.className} ${
-    currentTheme === "dark" 
-      ? "border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 focus:border-purple-500" 
-      : "border-gray-300 bg-white/80 text-gray-900 placeholder-gray-500 focus:border-blue-500"
-  } focus:outline-none focus:ring-2 focus:ring-opacity-20 transition-all duration-300`;
+  const inputClasses = `w-full p-4 rounded-xl border transition-all duration-300 font-bold text-sm ${inter.className} ${currentTheme === "dark"
+    ? "border-white/10 bg-white/5 text-white placeholder-white/20 focus:border-primary/50"
+    : "border-slate-200 bg-background text-gray-900 placeholder-slate-400 focus:border-primary"
+    } focus:outline-none`;
 
-  const labelClasses = `block mb-2 text-sm font-medium ${inter.className} ${
-    currentTheme === "dark" ? "text-gray-300" : "text-gray-700"
-  }`;
+  const labelClasses = `block mb-2 text-[10px] font-black uppercase tracking-[0.2em] tech-tracking ${currentTheme === "dark" ? "text-primary/60" : "text-secondary"
+    }`;
 
-  const buttonClasses = `w-full py-4 rounded-2xl font-semibold text-white transition-all duration-300 ${
-    currentTheme === "dark"
-      ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
-      : "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
-  } hover:scale-105 ${inter.className} ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`;
+  const buttonClasses = `w-full py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] text-white transition-all duration-500 tech-tracking ${currentTheme === "dark"
+    ? "bg-primary text-matte-charcoal shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-primary/50"
+    : "bg-matte-charcoal text-white shadow-xl hover:bg-black"
+    } hover:scale-[1.02] active:scale-95 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`;
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Status Messages */}
       {submitStatus === "success" && (
-        <div className={`p-4 rounded-xl border-2 ${
-          currentTheme === "dark" 
-            ? "bg-green-900/20 border-green-700/50 text-green-300" 
-            : "bg-green-50 border-green-200 text-green-800"
-        }`}>
+        <div className={`p-4 rounded-xl border-2 ${currentTheme === "dark"
+          ? "bg-green-900/20 border-green-700/50 text-green-300"
+          : "bg-green-50 border-green-200 text-green-800"
+          }`}>
           ✅ Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
         </div>
       )}
 
       {submitStatus === "error" && (
-        <div className={`p-4 rounded-xl border-2 ${
-          currentTheme === "dark" 
-            ? "bg-red-900/20 border-red-700/50 text-red-300" 
-            : "bg-red-50 border-red-200 text-red-800"
-        }`}>
+        <div className={`p-4 rounded-xl border-2 ${currentTheme === "dark"
+          ? "bg-red-900/20 border-red-700/50 text-red-300"
+          : "bg-red-50 border-red-200 text-red-800"
+          }`}>
           ❌ There was an error sending your message. Please try again or email us directly.
         </div>
       )}
@@ -229,9 +224,8 @@ export default function ContactForm() {
         )}
       </button>
 
-      <p className={`text-center text-sm ${inter.className} ${
-        currentTheme === "dark" ? "text-gray-400" : "text-gray-600"
-      }`}>
+      <p className={`text-center text-sm ${inter.className} ${currentTheme === "dark" ? "text-gray-400" : "text-gray-600"
+        }`}>
         We'll get back to you within 24 hours
       </p>
     </form>
