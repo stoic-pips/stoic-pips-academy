@@ -5,17 +5,7 @@ import Link from "next/link";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import DarkModeToggle from "./button/DarkModeToggle";
 import { useTheme } from "next-themes";
-import { Playfair_Display, Inter } from "next/font/google";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
+import { playfair, inter } from "@/lib/fonts";
 
 export default function Navbar() {
   const { theme } = useTheme();

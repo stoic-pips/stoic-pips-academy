@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { inter } from "./layout";
+import { inter } from "@/lib/fonts";
 
 export default function ContactForm() {
   const { theme, systemTheme } = useTheme();

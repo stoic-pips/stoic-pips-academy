@@ -1,15 +1,6 @@
 import { Providers } from "./components/provider/providers";
 import "./globals.css";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { geistSans, geistMono, playfair, inter } from "@/lib/fonts";
 
 export const metadata = {
   title: "Stoic Pips Inc. | Dunam Ai - Future of Algorithmic Trading",
@@ -25,7 +16,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${inter.variable}`}>
         <Providers>{children}</Providers>
       </body>
     </html>

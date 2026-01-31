@@ -2,19 +2,9 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Playfair_Display, Inter } from "next/font/google";
+import { playfair, inter } from "@/lib/fonts";
 import Link from "next/link";
 import SubPageLayout from "../components/layout/SubPageLayout";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
 
 export default function Courses() {
   const { theme } = useTheme();
@@ -92,8 +82,8 @@ export default function Courses() {
         <div className="relative max-w-4xl mx-auto text-center z-10">
           {/* Section Badge */}
           <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-8 ${theme === "dark"
-              ? "border-purple-500/30 bg-purple-500/10 text-purple-200"
-              : "border-blue-500/30 bg-blue-500/10 text-blue-700"
+            ? "border-purple-500/30 bg-purple-500/10 text-purple-200"
+            : "border-blue-500/30 bg-blue-500/10 text-blue-700"
             }`}>
             <span className="w-2 h-2 bg-current rounded-full animate-pulse"></span>
             <span className={`text-sm font-medium ${inter.className}`}>Coming Soon</span>
@@ -117,13 +107,13 @@ export default function Courses() {
 
           {/* Countdown/Progress Section */}
           <div className={`max-w-md mx-auto p-8 rounded-3xl backdrop-blur-sm border-2 mb-12 ${theme === "dark"
-              ? "bg-gray-800/50 border-gray-700"
-              : "bg-white/80 border-gray-200"
+            ? "bg-gray-800/50 border-gray-700"
+            : "bg-white/80 border-gray-200"
             }`}>
             <div className="flex items-center justify-center gap-4 mb-6">
               <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${theme === "dark"
-                  ? "bg-purple-500/20 border border-purple-500/30"
-                  : "bg-blue-500/20 border border-blue-500/30"
+                ? "bg-purple-500/20 border border-purple-500/30"
+                : "bg-blue-500/20 border border-blue-500/30"
                 }`}>
                 <span className="text-2xl">⏳</span>
               </div>
@@ -154,14 +144,14 @@ export default function Courses() {
 
           {/* Email Notification Signup */}
           <div className={`max-w-lg mx-auto p-8 rounded-3xl backdrop-blur-sm border-2 ${theme === "dark"
-              ? "bg-gray-800/50 border-gray-700"
-              : "bg-white/80 border-gray-200"
+            ? "bg-gray-800/50 border-gray-700"
+            : "bg-white/80 border-gray-200"
             }`}>
             {isSubscribed ? (
               <div className="text-center">
                 <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${theme === "dark"
-                    ? "bg-green-500/20 border border-green-500/30"
-                    : "bg-green-500/20 border border-green-500/30"
+                  ? "bg-green-500/20 border border-green-500/30"
+                  : "bg-green-500/20 border border-green-500/30"
                   }`}>
                   <span className="text-2xl text-green-500">✅</span>
                 </div>
@@ -192,16 +182,16 @@ export default function Courses() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
                       className={`flex-1 px-4 py-3 rounded-xl border-2 ${inter.className} ${theme === "dark"
-                          ? "border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 focus:border-purple-500"
-                          : "border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:border-blue-500"
+                        ? "border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 focus:border-purple-500"
+                        : "border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:border-blue-500"
                         } focus:outline-none focus:ring-2 focus:ring-opacity-20 transition-all duration-300`}
                       required
                     />
                     <button
                       type="submit"
                       className={`px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300 ${theme === "dark"
-                          ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
-                          : "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+                        ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+                        : "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
                         } hover:scale-105 ${inter.className}`}
                     >
                       Notify Me
@@ -232,8 +222,8 @@ export default function Courses() {
               }
             ].map((feature, index) => (
               <div key={index} className={`p-6 rounded-2xl backdrop-blur-sm border ${theme === "dark"
-                  ? "bg-gray-800/30 border-gray-700"
-                  : "bg-white/50 border-gray-200"
+                ? "bg-gray-800/30 border-gray-700"
+                : "bg-white/50 border-gray-200"
                 }`}>
                 <div className={`text-3xl mb-3 ${theme === "dark" ? "text-purple-400" : "text-blue-500"
                   }`}>
@@ -261,8 +251,8 @@ export default function Courses() {
               <Link
                 href="/mentorship"
                 className={`px-8 py-3 rounded-2xl font-semibold transition-all duration-300 ${theme === "dark"
-                    ? "bg-purple-500/10 border border-purple-500/30 text-purple-300 hover:bg-purple-500/20"
-                    : "bg-blue-500/10 border border-blue-500/30 text-blue-700 hover:bg-blue-500/20"
+                  ? "bg-purple-500/10 border border-purple-500/30 text-purple-300 hover:bg-purple-500/20"
+                  : "bg-blue-500/10 border border-blue-500/30 text-blue-700 hover:bg-blue-500/20"
                   } ${inter.className}`}
               >
                 View Mentorship
@@ -270,8 +260,8 @@ export default function Courses() {
               <Link
                 href="/services"
                 className={`px-8 py-3 rounded-2xl font-semibold text-white transition-all duration-300 ${theme === "dark"
-                    ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
-                    : "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+                  ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+                  : "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
                   } ${inter.className}`}
               >
                 Explore Services

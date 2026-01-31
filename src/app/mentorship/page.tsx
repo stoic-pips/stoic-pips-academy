@@ -7,17 +7,7 @@ import Button from "../components/button/Button";
 import WhyJoinAccordion from "./program/WhyJoinProgram";
 import SubPageLayout from "../components/layout/SubPageLayout";
 import Curiculum from "./curriculum/Curriculum";
-import { Playfair_Display, Inter } from "next/font/google";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
+import { playfair, inter } from "@/lib/fonts";
 
 export default function MentorshipPage() {
   const { theme } = useTheme();

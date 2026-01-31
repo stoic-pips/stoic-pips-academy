@@ -14,12 +14,7 @@ import ThreePillars from "@/app/components/ThreePillars";
 import StoicEdge from "@/app/components/StoicEdge";
 import NewsletterSection from "@/app/components/NewsletterSection";
 import Loading from "@/app/loading";
-import { Playfair_Display } from "next/font/google";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-});
+import { playfair } from "@/lib/fonts";
 
 export default function Home() {
   const { theme, setTheme } = useTheme();

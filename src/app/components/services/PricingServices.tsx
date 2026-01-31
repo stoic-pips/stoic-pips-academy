@@ -5,20 +5,10 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import Button from "../button/Button";
 import { services } from "@/data/services";
-import { Playfair_Display, Inter } from "next/font/google";
+import { playfair, inter } from "@/lib/fonts";
 import { Service } from "./Service";
 import ServiceCard from "./card/ServicePricingCard";
 import Carousel from "./Carousel/Carousel";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
 
 export default function PricingServices() {
   const { theme } = useTheme();

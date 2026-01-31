@@ -5,17 +5,7 @@ import { useEffect, useState } from "react";
 import ServiceCard from "./card/ServiceCard";
 import { services } from "./services";
 import { motion } from "framer-motion";
-import { Playfair_Display, Inter } from "next/font/google";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
+import { playfair, inter } from "@/lib/fonts";
 
 export default function OurServices() {
   const { theme } = useTheme();

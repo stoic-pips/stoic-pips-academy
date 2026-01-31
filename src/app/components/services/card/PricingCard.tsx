@@ -2,17 +2,7 @@ import { useCallback } from "react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { Service } from "../Service";
 import Button from "../../button/Button";
-import { Inter, Playfair_Display } from "next/font/google";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
+import { playfair, inter } from "@/lib/fonts";
 
 // Individual pricing card component
 export default function PricingCard({

@@ -2,12 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { Service } from "@/data/Service";
-import { Inter } from "next/font/google";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
+import { inter } from "@/lib/fonts";
 
 export default function ServiceDetails({
   title,
@@ -17,7 +12,7 @@ export default function ServiceDetails({
   features,
 }: Service) {
   const { theme } = useTheme();
-  
+
   const headingColor = theme === "dark" ? "text-white" : "text-gray-900";
   const textColor = theme === "dark" ? "text-gray-300" : "text-gray-600";
   const borderColor = theme === "dark" ? "border-gray-700" : "border-gray-200";
@@ -33,18 +28,16 @@ export default function ServiceDetails({
           <h2 className={`text-xl font-semibold mb-3 ${headingColor} ${inter.className}`}>
             {title}
           </h2>
-          
+
           <div className="flex items-center justify-center space-x-2 mb-4">
             {originalPrice && (
-              <span className={`line-through text-sm ${inter.className} ${
-                theme === "dark" ? "text-gray-500" : "text-gray-400"
-              }`}>
+              <span className={`line-through text-sm ${inter.className} ${theme === "dark" ? "text-gray-500" : "text-gray-400"
+                }`}>
                 {originalPrice}
               </span>
             )}
-            <span className={`text-2xl font-semibold ${inter.className} ${
-              theme === "dark" ? "text-blue-400" : "text-blue-600"
-            }`}>
+            <span className={`text-2xl font-semibold ${inter.className} ${theme === "dark" ? "text-blue-400" : "text-blue-600"
+              }`}>
               {price}
             </span>
           </div>
@@ -63,9 +56,8 @@ export default function ServiceDetails({
           <div className="space-y-2">
             {safeFeatures.map((feature: string, idx: number) => (
               <div key={idx} className="flex items-start gap-2">
-                <span className={`mt-1 text-sm ${
-                  theme === "dark" ? "text-blue-400" : "text-blue-600"
-                }`}>•</span>
+                <span className={`mt-1 text-sm ${theme === "dark" ? "text-blue-400" : "text-blue-600"
+                  }`}>•</span>
                 <span className={`text-sm ${textColor} ${inter.className}`}>
                   {feature}
                 </span>
@@ -75,9 +67,8 @@ export default function ServiceDetails({
         </div>
 
         {/* Benefits */}
-        <div className={`p-4 rounded-lg border ${borderColor} ${
-          theme === "dark" ? "bg-gray-700" : "bg-gray-50"
-        }`}>
+        <div className={`p-4 rounded-lg border ${borderColor} ${theme === "dark" ? "bg-gray-700" : "bg-gray-50"
+          }`}>
           <h4 className={`font-semibold mb-3 text-sm ${headingColor} ${inter.className}`}>
             Benefits
           </h4>

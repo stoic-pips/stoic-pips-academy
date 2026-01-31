@@ -3,18 +3,8 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Playfair_Display, Inter } from "next/font/google";
+import { playfair, inter } from "@/lib/fonts";
 import { useRouter } from "next/navigation";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
 
 export default function Custom404() {
   const { theme } = useTheme();

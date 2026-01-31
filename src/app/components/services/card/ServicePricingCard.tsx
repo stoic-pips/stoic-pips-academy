@@ -4,14 +4,9 @@
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Inter } from "next/font/google";
+import { inter } from "@/lib/fonts";
 import { Service } from "../Service";
 import Button from "../../button/Button";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
 
 interface ServiceCardProps {
   service: Service;

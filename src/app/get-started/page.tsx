@@ -7,17 +7,7 @@ import PriceSummary from "./components/PriceSummary";
 import ServiceDetails from "./components/ServiceDetails";
 import SubPageLayout from "../components/layout/SubPageLayout";
 import TronPayment from "./components/TronPayment";
-import { Playfair_Display, Inter } from "next/font/google";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
+import { playfair, inter } from "@/lib/fonts";
 
 // Add default values in case props are undefined
 const defaultService: Partial<Service> = {

@@ -5,17 +5,7 @@ import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { useTheme } from "next-themes";
 import { faqs } from "@/data/faq";
 import { motion } from "framer-motion";
-import { Playfair_Display, Inter } from "next/font/google";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
+import { playfair, inter } from "@/lib/fonts";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
