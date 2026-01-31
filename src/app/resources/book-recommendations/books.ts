@@ -8,13 +8,13 @@ export const books: Book[] = [
   { category: "Forex & Trading", title: "Swing Trading for Dummies", author: "Omar Bassal" },
   { category: "Forex & Trading", title: "The 10 Essentials of Forex Trading", author: "Jared Martinez" },
 
-  // Strategic Mindset
-  { category: "Strategic Mindset", title: "Meditations", author: "Marcus Aurelius" },
-  { category: "Strategic Mindset", title: "Letters from a Stoic", author: "Seneca" },
-  { category: "Strategic Mindset", title: "The Daily Stoic", author: "Ryan Holiday & Stephen Hanselman" },
-  { category: "Strategic Mindset", title: "Ego is the Enemy", author: "Ryan Holiday" },
-  { category: "Strategic Mindset", title: "The Obstacle is the Way", author: "Ryan Holiday" },
-  { category: "Strategic Mindset", title: "Stillness is the Key", author: "Ryan Holiday" },
+  // Stoicism & Mindset
+  { category: "Stoicism & Mindset", title: "Meditations", author: "Marcus Aurelius" },
+  { category: "Stoicism & Mindset", title: "Letters from a Stoic", author: "Seneca" },
+  { category: "Stoicism & Mindset", title: "The Daily Stoic", author: "Ryan Holiday & Stephen Hanselman" },
+  { category: "Stoicism & Mindset", title: "Ego is the Enemy", author: "Ryan Holiday" },
+  { category: "Stoicism & Mindset", title: "The Obstacle is the Way", author: "Ryan Holiday" },
+  { category: "Stoicism & Mindset", title: "Stillness is the Key", author: "Ryan Holiday" },
 
   // Trading Psychology
   { category: "Trading Psychology", title: "Trading in the Zone", author: "Mark Douglas" },

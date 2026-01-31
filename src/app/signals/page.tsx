@@ -12,9 +12,7 @@ export default function Signals() {
   const headingColor = theme === "dark" ? "text-white" : "text-gray-900";
   const textColor = theme === "dark" ? "text-gray-300" : "text-gray-700";
   const bgColor = theme === "dark" ? "bg-gray-900" : "bg-gray-50";
-  const gradientText = theme === "dark"
-    ? "bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-500"
-    : "bg-gradient-to-r from-emerald-600 via-teal-700 to-amber-600";
+  const buttonBg = theme === "dark" ? "bg-blue-600 hover:bg-blue-700" : "bg-blue-500 hover:bg-blue-600";
   const buttonText = "text-white";
 
   const handleSubscribe = () => {
@@ -26,11 +24,11 @@ export default function Signals() {
       <section className={`min-h-screen py-20`}>
         <div className="max-w-5xl mx-auto px-6">
           <h2 className={`text-3xl font-bold mb-6 ${headingColor}`}>
-            Signals with Dunam Ai
+            Signals with Stoic Pips
           </h2>
 
           <p className={`mb-4 ${textColor}`}>
-            Founded in 2024, Dunam Ai focuses on discipline, mindset, and strategy to help traders grow their trading journey. Our signals are designed to give actionable guidance while teaching you professional trading practices.
+            Founded in 2024, Stoic Pips focuses on discipline, mindset, and strategy to help traders grow their trading journey. Our signals are designed to give actionable guidance while teaching you professional trading practices.
           </p>
 
           <p className={`mb-4 ${textColor}`}>
@@ -56,12 +54,12 @@ export default function Signals() {
           </ul>
 
           <p className={`mb-6 ${textColor}`}>
-            Following Dunam Ai signals helps traders save time on analysis, avoid emotional decisions, and grow accounts while building professional trading skills.
+            Following Stoic Pips signals helps traders save time on analysis, avoid emotional decisions, and grow accounts while building professional trading skills.
           </p>
 
-          <Button>
-            Subscribe Now
-          </Button>
+            <Button>
+                Subscribe Now
+            </Button>
         </div>
       </section>
     </SubPageLayout>

@@ -22,73 +22,96 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ service, isHovered, onHover, theme }: ServiceCardProps) {
   const router = useRouter();
-
-  const buttonGradient = "bg-primary text-matte-charcoal";
+  
+  const buttonGradient = theme === "dark"
+    ? "bg-gradient-to-r from-purple-500 to-pink-500"
+    : "bg-gradient-to-r from-blue-500 to-purple-600";
 
   return (
     <div
       className={`
-        relative group luminous-card flex-shrink-0 transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]
-        w-85 md:w-65 lg:w-[420px] mx-6
-        ${isHovered ? 'shadow-[0_0_50px_rgba(197,160,89,0.15)] -translate-y-4 border-primary/30' : ''}
+        relative group transition-all duration-500 ease-out flex-shrink-0
+        w-80 md:w-60 lg:w-[400px] mx-4
+        ${isHovered ? 'scale-105 z-10' : 'scale-100'}
+        rounded-3xl overflow-hidden
+        ${theme === "dark"
+          ? "bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700"
+          : "bg-white/60 hover:bg-white/80 border border-gray-200"
+        }
       `}
       onMouseEnter={() => onHover(service.id)}
       onMouseLeave={() => onHover(null)}
     >
-      <div className={`
-        p-10 flex flex-col h-full relative overflow-hidden transition-colors duration-500
-      `}>
+      {/* Hover Gradient Overlay */}
+      {isHovered && (
+        <div className={`absolute inset-0 rounded-3xl opacity-100 transition-opacity duration-500 ${
+          theme === "dark"
+            ? "bg-gradient-to-br from-purple-500/10 to-pink-500/10"
+            : "bg-gradient-to-br from-blue-500/10 to-purple-500/10"
+        }`} />
+      )}
 
-        {/* Floating Accent */}
-        <div className={`absolute -top-24 -right-24 w-48 h-48 blur-[60px] transition-all duration-700 bg-primary/10 group-hover:bg-primary/20`}></div>
-
+      <div className="relative p-8 flex flex-col h-full">
         {/* Service Header */}
-        <div className="text-center mb-10 relative z-10">
-          <div className={`inline-flex items-center justify-center w-24 h-24 rounded-3xl mb-8 border transition-all duration-700 border-glass-border group-hover:border-primary/40 glass-pill`}>
-            <span className="text-4xl">
-              {service.icon ? <service.icon size={36} color={isHovered ? "#C5A059" : (theme === "dark" ? "#C5A059" : "#475569")} /> : "🚀"}
+        <div className="text-center mb-8">
+          {/* Icon */}
+          <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 transition-all duration-300 ${
+            theme === "dark"
+              ? "bg-purple-500/20 border border-purple-500/30"
+              : "bg-blue-500/20 border border-blue-500/30"
+          } ${isHovered ? 'scale-110' : ''}`}>
+            <span className="text-2xl">
+              {service.icon ? <service.icon size={24} color={service.iconColor} /> : "🚀"}
             </span>
           </div>
-
-          <h3 className={`text-3xl font-black mb-4 transition-all duration-700 ${inter.className} ${isHovered ? "text-gradient-emerald-gold scale-105" : (theme === "dark" ? "text-white" : "text-slate-900")
-            }`}>
+          
+          <h3 className={`text-xl font-bold mb-3 transition-colors duration-300 ${inter.className} ${
+            isHovered 
+              ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600'
+              : theme === "dark" ? 'text-white' : 'text-gray-900'
+          }`}>
             {service.title}
           </h3>
-
-          <p className={`text-sm leading-relaxed font-medium px-4 ${theme === "dark" ? "opacity-60 text-white" : "text-slate-500"}`}>
+          
+          <p className={`text-sm leading-relaxed transition-colors duration-300 ${inter.className} ${
+            theme === "dark" ? 'text-gray-400' : 'text-gray-600'
+          }`}>
             {service.description}
           </p>
         </div>
 
         {/* Pricing */}
-        <div className="text-center mb-12 relative z-10">
+        <div className="text-center mb-8">
           {service.originalPrice && (
-            <p className={`text-xs line-through mb-2 font-black tracking-widest ${theme === "dark" ? "opacity-40" : "text-slate-400"}`}>
+            <p className={`text-sm line-through mb-2 transition-colors duration-300 ${inter.className} ${
+              theme === "dark" ? 'text-gray-500' : 'text-gray-400'
+            }`}>
               {service.originalPrice}
             </p>
           )}
-          <div className="flex items-center justify-center gap-1">
-            <span className={`text-xl font-bold mb-4 ${theme === "dark" ? "opacity-40" : "text-slate-400"}`}>$</span>
-            <span className={`text-6xl font-black transition-all duration-1000 ${isHovered ? (theme === "dark" ? "text-white scale-110" : "text-slate-900 scale-110") : (theme === "dark" ? "text-white/90" : "text-slate-900")
-              }`}>
-              {service.price.replace('$', '')}
-            </span>
-            <span className={`text-xs font-black mt-6 tracking-widest ${theme === "dark" ? "opacity-30" : "text-slate-400"}`}>/ LIFETIME</span>
-          </div>
+          <p className={`text-3xl font-bold transition-all duration-300 ${inter.className} ${
+            isHovered 
+              ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 scale-110'
+              : theme === "dark" ? 'text-white' : 'text-gray-900'
+          }`}>
+            {service.price}
+          </p>
         </div>
 
         {/* Features List */}
-        <div className="flex-1 mb-12 relative z-10">
-          <ul className="space-y-4">
+        <div className="flex-1 mb-8">
+          <ul className="space-y-3">
             {service.features.map((feature, idx) => (
-              <li
-                key={idx}
-                className="flex items-center gap-4 group/item transition-all duration-300"
+              <li 
+                key={idx} 
+                className="flex items-start gap-3 group/item transition-all duration-300 hover:translate-x-1"
               >
-                <div className={`w-6 h-6 rounded-full flex items-center justify-center border transition-colors glass-pill border-glass-border group-hover/item:border-primary/40`}>
-                  <span className="text-[10px] text-primary font-black">✓</span>
-                </div>
-                <span className={`text-sm font-bold transition-opacity ${theme === "dark" ? "opacity-70 group-hover/item:opacity-100" : "text-slate-600 group-hover/item:text-slate-900"}`}>
+                <span className={`text-lg flex-shrink-0 ${
+                  theme === "dark" ? "text-purple-400" : "text-blue-500"
+                }`}>✓</span>
+                <span className={`text-sm leading-relaxed transition-colors duration-300 ${inter.className} ${
+                  theme === "dark" ? 'text-gray-300' : 'text-gray-700'
+                }`}>
                   {feature}
                 </span>
               </li>
@@ -97,18 +120,17 @@ export default function ServiceCard({ service, isHovered, onHover, theme }: Serv
         </div>
 
         {/* CTA Button */}
-        <Button
+        <Button 
           onClick={() => router.push(`/get-started/${service.id}`)}
           className={`
-            w-full py-5 font-black uppercase tracking-[0.2em] rounded-2xl transition-all duration-500 border relative z-10
-            ${theme === "dark"
-              ? "bg-primary text-matte-charcoal shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-primary/50 border-transparent"
-              : "bg-primary text-matte-charcoal shadow-xl hover:bg-brand-gold/90 border-transparent"
-            }
-            ${isHovered ? '-translate-y-1' : ''}
+            w-full py-3 font-semibold rounded-2xl transition-all duration-300 transform border-2
+            ${isHovered 
+              ? 'shadow-lg scale-105' 
+              : ''
+            } text-white ${buttonGradient} hover:shadow-xl
           `}
         >
-          Secure Access
+          Get Started
         </Button>
       </div>
     </div>

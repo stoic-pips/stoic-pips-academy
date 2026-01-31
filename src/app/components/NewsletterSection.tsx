@@ -61,11 +61,17 @@ export default function NewsletterSection() {
     }
   };
 
-
+  const sectionBg = theme === "dark" 
+    ? "bg-gradient-to-br from-gray-900 via-purple-900/20 to-gray-900" 
+    : "bg-gradient-to-br from-white via-blue-50 to-purple-50";
 
   const cardBg = theme === "dark"
-    ? "bg-deep-slate/90 backdrop-blur-sm border border-white/5"
-    : "bg-slate-50 border border-slate-200";
+    ? "bg-gray-800/50 backdrop-blur-sm border border-gray-700"
+    : "bg-white/80 backdrop-blur-sm border border-gray-200";
+
+  const gradientText = theme === "dark" 
+    ? "bg-gradient-to-r from-purple-400 via-pink-400 to-red-400"
+    : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600";
 
   const textColor = theme === "dark" ? "text-gray-300" : "text-gray-600";
   const headingColor = theme === "dark" ? "text-white" : "text-gray-900";
@@ -94,86 +100,120 @@ export default function NewsletterSection() {
   ];
 
   return (
-    <section className={`py-32 px-6 overflow-hidden bg-background`}>
-      <div className="max-w-7xl mx-auto space-y-20">
-        <div className="text-center">
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 glass-pill text-secondary mb-8">
-            <span className="text-sm font-black uppercase tracking-[0.2em] tech-tracking">Institutional Intelligence</span>
+    <section className={`py-20 px-4 sm:px-6 lg:px-8 transition-all duration-700 ${sectionBg}`}>
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-6 ${
+            theme === "dark"
+              ? "border-purple-500/30 bg-purple-500/10 text-purple-200"
+              : "border-blue-500/30 bg-blue-500/10 text-blue-700"
+          }`}>
+            <span className="w-2 h-2 bg-current rounded-full animate-pulse"></span>
+            <span className={`text-sm font-medium ${inter.className}`}>Newsletter</span>
           </div>
 
-          <h2 className={`${playfair.className} text-4xl md:text-5xl font-black mb-8 ${headingColor}`}>
-            Master the <br />
-            <span className="text-gradient-emerald-gold italic">Spectrum.</span>
+          <h2 className={`${playfair.className} text-3xl md:text-4xl font-bold mb-4 ${headingColor}`}>
+            Join the{" "}
+            <span className={`bg-clip-text text-transparent ${gradientText}`}>
+              Stoic Pips
+            </span>{" "}
+            Inner Circle
           </h2>
-          <p className={`max-w-3xl mx-auto text-xl opacity-70 leading-relaxed font-medium ${inter.className}`}>
-            Join 2,000+ elite members receiving high-frequency market intelligence and <span className={theme === "dark" ? "text-white" : "text-gray-900"}>Dunam Ai</span> synchronization updates.
+          <p className={`max-w-2xl mx-auto text-lg ${inter.className} ${textColor}`}>
+            Get exclusive trading insights, market analysis, and professional strategies delivered weekly.
           </p>
         </div>
 
-        <div className="luminous-card p-1 bg-gradient-to-r from-primary/20 via-white/5 to-secondary/20 max-w-5xl mx-auto">
-          <div className={`${cardBg} rounded-[1.9rem] p-12 md:p-16 flex flex-col lg:flex-row items-center gap-16 relative overflow-hidden transition-colors duration-500`}>
-
-            {/* Benefits Grid */}
-            <div className="lg:w-1/2 grid sm:grid-cols-2 gap-8">
-              {benefits.map((benefit, i) => (
-                <div key={i} className="space-y-4">
-                  <div className={`w-12 h-12 rounded-2xl glass-pill flex items-center justify-center text-xl border ${theme === "dark" ? "border-white/10" : "border-slate-200"}`}>
-                    {benefit.icon}
-                  </div>
-                  <h4 className={`font-black text-lg ${headingColor}`}>{benefit.title}</h4>
-                  <p className="text-sm opacity-50 leading-relaxed">{benefit.description}</p>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Benefits List */}
+          <div className="space-y-6">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="flex items-start gap-4">
+                <div className={`flex-shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center ${
+                  theme === "dark" 
+                    ? "bg-purple-500/20 border border-purple-500/30" 
+                    : "bg-blue-500/20 border border-blue-500/30"
+                }`}>
+                  <span className="text-xl">{benefit.icon}</span>
                 </div>
-              ))}
-            </div>
-
-            <div className={`w-px h-64 ${theme === "dark" ? "bg-white/5" : "bg-slate-200"} hidden lg:block`}></div>
-
-            {/* Subscription Form */}
-            <div className="lg:w-1/2 w-full">
-              {isSubscribed ? (
-                <div className="text-center space-y-6">
-                  <div className="w-20 h-20 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center mx-auto text-3xl text-primary">
-                    ✓
-                  </div>
-                  <h3 className={`text-3xl font-black ${headingColor}`}>Transmission <span className="text-primary">Locked.</span></h3>
-                  <p className="opacity-60">Success. You are now synchronized with our intelligence stream.</p>
+                <div>
+                  <h3 className={`font-bold mb-1 ${inter.className} ${headingColor}`}>
+                    {benefit.title}
+                  </h3>
+                  <p className={`text-sm ${inter.className} ${textColor}`}>
+                    {benefit.description}
+                  </p>
                 </div>
-              ) : (
-                <div className="space-y-10">
-                  <div className="space-y-2">
-                    <h3 className={`text-3xl font-black ${headingColor}`}>Join the <span className="text-primary">Core.</span></h3>
-                    <p className="text-xs opacity-40 uppercase tracking-[0.2em] font-black tech-tracking">Secure executive synchronization</p>
-                  </div>
+              </div>
+            ))}
+          </div>
 
-                  <form onSubmit={handleSubscribe} className="space-y-4">
+          {/* Signup Form */}
+          <div className={`p-8 rounded-3xl backdrop-blur-sm border-2 ${cardBg}`}>
+            {isSubscribed ? (
+              <div className="text-center">
+                <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
+                  theme === "dark" 
+                    ? "bg-green-500/20 border border-green-500/30" 
+                    : "bg-green-500/20 border border-green-500/30"
+                }`}>
+                  <span className="text-2xl text-green-500">✅</span>
+                </div>
+                <h3 className={`text-xl font-bold mb-2 ${inter.className} ${headingColor}`}>
+                  Welcome Aboard!
+                </h3>
+                <p className={`${inter.className} ${textColor}`}>
+                  You've successfully joined the Stoic Pips newsletter. 
+                  Check your email for a welcome message and get ready for valuable trading insights!
+                </p>
+              </div>
+            ) : (
+              <>
+                <h3 className={`text-xl font-bold mb-4 text-center ${inter.className} ${headingColor}`}>
+                  Start Receiving Insights
+                </h3>
+                <form onSubmit={handleSubscribe} className="space-y-4">
+                  <div>
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Your primary secure email"
-                      className={`w-full bg-white/5 border rounded-2xl px-8 py-5 outline-none transition-all font-bold ${theme === "dark" ? "border-white/10 focus:border-primary/50 text-white" : "border-slate-200 focus:border-primary text-gray-900"
-                        }`}
+                      placeholder="Enter your best email"
+                      className={`w-full px-4 py-3 rounded-xl border-2 ${inter.className} ${
+                        theme === "dark" 
+                          ? "border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 focus:border-purple-500" 
+                          : "border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:border-blue-500"
+                      } focus:outline-none focus:ring-2 focus:ring-opacity-20 transition-all duration-300`}
                       required
                       disabled={isLoading}
                     />
-                    <button
-                      type="submit"
-                      disabled={isLoading}
-                      className={`w-full py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] text-white transition-all duration-500 hover:scale-[1.02] active:scale-95 disabled:opacity-50 tech-tracking ${theme === "dark"
-                        ? "bg-primary text-matte-charcoal shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-primary/50"
-                        : "bg-matte-charcoal text-white shadow-xl hover:bg-black"
-                        }`}
-                    >
-                      {isLoading ? "Synchronizing..." : "Initiate Access"}
-                    </button>
-                    <p className="text-[10px] text-center opacity-30 font-black uppercase tracking-[0.2em] tech-tracking">
-                      Zero Spam &bull; Institutional Privacy &bull; 1-Click Unsubscribe
-                    </p>
-                  </form>
-                </div>
-              )}
-            </div>
-
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className={`w-full py-3 rounded-xl font-semibold text-white transition-all duration-300 ${
+                      theme === "dark"
+                        ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+                        : "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+                    } hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed ${inter.className}`}
+                  >
+                    {isLoading ? (
+                      <div className="flex items-center justify-center gap-2">
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>Subscribing...</span>
+                      </div>
+                    ) : (
+                      "Join Our Free Newsletter"
+                    )}
+                  </button>
+                  <p className={`text-xs text-center ${inter.className} ${
+                    theme === "dark" ? "text-gray-400" : "text-gray-500"
+                  }`}>
+                    Join 2,000+ traders. No spam, unsubscribe anytime.
+                  </p>
+                </form>
+              </>
+            )}
           </div>
         </div>
       </div>

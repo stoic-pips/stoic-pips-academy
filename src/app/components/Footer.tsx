@@ -41,120 +41,179 @@ export default function Footer() {
     );
   }
 
-  const sectionBg = theme === "dark"
-    ? "bg-[#050a14]"
-    : "bg-slate-50";
-
-  const borderColor = theme === "dark" ? "border-white/5" : "border-slate-200";
+  const sectionBg = theme === "dark" 
+    ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" 
+    : "bg-gradient-to-br from-white via-blue-50 to-purple-50";
+  
+  const borderColor = theme === "dark" ? "border-gray-700" : "border-gray-200";
   const textColor = theme === "dark" ? "text-white" : "text-gray-900";
-  const subTextColor = theme === "dark" ? "text-slate-300" : "text-gray-600";
-  const cardBg = theme === "dark" ? "bg-slate-900/40" : "bg-slate-50";
+  const subTextColor = theme === "dark" ? "text-gray-300" : "text-gray-600";
+
+  const gradientText = theme === "dark" 
+    ? "bg-gradient-to-r from-purple-400 via-pink-400 to-red-400"
+    : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600";
 
   return (
-    <footer className={`relative py-24 px-6 overflow-hidden border-t ${borderColor} ${theme === "dark" ? "bg-background" : "bg-white"}`}>
+    <footer
+      className={`relative border-t ${borderColor} py-12 transition-all duration-700 ${sectionBg}`}
+    >
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className={`absolute bottom-0 left-0 w-64 h-64 rounded-full blur-3xl opacity-10 ${
+          theme === "dark" ? "bg-purple-500" : "bg-blue-400"
+        }`} />
+        <div className={`absolute bottom-0 right-0 w-48 h-48 rounded-full blur-3xl opacity-10 ${
+          theme === "dark" ? "bg-pink-500" : "bg-purple-400"
+        }`} />
+      </div>
 
-      {/* Footer Ambient Glow */}
-      <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-gradient-to-t ${theme === "dark" ? "from-primary/5" : "from-primary/3"} to-transparent blur-[100px] -z-10`}></div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Main Footer Content */}
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mb-8">
+        {/* Brand Section */}
+        <div className="text-center lg:text-left">
+          <h1 className={`${playfair.className} text-3xl font-bold mb-2 ${textColor}`}>
+            Stoic Pips{" "}
+            <span className={`bg-clip-text text-transparent ${gradientText}`}>
+              Academy
+            </span>
+          </h1>
+          <p className={`text-lg max-w-md ${subTextColor} ${inter.className}`}>
+            Transforming traders through disciplined strategies and proven mentorship.
+          </p>
+        </div>
 
-      <div className="max-w-7xl mx-auto space-y-24">
+        {/* Social Links - Modern Design */}
+        <div className="flex flex-col sm:flex-row items-center gap-3">
+          {[
+            {
+              icon: <EnvelopeIcon className="w-5 h-5" />,
+              href: "mailto:stoicpips@gmail.com",
+              label: "Email",
+              color: "blue",
+              gradient: "from-blue-500 to-blue-600"
+            },
+            {
+              icon: <FaYoutube className="w-5 h-5" />,
+              href: "https://www.youtube.com/channel/UCyYDnMSj6e1rTdOvn7whuvw",
+              label: "YouTube",
+              color: "red",
+              gradient: "from-red-500 to-red-600"
+            },
+            {
+              icon: <FaTelegramPlane className="w-5 h-5" />,
+              href: "https://t.me/+Syr6WpolrV1iZjhk",
+              label: "Telegram",
+              color: "blue",
+              gradient: "from-blue-400 to-blue-500"
+            },
+            {
+              icon: <FaWhatsapp className="w-5 h-5" />,
+              href: "https://wa.me/+256706045809",
+              label: "WhatsApp",
+              color: "green",
+              gradient: "from-green-500 to-green-600"
+            }
+          ].map((social, index) => (
+            <a
+              key={index}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group relative flex items-center gap-3 px-4 py-3 rounded-2xl backdrop-blur-sm border transition-all duration-300 hover:scale-105 ${
+                theme === "dark"
+                  ? `border-${social.color}-500/30 bg-${social.color}-500/10 text-${social.color}-200 hover:bg-${social.color}-500/20`
+                  : `border-${social.color}-500/30 bg-${social.color}-500/10 text-${social.color}-700 hover:bg-${social.color}-500/20`
+              }`}
+            >
+              {/* Animated Background on Hover */}
+              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${social.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+              
+              {/* Icon */}
+              <div className={`relative z-10 ${theme === "dark" ? `text-${social.color}-400` : `text-${social.color}-600`}`}>
+                {social.icon}
+              </div>
+              
+              {/* Label */}
+              <span className={`relative z-10 font-medium ${inter.className}`}>
+                {social.label}
+              </span>
 
-        {/* Top Section: Brand & Newsletter Bridge */}
-        <div className={`grid lg:grid-cols-2 gap-20 items-center pb-24 border-b ${borderColor}`}>
-          <div className="space-y-8">
-            <h2 className={`${playfair.className} text-4xl font-black ${textColor}`}>
-              Stoic Pips <br />
-              <span className="text-gradient-emerald-gold italic text-5xl">Inc.</span>
-            </h2>
-            <p className={`text-xl opacity-60 max-w-md leading-relaxed ${subTextColor}`}>
-              Engineering the future of trading through institutional methodology and AI-driven precision.
-            </p>
-            <div className="flex gap-4">
-              {[
-                { icon: <FaTelegramPlane />, href: "https://t.me/+Syr6WpolrV1iZjhk", label: "Telegram", color: "hover:border-secondary/40" },
-                { icon: <FaWhatsapp />, href: "https://wa.me/+256706045809", label: "WhatsApp", color: "hover:border-primary/40" },
-                { icon: <FaYoutube />, href: "https://www.youtube.com/channel/UCyYDnMSj6e1rTdOvn7whuvw", label: "YouTube", color: "hover:border-secondary/40" }
-              ].map((social, i) => (
-                <a key={i} href={social.href} className={`w-12 h-12 glass-pill flex items-center justify-center text-xl transition-all hover:scale-110 border ${borderColor} ${social.color} ${textColor}`}>
-                  {social.icon}
-                </a>
-              ))}
-            </div>
+              {/* Hover Arrow */}
+              <svg 
+                className={`w-4 h-4 relative z-10 transform transition-transform duration-300 group-hover:translate-x-1 ${
+                  theme === "dark" ? `text-${social.color}-400` : `text-${social.color}-600`
+                } opacity-0 group-hover:opacity-100`}
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          ))}
+        </div>
+        </div>
+        {/* Additional Links */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 py-6 border-t border-gray-200 dark:border-gray-700">
+          <div className="flex flex-wrap justify-center gap-6">
+            <a
+              href="/mentorship"
+              className={`hover:underline transition-all duration-300 ${subTextColor} ${inter.className}`}
+            >
+              Mentorship
+            </a>
+            <a
+              href="/courses"
+              className={`hover:underline transition-all duration-300 ${subTextColor} ${inter.className}`}
+            >
+              Courses
+            </a>
+            <a
+              href="/brokers"
+              className={`hover:underline transition-all duration-300 ${subTextColor} ${inter.className}`}
+            >
+              Brokers
+            </a>
+            <a
+              href="/about"
+              className={`hover:underline transition-all duration-300 ${subTextColor} ${inter.className}`}
+            >
+              About
+            </a>
+            <a
+              href="/contact"
+              className={`hover:underline transition-all duration-300 ${subTextColor} ${inter.className}`}
+            >
+              Contact
+            </a>
           </div>
 
-          <div className={`luminous-card p-10 ${cardBg} border ${borderColor} rounded-[2rem]`}>
-            <h3 className={`text-2xl font-black mb-4 ${textColor}`}>Master Your <span className="text-primary">Edge.</span></h3>
-            <p className={`text-sm opacity-60 mb-8 ${subTextColor}`}>Join our elite newsletter and receive high-frequency insights directly to your inbox.</p>
-            <div className="flex gap-2">
-              <input type="text" placeholder="Your executive email" className={`flex-1 bg-white/5 border rounded-xl px-6 outline-none transition-colors font-bold ${theme === "dark" ? "border-white/10 text-white focus:border-primary/50" : "border-slate-200 text-gray-900 focus:border-primary bg-background"}`} />
-              <button className={`px-6 py-4 rounded-xl font-black uppercase tracking-[0.2em] text-[10px] transition-all tech-tracking ${theme === "dark" ? "bg-primary text-matte-charcoal" : "bg-matte-charcoal text-white hover:bg-black"}`}>Join</button>
+          {/* Quick Stats */}
+          <div className="flex items-center gap-6 text-sm">
+            <div className="text-center">
+              <div className={`font-bold text-lg ${theme === "dark" ? "text-purple-300" : "text-blue-600"}`}>
+                2K+
+              </div>
+              <div className={subTextColor}>Traders</div>
+            </div>
+            <div className="text-center">
+              <div className={`font-bold text-lg ${theme === "dark" ? "text-pink-300" : "text-purple-600"}`}>
+                95%
+              </div>
+              <div className={subTextColor}>Success Rate</div>
             </div>
           </div>
         </div>
 
-        {/* Middle Section: Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
-          <div className="space-y-6">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-primary tech-tracking">Ecosystem</h4>
-            <div className={`flex flex-col gap-4 text-[10px] font-black uppercase tracking-[0.2em] tech-tracking opacity-60 ${textColor}`}>
-              <a href="#about" className="hover:text-primary hover:opacity-100 transition-all">The Story</a>
-              <a href="#pillars" className="hover:text-primary hover:opacity-100 transition-all">Pillars of Tech</a>
-              <a href="#academy" className="hover:text-primary hover:opacity-100 transition-all">Stoic Academy</a>
-              <a href="#stoic-edge" className="hover:text-primary hover:opacity-100 transition-all">Philosophy</a>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary tech-tracking">Technology</h4>
-            <div className={`flex flex-col gap-4 text-[10px] font-black uppercase tracking-[0.2em] tech-tracking opacity-60 ${textColor}`}>
-              <a href="https://dunam.stoicpips.com" className="hover:text-secondary hover:opacity-100 transition-all">Dunam Ai Platform</a>
-              <a href="https://doc.stoicpips.com" className="hover:text-secondary hover:opacity-100 transition-all">Documentation</a>
-              <a href="https://doc.stoicpips.com/api" className="hover:text-secondary hover:opacity-100 transition-all">API Reference</a>
-              <a href="https://github.com/stoicpips" className="hover:text-secondary hover:opacity-100 transition-all">Open Source</a>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary tech-tracking">Governance</h4>
-            <div className={`flex flex-col gap-4 text-[10px] font-black uppercase tracking-[0.2em] tech-tracking opacity-60 ${textColor}`}>
-              <a href="/terms" className="hover:text-secondary hover:opacity-100 transition-all">Terms of Service</a>
-              <a href="/privacy" className="hover:text-secondary hover:opacity-100 transition-all">Privacy Policy</a>
-              <a href="/risk" className="hover:text-secondary hover:opacity-100 transition-all">Risk Disclaimer</a>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-primary tech-tracking">Support</h4>
-            <div className={`flex flex-col gap-4 text-[10px] font-black uppercase tracking-[0.2em] tech-tracking opacity-60 ${textColor}`}>
-              <a href="mailto:support@stoicpips.com" className="hover:text-primary hover:opacity-100 transition-all">Executive Desk</a>
-              <a href="/status" className="hover:text-primary hover:opacity-100 transition-all">System Status</a>
-              <a href="https://doc.stoicpips.com/faq" className="hover:text-primary hover:opacity-100 transition-all">Intelligence Base</a>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Section: Legal & Stats */}
-        <div className={`pt-12 border-t ${borderColor} flex flex-col md:grid md:grid-cols-3 items-center gap-12`}>
-          <div className="flex items-center gap-6">
-            <div className="flex flex-col">
-              <span className={`text-xl font-black text-secondary`}>2K+</span>
-              <span className={`text-[10px] uppercase font-black opacity-40 tech-tracking ${textColor}`}>Global Members</span>
-            </div>
-            <div className={`w-px h-8 ${theme === "dark" ? "bg-white/10" : "bg-slate-200"}`}></div>
-            <div className="flex flex-col">
-              <span className={`text-xl font-black text-primary`}>v1.0.0-beta</span>
-              <span className={`text-[10px] uppercase font-black opacity-40 tech-tracking ${textColor}`}>Version Tag</span>
-            </div>
-          </div>
-
-          <div className={`text-center text-[10px] font-black uppercase tracking-[0.3em] opacity-40 tech-tracking ${textColor}`}>
-            &copy; {new Date().getFullYear()} Stoic Pips Inc. &bull; Dunam Ai Flagship
-          </div>
-
-          <div className="flex lg:justify-end">
-            <div className={`px-6 py-2 glass-pill italic text-sm opacity-60 border ${borderColor} ${textColor}`}>
-              "Trade Emotionless."
-            </div>
-          </div>
+        {/* Copyright */}
+        <div className={`text-center pt-6 border-t border-gray-200 dark:border-gray-700 ${subTextColor} ${inter.className}`}>
+          <p className="text-sm">
+            &copy; {new Date().getFullYear()} Stoic Pips Academy. All rights reserved.{" "}
+            <span className="block sm:inline mt-1 sm:mt-0">
+              Transforming traders, building legacies.
+            </span>
+          </p>
         </div>
       </div>
     </footer>

@@ -2,13 +2,13 @@ export const testimonials = [
   {
     name: "James K.",
     role: "Funded Trader",
-    text: "Dunam Ai helped me refine my price action strategy and pass my funded account challenge. Highly recommend!",
+    text: "Stoic Pips Academy helped me refine my price action strategy and pass my funded account challenge. Highly recommend!",
     image: "/person_1.jpeg",
   },
   {
     name: "Sarah M.",
     role: "Beginner to Consistent Trader",
-    text: "I had struggled for years, but Dunam Ai's mentorship gave me clarity. My win rate improved and I now trade with confidence.",
+    text: "I had struggled for years, but Daniel’s mentorship gave me clarity. My win rate improved and I now trade with confidence.",
     image: "/person_2.jpeg",
   },
   {

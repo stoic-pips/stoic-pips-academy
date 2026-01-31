@@ -1,10 +1,10 @@
 import { IconBase } from "react-icons";
-import {
-  FaUsers,
-  FaUserTie,
-  FaBell,
-  FaChartLine,
-  FaRobot
+import { 
+  FaUsers, 
+  FaUserTie, 
+  FaBell, 
+  FaChartLine, 
+  FaRobot 
 } from "react-icons/fa";
 import { Service } from "./Service";
 
@@ -21,7 +21,7 @@ export const services: Record<string, Service> = {
       "Supply & Demand Training",
     ],
     icon: FaUsers,
-    iconColor: "#C5A059", // Brand Gold
+    iconColor: "#3B82F6", // Blue
   },
   "1on1-mentorship": {
     title: "1-on-1 Mentorship",
@@ -35,7 +35,7 @@ export const services: Record<string, Service> = {
       "Custom Strategy Guidance",
     ],
     icon: FaUserTie,
-    iconColor: "#708090", // Brand Steel
+    iconColor: "#10B981", // Green
   },
   "signals": {
     title: "Signals",
@@ -49,7 +49,7 @@ export const services: Record<string, Service> = {
       "Telegram Access",
     ],
     icon: FaBell,
-    iconColor: "#C5A059", // Brand Gold
+    iconColor: "#F59E0B", // Amber
   },
   "account-management": {
     title: "Account Management",
@@ -57,12 +57,12 @@ export const services: Record<string, Service> = {
     price: "$500",
     originalPrice: "$699",
     features: [
-      "Full Management",
-      "Low-Risk Strategy",
+      "Full Management", 
+      "Low-Risk Strategy", 
       "Weekly Reports"
     ],
     icon: FaChartLine,
-    iconColor: "#708090", // Brand Steel
+    iconColor: "#8B5CF6", // Purple
   },
   "robot-building": {
     title: "Robot Building",
@@ -76,6 +76,6 @@ export const services: Record<string, Service> = {
       "Lifetime Updates",
     ],
     icon: FaRobot,
-    iconColor: "#C5A059", // Brand Gold
+    iconColor: "#EF4444", // Red
   },
 };

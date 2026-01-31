@@ -41,11 +41,11 @@ export default function TronPayment({
   useEffect(() => {
     const generatePaymentDetails = async () => {
       setIsLoading(true);
-
+      
       try {
         // Extract USD amount
         const usdAmount = parseFloat(price.replace(/[^\d.]/g, ''));
-
+        
         if (isNaN(usdAmount)) {
           throw new Error('Invalid price format');
         }
@@ -53,13 +53,13 @@ export default function TronPayment({
         // Calculate TRX amount (using approximate rate)
         const trxRate = 0.12;
         const trxAmount = (usdAmount / trxRate).toFixed(2);
-
+        
         // USDT amount (1:1 with USD)
         const usdtAmount = usdAmount.toFixed(2);
-
+        
         // Generate QR code
         const qrCode = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(`tron:${TRON_ADDRESS}?contractAddress=TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t&amount=${usdtAmount}000000`)}`;
-
+        
         const details: PaymentDetails = {
           tronAddress: TRON_ADDRESS,
           trxAmount,
@@ -70,7 +70,7 @@ export default function TronPayment({
           tronScanUrl: `https://tronscan.org/#/address/${TRON_ADDRESS}`,
           message: `Send ${trxAmount} TRX or ${usdtAmount} USDT to complete your payment. Access granted within 30 minutes of confirmation.`
         };
-
+        
         setPaymentDetails(details);
         onPaymentSuccess(`TRON-${Date.now()}`);
       } catch (error) {
@@ -87,71 +87,72 @@ export default function TronPayment({
   if (isLoading) {
     return (
       <div className="flex justify-center items-center p-8">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-500"></div>
-        <span className="ml-2 text-gray-500 dark:text-gray-400">Preparing secure connection...</span>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+        <span className="ml-2 text-gray-600">Preparing Tron payment...</span>
       </div>
     );
   }
 
   if (!paymentDetails) {
     return (
-      <div className={`p-4 rounded-lg border ${theme === "dark" ? "bg-red-900/20 border-red-800 text-red-300" : "bg-red-50 border-red-200 text-red-700"}`}>
-        <p>Failed to load payment details. Please refresh the page.</p>
+      <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+        <p className="text-red-700 dark:text-red-300">
+          Failed to load payment details. Please refresh the page.
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="mb-0">
-      <h4 className={`text-xl font-bold mb-6 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+    <div className="mb-8">
+      <h4 className={`text-xl font-semibold mb-6 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
         Tron Payment Instructions
       </h4>
-
-      <div className={`p-6 rounded-2xl border ${theme === "dark" ? "bg-slate-800/50 border-gray-700" : "bg-slate-50 border-gray-200"}`}>
+      
+      <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-200 dark:border-blue-800">
         {/* Success Message */}
-        <div className={`mb-6 p-4 rounded-xl border ${theme === "dark" ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-300" : "bg-emerald-50 border-emerald-100 text-emerald-800"}`}>
-          <p className="font-bold flex items-center gap-2">
-            ✅ Payment instructions ready!
+        <div className="mb-4 p-3 bg-green-100 dark:bg-green-900/30 rounded-lg">
+          <p className="text-green-800 dark:text-green-300 font-semibold">
+            ✅ Payment instructions ready! Scan the QR code below or copy the address.
           </p>
-          <p className="text-sm opacity-80 mt-1">Scan the QR code below or copy the address manually.</p>
         </div>
-
+        
         {/* QR Code */}
-        <div className="flex justify-center mb-8">
-          <div className="text-center group">
+        <div className="flex justify-center mb-6">
+          <div className="text-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={paymentDetails.qrCode}
-              alt="Tron QR Code"
-              className={`w-64 h-64 border-4 rounded-2xl mx-auto transition-transform duration-500 group-hover:scale-105 ${theme === "dark" ? "border-emerald-500/30" : "border-emerald-500/20"}`}
+            <img 
+              src={paymentDetails.qrCode} 
+              alt="Tron QR Code" 
+              className="w-64 h-64 border-4 border-blue-300 dark:border-blue-600 rounded-lg mx-auto"
             />
-            <p className="text-sm font-medium mt-3 opacity-60">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
               Scan with your Tron wallet app
             </p>
           </div>
         </div>
-
+        
         {/* Payment Amounts */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <div className={`p-5 rounded-2xl text-center border ${theme === "dark" ? "bg-slate-900 border-gray-700" : "bg-white border-gray-200"}`}>
-            <div className={`font-bold text-sm mb-1 ${theme === "dark" ? "text-blue-400" : "text-blue-600"}`}>TRX Payment</div>
-            <div className="font-mono text-2xl font-black tracking-tight">{paymentDetails.trxAmount} TRX</div>
-            <div className="text-xs opacity-50 mt-1">≈ ${paymentDetails.usdAmount}</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg text-center">
+            <div className="text-blue-600 dark:text-blue-400 font-semibold text-sm mb-1">TRX Payment</div>
+            <div className="font-mono text-2xl font-bold">{paymentDetails.trxAmount} TRX</div>
+            <div className="text-xs text-gray-500 mt-1">≈ ${paymentDetails.usdAmount}</div>
           </div>
-          <div className={`p-5 rounded-2xl text-center border ${theme === "dark" ? "bg-slate-900 border-gray-700" : "bg-white border-gray-200"}`}>
-            <div className={`font-bold text-sm mb-1 ${theme === "dark" ? "text-emerald-400" : "text-emerald-600"}`}>USDT Payment</div>
-            <div className="font-mono text-2xl font-black tracking-tight">{paymentDetails.usdtAmount} USDT</div>
-            <div className="text-xs opacity-50 mt-1">Tron (TRC20) Network</div>
+          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg text-center">
+            <div className="text-green-600 dark:text-green-400 font-semibold text-sm mb-1">USDT Payment</div>
+            <div className="font-mono text-2xl font-bold">{paymentDetails.usdtAmount} USDT</div>
+            <div className="text-xs text-gray-500 mt-1">Tron Network</div>
           </div>
         </div>
-
+        
         {/* Tron Address */}
-        <div className="mb-8">
-          <label className={`block font-bold mb-3 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
+        <div className="mb-6">
+          <label className="block text-blue-700 dark:text-blue-400 font-semibold mb-2">
             Send to Tron Address:
           </label>
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-            <code className={`flex-1 px-4 py-4 rounded-xl text-sm break-all font-mono border ${theme === "dark" ? "bg-slate-900 border-gray-700 text-emerald-400" : "bg-white border-gray-200 text-emerald-700"}`}>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+            <code className="flex-1 bg-blue-100 dark:bg-blue-900 px-4 py-3 rounded-lg text-sm break-all font-mono">
               {paymentDetails.tronAddress}
             </code>
             <button
@@ -167,20 +168,20 @@ export default function TronPayment({
                 }
               }}
               id="copy-button"
-              className={`px-6 py-4 rounded-xl font-bold text-white transition-all shadow-lg active:scale-95 ${theme === "dark" ? "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-500/20" : "bg-gray-900 hover:bg-black shadow-gray-400/50"}`}
+              className="px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors whitespace-nowrap"
             >
-              📋 Copy
+              📋 Copy Address
             </button>
           </div>
         </div>
-
+        
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
           <a
             href={paymentDetails.paymentUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="py-3 px-4 bg-[#3375BB] hover:bg-[#2b639e] text-white text-center rounded-xl transition-all font-bold flex items-center justify-center space-x-2 shadow-lg shadow-blue-500/20 hover:-translate-y-0.5"
+            className="py-3 bg-green-600 hover:bg-green-700 text-white text-center rounded-lg transition-colors font-semibold flex items-center justify-center space-x-2"
           >
             <span>🚀</span>
             <span>Open in TronLink</span>
@@ -189,35 +190,31 @@ export default function TronPayment({
             href={paymentDetails.tronScanUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={`py-3 px-4 text-center rounded-xl transition-all font-bold flex items-center justify-center space-x-2 border hover:-translate-y-0.5 ${theme === "dark" ? "bg-slate-800 border-gray-600 hover:bg-slate-700 text-gray-300" : "bg-gray-100 border-gray-200 hover:bg-gray-200 text-gray-700"}`}
+            className="py-3 bg-gray-600 hover:bg-gray-700 text-white text-center rounded-lg transition-colors font-semibold flex items-center justify-center space-x-2"
           >
             <span>🔍</span>
             <span>View on TronScan</span>
           </a>
         </div>
-
+        
         {/* Instructions */}
-        <div className={`p-5 rounded-2xl border ${theme === "dark" ? "bg-amber-500/5 border-amber-500/20" : "bg-amber-50 border-amber-200"}`}>
-          <h5 className={`font-bold mb-3 flex items-center gap-2 ${theme === "dark" ? "text-amber-400" : "text-amber-700"}`}>
-            <span>📝</span> Payment Instructions
-          </h5>
-          <ol className={`text-sm space-y-2 ml-1 ${theme === "dark" ? "text-amber-200/80" : "text-amber-800"}`}>
-            <li><strong>1. Exact Amount:</strong> Send exactly <strong>{paymentDetails.trxAmount} TRX</strong> or <strong>{paymentDetails.usdtAmount} USDT</strong>.</li>
-            <li><strong>2. Network:</strong> Ensure you are using the <strong className="uppercase">Tron (TRC20)</strong> network.</li>
-            <li><strong>3. Confirmation:</strong> Transactions typically confirm in ~30 seconds.</li>
-            <li><strong>4. Access:</strong> We&apos;ll email you instant access credentials upon confirmation.</li>
+        <div className="p-4 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg">
+          <h5 className="font-semibold text-yellow-800 dark:text-yellow-300 mb-2">📝 Payment Instructions:</h5>
+          <ol className="text-yellow-700 dark:text-yellow-400 text-sm space-y-2">
+            <li><strong>1. Choose amount:</strong> Send exactly <strong>{paymentDetails.trxAmount} TRX</strong> or <strong>{paymentDetails.usdtAmount} USDT</strong></li>
+            <li><strong>2. Send payment:</strong> Use the QR code or copy the Tron address above</li>
+            <li><strong>3. Wait for confirmation:</strong> Transactions confirm in ~30 seconds</li>
+            <li><strong>4. Get access:</strong> We&apos;ll email you within 30 minutes of payment confirmation</li>
           </ol>
         </div>
-
+        
         {/* Benefits */}
-        <div className={`mt-4 p-4 rounded-xl border flex items-start gap-3 ${theme === "dark" ? "bg-blue-500/5 border-blue-500/10" : "bg-blue-50 border-blue-100"}`}>
-          <span className="text-xl">⚡</span>
-          <p className={`text-sm ${theme === "dark" ? "text-blue-300" : "text-blue-800"}`}>
-            <strong>Why Tron?</strong> Lightning-fast 2-second settlements, near-zero fees ($0.001), and the most reliable USDT infrastructure in the world.
+        <div className="mt-4 p-3 bg-green-50 dark:bg-green-900/30 rounded-lg">
+          <p className="text-green-700 dark:text-green-400 text-sm">
+            ⚡ <strong>Why Tron?</strong> Lightning fast (2-second transactions), ultra low fees ($0.001), and eco-friendly!
           </p>
         </div>
       </div>
     </div>
   );
-
 }
