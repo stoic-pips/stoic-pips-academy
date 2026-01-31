@@ -8,23 +8,26 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
+          DEFAULT: '#C5A059',
+          50: '#fcfaf2',
+          100: '#f7f1db',
+          500: '#C5A059',
+          600: '#b38d45',
+          700: '#8c6e33',
         },
         secondary: {
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          500: '#a855f7',
-          600: '#9333ea',
-          700: '#7c3aed',
-        }
+          DEFAULT: '#708090',
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          500: '#708090',
+          600: '#5c6c7c',
+          700: '#4a5766',
+        },
+        'matte-charcoal': '#121212',
+        'deep-slate': '#1B1B1B',
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #3b82f6 0%, #9333ea 100%)',
-        'gradient-dark': 'linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #ef4444 100%)',
+        'gradient-primary': 'linear-gradient(135deg, #C5A059 0%, #708090 100%)',
       }
     },
   },

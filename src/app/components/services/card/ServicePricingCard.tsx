@@ -46,7 +46,7 @@ export default function ServiceCard({ service, isHovered, onHover, theme }: Serv
         <div className="text-center mb-10 relative z-10">
           <div className={`inline-flex items-center justify-center w-24 h-24 rounded-3xl mb-8 border transition-all duration-700 border-glass-border group-hover:border-primary/40 glass-pill`}>
             <span className="text-4xl">
-              {service.icon ? <service.icon size={36} color={isHovered ? "#C5A059" : (theme === "dark" ? "#C5A059" : "#475569")} /> : "🚀"}
+              {service.icon ? <service.icon size={36} color={isHovered ? "#C5A059" : (service.iconColor || (theme === "dark" ? "#C5A059" : "#475569"))} /> : "🚀"}
             </span>
           </div>
 
