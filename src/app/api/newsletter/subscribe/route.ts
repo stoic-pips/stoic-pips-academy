@@ -98,7 +98,7 @@ export async function POST(request: Request) {
           
           <p><strong>Your first trading insights will arrive in your inbox soon!</strong></p>
           
-          <p>In the meantime, feel free to explore our <a href="https://app.stoicpips.com" style="color: #00e5ff;">trading platform</a> or check out our <a href="https://docs.stoicpips.com" style="color: #00e5ff;">documentation</a>.</p>
+          <p>In the meantime, feel free to explore our <a href="https://dunam.stoicpips.com" style="color: #00e5ff;">trading platform</a> or check out our <a href="https://docs.stoicpips.com" style="color: #00e5ff;">documentation</a>.</p>
           
           <p>To your trading success,<br>
           <strong>The Dunam Ai Team</strong></p>

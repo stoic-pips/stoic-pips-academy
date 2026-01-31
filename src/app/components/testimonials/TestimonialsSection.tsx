@@ -116,7 +116,7 @@ export default function TestimonialsSection() {
               </p>
             </div>
             <a
-              href="https://app.stoicpips.com"
+              href="https://dunam.stoicpips.com"
               className={`px-8 py-3 rounded-2xl font-bold uppercase tracking-widest text-sm text-matte-charcoal transition-all duration-300 hover:scale-105 active:scale-95 bg-primary shadow-xl`}
             >
               Launch App

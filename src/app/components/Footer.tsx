@@ -106,7 +106,7 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary tech-tracking">Technology</h4>
             <div className={`flex flex-col gap-4 text-[10px] font-black uppercase tracking-[0.2em] tech-tracking opacity-60 ${textColor}`}>
-              <a href="https://app.stoicpips.com" className="hover:text-secondary hover:opacity-100 transition-all">Dunam Ai Platform</a>
+              <a href="https://dunam.stoicpips.com" className="hover:text-secondary hover:opacity-100 transition-all">Dunam Ai Platform</a>
               <a href="https://doc.stoicpips.com" className="hover:text-secondary hover:opacity-100 transition-all">Documentation</a>
               <a href="https://doc.stoicpips.com/api" className="hover:text-secondary hover:opacity-100 transition-all">API Reference</a>
               <a href="https://github.com/stoicpips" className="hover:text-secondary hover:opacity-100 transition-all">Open Source</a>

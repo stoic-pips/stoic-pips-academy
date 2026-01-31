@@ -139,7 +139,7 @@ export default function Navbar() {
 
               {/* CTA Button */}
               <Link
-                href="https://app.stoicpips.com"
+                href="https://dunam.stoicpips.com"
                 className={`px-8 py-2.5 rounded-full font-black text-matte-charcoal transition-all duration-300 hover:scale-110 active:scale-95 text-[10px] uppercase tracking-[0.2em] tech-tracking ${theme === "dark"
                   ? "bg-primary shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-primary/50"
                   : "bg-matte-charcoal text-white shadow-xl hover:bg-black"
@@ -183,7 +183,7 @@ export default function Navbar() {
 
             {/* Mobile CTA Button */}
             <Link
-              href="https://app.stoicpips.com"
+              href="https://dunam.stoicpips.com"
               onClick={() => setIsOpen(false)}
               className={`block w-full mt-6 px-6 py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] transition-all duration-300 tech-tracking ${theme === "dark"
                 ? "bg-primary text-matte-charcoal shadow-lg shadow-primary/25"

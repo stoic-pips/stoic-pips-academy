@@ -71,7 +71,7 @@ export default function Hero() {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center w-full sm:w-auto">
             <a
-              href="https://app.stoicpips.com"
+              href="https://dunam.stoicpips.com"
               className={`group px-10 py-5 rounded-2xl font-black text-matte-charcoal text-center transition-all duration-500 hover:scale-105 active:scale-95 text-xs uppercase tracking-[0.2em] tech-tracking ${theme === "dark"
                 ? "bg-primary shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-primary/50"
                 : "bg-primary shadow-xl"
