@@ -18,24 +18,24 @@ export default function Button({
 
   const getButtonStyles = () => {
     if (disabled) {
-      return theme === "dark" 
-        ? "bg-gray-600 text-gray-400 cursor-not-allowed" 
+      return theme === "dark"
+        ? "bg-gray-600 text-gray-400 cursor-not-allowed"
         : "bg-gray-300 text-gray-500 cursor-not-allowed";
     }
-    
-    const bgGradient = theme === "dark"
-      ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500"
-      : "bg-gradient-to-r from-blue-400 to-purple-400 hover:from-blue-300 hover:to-purple-300";
 
-    return `${bgGradient} text-white hover:opacity-90 cursor-pointer`;
+    const buttonStyles = theme === "dark"
+      ? "bg-[#C5A059] text-[#121212] hover:bg-[#B8860B]"
+      : "bg-[#121212] text-white hover:bg-black";
+
+    return `${buttonStyles} cursor-pointer`;
   };
 
   const buttonClasses = `${baseClasses} ${getButtonStyles()}`;
 
   if (href) {
     return (
-      <Link 
-        href={href} 
+      <Link
+        href={href}
         className={buttonClasses}
         aria-disabled={disabled}
         onClick={(e) => disabled && e.preventDefault()}
@@ -46,9 +46,9 @@ export default function Button({
   }
 
   return (
-    <button 
-      type={type} 
-      onClick={disabled ? undefined : onClick} 
+    <button
+      type={type}
+      onClick={disabled ? undefined : onClick}
       className={buttonClasses}
       disabled={disabled}
     >

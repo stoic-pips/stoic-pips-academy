@@ -16,233 +16,111 @@ const inter = Inter({
 export default function ContactCTA() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  
+
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
   const currentTheme = mounted ? theme : 'light';
 
-  const sectionBg = currentTheme === "dark" 
-    ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" 
-    : "bg-gradient-to-br from-white via-blue-50 to-purple-50";
+  const sectionBg = currentTheme === "dark"
+    ? "bg-background"
+    : "bg-white";
 
-  const gradientText = currentTheme === "dark" 
-    ? "bg-gradient-to-r from-purple-400 via-pink-400 to-red-400"
-    : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600";
+  const cardBg = currentTheme === "dark"
+    ? "bg-[#1B1B1B]/90 backdrop-blur-sm border border-white/5"
+    : "bg-slate-50 border border-slate-200";
 
-  const buttonGradient = currentTheme === "dark"
-    ? "bg-gradient-to-r from-purple-500 to-pink-500"
-    : "bg-gradient-to-r from-blue-500 to-purple-600";
-
-  if (!mounted) {
-    return (
-      <section className="min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-4xl mx-auto w-full text-center">
-          <div className="h-12 bg-gray-200 dark:bg-gray-700 rounded-2xl max-w-md mx-auto mb-6 animate-pulse"></div>
-          <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded-xl max-w-2xl mx-auto mb-16"></div>
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-8 border border-white/20 dark:border-gray-700/50 shadow-2xl animate-pulse">
-            <div className="space-y-4">
-              <div className="h-12 bg-gray-200 dark:bg-gray-700 rounded-xl"></div>
-              <div className="h-12 bg-gray-200 dark:bg-gray-700 rounded-xl"></div>
-              <div className="h-32 bg-gray-200 dark:bg-gray-700 rounded-xl"></div>
-              <div className="h-12 bg-gray-200 dark:bg-gray-700 rounded-xl"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  const headingColor = currentTheme === "dark" ? "text-white" : "text-gray-900";
 
   return (
-    <section
-      id="contact"
-      className={`relative min-h-screen flex items-center justify-center py-24 px-4 sm:px-6 lg:px-8 overflow-hidden transition-all duration-700 ${sectionBg}`}
-    >
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute top-1/4 left-1/4 w-72 h-72 rounded-full blur-3xl opacity-10 ${
-          currentTheme === "dark" ? "bg-purple-500" : "bg-blue-400"
-        }`}></div>
-        <div className={`absolute bottom-1/4 right-1/4 w-72 h-72 rounded-full blur-3xl opacity-10 ${
-          currentTheme === "dark" ? "bg-pink-500" : "bg-purple-400"
-        }`}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-3xl"></div>
+    <section id="contact" className={`relative py-32 px-6 overflow-hidden ${sectionBg}`}>
+
+      {/* Cinematic Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent ${currentTheme === "dark" ? "via-[#C5A059]/30" : "via-[#C5A059]/10"} to-transparent`}></div>
+        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] ${currentTheme === "dark" ? "bg-[#C5A059]/5" : "bg-[#C5A059]/3"} blur-[150px] rounded-full`}></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto w-full z-10">
+      <div className="relative max-w-7xl mx-auto space-y-24">
         {/* Header Section */}
-        <div className="text-center mb-20">
-          {/* Section Badge */}
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-6 ${
-            currentTheme === "dark"
-              ? "border-purple-500/30 bg-purple-500/10 text-purple-200"
-              : "border-blue-500/30 bg-blue-500/10 text-blue-700"
-          }`}>
-            <span className="w-2 h-2 bg-current rounded-full animate-pulse"></span>
-            <span className={`text-sm font-medium ${inter.className}`}>Get In Touch</span>
+        <div className="text-center">
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 glass-pill text-[#708090] mb-8">
+            <span className="text-sm font-black uppercase tracking-[0.2em] tech-tracking">Institutional Inquiry</span>
           </div>
-          
-          {/* Main Heading */}
-          <h1 className={`${playfair.className} text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight ${
-            currentTheme === "dark" ? "text-white" : "text-gray-900"
-          }`}>
-            Start Your{" "}
-            <span className={`bg-clip-text text-transparent ${gradientText}`}>
-              Trading Journey
-            </span>
-          </h1>
-          
-          {/* Subheading */}
-          <p className={`max-w-2xl mx-auto text-lg md:text-xl leading-relaxed ${inter.className} ${
-            currentTheme === "dark" ? "text-gray-300" : "text-gray-600"
-          }`}>
-            Ready to transform your trading? Let's discuss how we can help you achieve consistent profitability and financial freedom.
+
+          <h2 className={`${playfair.className} text-4xl md:text-5xl xl:text-6xl font-black mb-8 leading-tight ${headingColor}`}>
+            Begin Your <br />
+            <span className="text-gradient-emerald-gold italic">Ascension.</span>
+          </h2>
+
+          <p className={`max-w-3xl mx-auto text-xl leading-relaxed opacity-70 ${inter.className}`}>
+            Initiate a high-level dialogue with our executive desk or sync directly with the <span className={theme === "dark" ? "text-white font-bold" : "text-gray-900 font-bold"}>Dunam Ai</span> infrastructure.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          {/* Contact Info */}
-          <div className="space-y-8">
-            <div>
-              <h2 className={`text-3xl font-bold mb-4 ${playfair.className} ${
-                currentTheme === "dark" ? "text-white" : "text-gray-900"
-              }`}>
-                Why Choose Stoic Pips?
-              </h2>
-              <div className="space-y-4">
-                {[
-                  {
-                    icon: "🎯",
-                    title: "Proven Strategies",
-                    description: "Learn institutional trading methods that actually work"
-                  },
-                  {
-                    icon: "🧠",
-                    title: "Mindset Coaching",
-                    description: "Develop the discipline needed for consistent success"
-                  },
-                  {
-                    icon: "📈",
-                    title: "Live Mentorship",
-                    description: "Get personalized guidance from experienced traders"
-                  },
-                  {
-                    icon: "🤝",
-                    title: "Community Support",
-                    description: "Join a network of dedicated traders"
-                  }
-                ].map((item, index) => (
-                  <div key={index} className={`flex items-start gap-4 p-4 rounded-2xl backdrop-blur-sm border transition-all duration-300 ${
-                    currentTheme === "dark"
-                      ? "bg-gray-800/50 border-gray-700 hover:border-purple-500/30"
-                      : "bg-white/50 border-gray-200 hover:border-blue-500/30"
-                  }`}>
-                    <span className="text-2xl">{item.icon}</span>
-                    <div>
-                      <h3 className={`font-semibold mb-1 ${inter.className} ${
-                        currentTheme === "dark" ? "text-white" : "text-gray-900"
-                      }`}>
-                        {item.title}
-                      </h3>
-                      <p className={`text-sm ${inter.className} ${
-                        currentTheme === "dark" ? "text-gray-300" : "text-gray-600"
-                      }`}>
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+        <div className="grid lg:grid-cols-2 gap-20 items-stretch">
+          {/* Institutional Intelligence Card */}
+          <div className="luminous-card p-1 bg-gradient-to-br from-[#C5A059]/20 via-white/5 to-[#708090]/20">
+            <div className={`${cardBg} rounded-[1.9rem] p-12 h-full flex flex-col justify-between transition-colors duration-500`}>
+              <div className="space-y-12">
+                <h3 className={`text-3xl font-black ${headingColor}`}>Elite <span className="text-[#C5A059]">Benefits.</span></h3>
 
-            {/* Quick Contact */}
-            <div className={`p-6 rounded-3xl backdrop-blur-sm border ${
-              currentTheme === "dark"
-                ? "bg-gray-800/50 border-gray-700"
-                : "bg-white/50 border-gray-200"
-            }`}>
-              <h3 className={`text-xl font-bold mb-4 ${inter.className} ${
-                currentTheme === "dark" ? "text-white" : "text-gray-900"
-              }`}>
-                Quick Contact
-              </h3>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <span className={`p-2 rounded-lg ${
-                    currentTheme === "dark" ? "bg-purple-500/20" : "bg-blue-500/20"
-                  }`}>
-                    📧
-                  </span>
-                  <div>
-                    <p className={`font-medium ${inter.className} ${
-                      currentTheme === "dark" ? "text-gray-200" : "text-gray-700"
-                    }`}>
-                      support@stoicpips.com
-                    </p>
-                    <p className={`text-sm ${currentTheme === "dark" ? "text-gray-400" : "text-gray-500"}`}>
-                      Email Support
-                    </p>
-                  </div>
+                <div className="space-y-8">
+                  {[
+                    { title: "Quantum Signal Engine", desc: "Access the flagship Dunam Ai technical infrastructure.", icon: "⚡" },
+                    { title: "Institutional Mentorship", desc: "Direct consultation with master algorithmic traders.", icon: "🏛️" },
+                    { title: "Executive Ecosystem", desc: "Member-only networking and liquidity events.", icon: "💎" }
+                  ].map((item, i) => (
+                    <div key={i} className="flex gap-6 group">
+                      <div className={`w-14 h-14 rounded-2xl glass-pill flex items-center justify-center text-2xl group-hover:border-[#C5A059]/40 transition-all border ${theme === "dark" ? "border-white/10" : "border-slate-200"}`}>
+                        {item.icon}
+                      </div>
+                      <div className="flex-1">
+                        <h4 className={`font-black text-lg mb-1 ${headingColor}`}>{item.title}</h4>
+                        <p className="text-sm opacity-50 leading-relaxed font-medium">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className={`p-2 rounded-lg ${
-                    currentTheme === "dark" ? "bg-pink-500/20" : "bg-purple-500/20"
-                  }`}>
-                    ⚡
-                  </span>
-                  <div>
-                    <p className={`font-medium ${inter.className} ${
-                      currentTheme === "dark" ? "text-gray-200" : "text-gray-700"
-                    }`}>
-                      24-48 Hour Response
-                    </p>
-                    <p className={`text-sm ${currentTheme === "dark" ? "text-gray-400" : "text-gray-500"}`}>
-                      Quick Replies
-                    </p>
-                  </div>
+              </div>
+
+              <div className={`mt-16 pt-12 border-t ${theme === "dark" ? "border-white/5" : "border-slate-100"} flex items-center gap-8`}>
+                <div className="flex -space-x-4">
+                  {[1, 2, 3, 4].map(i => (
+                    <div key={i} className={`w-10 h-10 rounded-full border-2 ${theme === "dark" ? "border-[#121212] bg-[#1B1B1B]" : "border-white bg-slate-100"}`}></div>
+                  ))}
+                </div>
+                <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-40 tech-tracking">
+                  Join 2,000+ Professionals
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Contact Form Container */}
-          <div className={`
-            relative rounded-3xl p-8 backdrop-blur-xl border-2 transition-all duration-500 hover:shadow-2xl
-            ${currentTheme === "dark" 
-              ? "bg-gray-800/50 border-gray-700 hover:border-purple-500/50 shadow-xl" 
-              : "bg-white/80 border-gray-200 hover:border-blue-500/50 shadow-2xl"
-            }
-          `}>
+          {/* Secure Transmission Card (The Form) */}
+          <div className={`luminous-card p-12 ${theme === "dark" ? "bg-[#1B1B1B]/40" : "bg-slate-50"} relative flex flex-col justify-center border ${theme === "dark" ? "border-white/5" : "border-slate-200"} rounded-[2rem]`}>
+            <div className="absolute top-8 right-8 text-[10px] font-black uppercase tracking-[0.3em] opacity-40 tech-tracking">
+              Secure Transmission &bull; AES-256
+            </div>
             <ContactForm />
           </div>
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <div className={`inline-flex flex-col sm:flex-row items-center gap-6 p-8 rounded-3xl backdrop-blur-sm border max-w-4xl mx-auto ${
-            currentTheme === "dark"
-              ? "bg-gray-800/50 border-gray-700"
-              : "bg-white/50 border-gray-200"
-          }`}>
-            <div className="text-left">
-              <h3 className={`text-xl font-bold mb-2 ${inter.className} ${
-                currentTheme === "dark" ? "text-white" : "text-gray-900"
-              }`}>
-                Ready to Transform Your Trading?
-              </h3>
-              <p className={`${inter.className} ${
-                currentTheme === "dark" ? "text-gray-300" : "text-gray-600"
-              }`}>
-                Join 2,000+ successful traders who changed their financial future.
-              </p>
+        {/* Global Support Bridge */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            { label: "Executive Desk", value: "support@stoicpips.com", icon: "📧" },
+            { label: "Direct Sync", value: "+256 706 045 809", icon: "📱" },
+            { label: "System Status", value: "Operational", icon: "🟢" }
+          ].map((item, i) => (
+            <div key={i} className={`glass-pill px-8 py-6 flex items-center gap-6 group hover:border-[#C5A059]/20 transition-all border ${theme === "dark" ? "border-white/5" : "border-slate-200"}`}>
+              <span className="text-2xl">{item.icon}</span>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] opacity-40 tech-tracking">{item.label}</span>
+                <span className={`text-sm font-black opacity-80 group-hover:text-[#C5A059] transition-colors ${theme === "dark" ? "" : "text-gray-900"}`}>{item.value}</span>
+              </div>
             </div>
-            <a
-              href="#contact"
-              className={`px-8 py-3 rounded-2xl font-semibold text-white transition-all duration-300 hover:scale-105 ${buttonGradient}`}
-            >
-              Start Now
-            </a>
-          </div>
+          ))}
         </div>
       </div>
     </section>

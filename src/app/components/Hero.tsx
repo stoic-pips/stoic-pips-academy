@@ -30,78 +30,81 @@ export default function Hero() {
     );
   }
 
-  const gradientText = theme === "dark" 
-    ? "bg-gradient-to-r from-purple-400 via-pink-400 to-red-400"
-    : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600";
-
-  const buttonGradient = theme === "dark"
-    ? "bg-gradient-to-r from-purple-500 to-pink-500"
-    : "bg-gradient-to-r from-blue-500 to-purple-600";
-
-  const secondaryButton = theme === "dark"
-    ? "border-purple-400 text-purple-300 hover:bg-purple-500/20"
-    : "border-blue-500 text-blue-600 hover:bg-blue-500/20";
-
   return (
-    <section 
-  style={{ paddingTop: 'var(--navbar-height, 80px)' }}
-  className={`relative min-h-screen flex items-center justify-center overflow-hidden transition-all duration-700 ${
-      theme === "dark" 
-        ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" 
-        : "bg-gradient-to-br from-white via-blue-50 to-purple-50"
-    }`}>
-      
-      <BackgroundOverlay />
-      
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 xl:px-12 flex flex-col items-center text-center">
-        
-        {/* Badge
-        <div className={`mb-8 px-4 py-2 rounded-full border backdrop-blur-sm transition-all duration-500 ${
-          theme === "dark" 
-            ? "border-purple-500/30 bg-purple-500/10 text-purple-200" 
-            : "border-blue-500/30 bg-blue-500/10 text-blue-700"
-        }`}>
-          <span className={`${inter.className} text-sm font-medium tracking-wide`}>
-            🚀 Premium Trading Education
-          </span>
-        </div> */}
+    <section
+      className={`relative min-h-screen flex items-center pt-32 overflow-hidden transition-all duration-1000 ${theme === "dark" ? "bg-background" : "bg-slate-50"
+        }`}
+    >
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-[#708090]/10 blur-[120px] animate-pulse"></div>
+        <div className="absolute top-[20%] right-[5%] w-[30%] h-[30%] rounded-full bg-[#C5A059]/5 blur-[100px]"></div>
+      </div>
 
-        {/* Main Heading */}
-        <div className="space-y-4 mb-8">
-          <h1 className={`${playfair.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight md:leading-tight lg:leading-tight`}>
-            <span className={`block bg-clip-text text-transparent ${gradientText}`}>
-              Master Trading
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full text-center">
+
+        {/* Centered Content */}
+        <div className="flex flex-col items-center justify-center animate-in fade-in zoom-in duration-1000 max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#708090]/30 bg-[#708090]/10 text-[#708090] mb-8 backdrop-blur-md">
+            <span className="w-2 h-2 bg-[#708090] rounded-full animate-ping"></span>
+            <span className={`${inter.className} text-xs font-bold uppercase tracking-[0.2em] tech-tracking`}>
+              Stoic Pips Inc. Flagship
             </span>
-            <span className={`block ${theme === "dark" ? "text-white" : "text-gray-900"} mt-2`}>
-              with Precision
+          </div>
+
+          <h1 className={`${playfair.className} text-4xl md:text-5xl lg:text-6xl font-black leading-relaxed mb-8 tracking-tight`}>
+            <span className={theme === "dark" ? "text-white" : "text-gray-900"}>
+              The Intersection of <br />
+            </span>
+            <span className="text-gradient-emerald-gold">
+              Ancient Wisdom <br />
+            </span>
+            <span className={theme === "dark" ? "text-white" : "text-gray-900"}>
+              & Automated Execution.
             </span>
           </h1>
+
+          <p className={`${inter.className} text-lg md:text-xl max-w-3xl mb-12 leading-relaxed opacity-80 tech-tracking ${theme === "dark" ? "text-slate-300" : "text-gray-600"
+            }`}>
+            Positioning <span className="text-[#708090] font-bold italic">Dunam AI</span> as the apex of trading technology, harmonized with the discipline of Stoic philosophy.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center w-full sm:w-auto">
+            <a
+              href="https://app.stoicpips.com"
+              className={`group px-10 py-5 rounded-2xl font-black text-[#121212] text-center transition-all duration-500 hover:scale-105 active:scale-95 text-xs uppercase tracking-[0.2em] tech-tracking ${theme === "dark"
+                ? "bg-[#C5A059] shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-[#C5A059]/50"
+                : "bg-[#C5A059] shadow-xl"
+                }`}
+            >
+              Launch Dunam AI
+            </a>
+
+            <a
+              href="#academy"
+              className="group px-10 py-5 rounded-2xl font-bold border-2 border-[#C5A059]/40 text-[#C5A059] backdrop-blur-md text-center transition-all duration-500 hover:bg-[#C5A059]/10 active:scale-95 uppercase tracking-[0.2em] tech-tracking text-xs"
+            >
+              Enter the Academy
+            </a>
+          </div>
+
+          {/* Stats Row */}
+          <div className="grid grid-cols-3 gap-12 mt-16 pt-8 border-t border-[#708090]/10 w-full sm:w-auto overflow-hidden">
+            <div>
+              <p className="text-2xl font-black text-[#C5A059]">2K+</p>
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] tech-tracking opacity-60">Members</p>
+            </div>
+            <div>
+              <p className="text-2xl font-black text-[#708090]">92%</p>
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] tech-tracking opacity-60">Success Rate</p>
+            </div>
+            <div>
+              <p className="text-2xl font-black text-[#C5A059]">24/7</p>
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] tech-tracking opacity-60">AI Support</p>
+            </div>
+          </div>
         </div>
 
-        {/* Subheading */}
-        <p className={`${inter.className} text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto mb-10 leading-relaxed ${
-          theme === "dark" ? "text-gray-300" : "text-gray-700"
-        }`}>
-          Learn professional price action, supply & demand, and institutional trading 
-          strategies with <span className={`font-bold ${gradientText} bg-clip-text text-transparent`}>Stoic Pips Academy</span>.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-16">
-          <a
-            href="/mentorship"
-            className={`group relative px-8 py-4 rounded-2xl font-semibold text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl ${buttonGradient}`}
-          >
-            Start Your Journey
-          </a>
-
-          <a
-            href="/courses"
-            className={`group px-8 py-4 rounded-2xl font-semibold border-2 backdrop-blur-sm transition-all duration-300 hover:scale-105 ${secondaryButton}`}
-          >
-            Explore Courses
-          </a>
-        </div>
       </div>
     </section>
   );

@@ -1,8 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --background: #a82121;
-  --foreground: #171717;
+  /* Light Mode Defaults */
+  --background: #ffffff;
+  --foreground: #1B1B1B;
+  /* Deep Slate */
+  --primary: #C5A059;
+  /* Muted Gold/Brass */
+  --secondary: #708090;
+  /* Steel Blue */
+  --accent: #1B1B1B;
+
+  --gold-glow: rgba(197, 160, 89, 0.1);
+  --steel-glow: rgba(112, 128, 144, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(27, 27, 27, 0.05);
+}
+
+.dark {
+  /* Dark Mode Overrides - Cyber-Dark FinTech */
+  --background: #121212;
+  /* Matte Charcoal */
+  --foreground: #f8fafc;
+  --primary: #C5A059;
+  /* Muted Gold/Brass */
+  --secondary: #708090;
+  /* Steel Blue */
+  --accent: #C5A059;
+
+  --gold-glow: rgba(197, 160, 89, 0.2);
+  --steel-glow: rgba(112, 128, 144, 0.15);
+  --glass-bg: rgba(18, 18, 18, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 @theme inline {
@@ -13,15 +42,94 @@
 }
 
 body {
-  @apply antialiased bg-gray-100 dark:bg-gray-900;
-  background: linear-gradient(135deg, #e0f2ff 0%, #dbe7f7 100%);
-  color: #171717;
-  font-family: var(--font-sans), system-ui, sans-serif;
+  @apply antialiased bg-background text-foreground selection:bg-emerald-500/30;
+  min-height: 100vh;
+}
+
+/* Light Mode Gradient */
+body {
+  background-attachment: fixed;
+  background-image:
+    radial-gradient(circle at 0% 0%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(245, 158, 11, 0.03) 0%, transparent 50%),
+    linear-gradient(to bottom, #ffffff, #f8fafc);
+}
+
+/* Dark Mode Gradient */
+.dark body {
+  background-image:
+    radial-gradient(circle at 0% 0%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(251, 191, 36, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 1) 0%, #020617 100%);
+}
+
+/* Luminous Utilities */
+/* Luminous Utilities */
+.luminous-card {
+  @apply relative overflow-hidden backdrop-blur-xl rounded-[2rem] transition-all duration-500;
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+}
+
+.luminous-card:hover {
+  @apply shadow-[0_0_40px_#10b9811a];
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.text-gradient-emerald-gold {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#C5A059] via-[#C5A059] to-[#708090];
+}
+
+.glass-pill {
+  @apply backdrop-blur-md shadow-2xl;
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+}
+
+.tech-tracking {
+  letter-spacing: 0.15em;
+}
+
+.text-tech-gold {
+  color: #C5A059;
+}
+
+.text-tech-cyan {
+  color: #708090;
+}
+
+.bg-tech-gold {
+  background-color: #C5A059;
+}
+
+.bg-tech-cyan {
+  background-color: #708090;
+}
+
+.border-tech-gold {
+  border-color: #C5A059;
+}
+
+.border-tech-cyan {
+  border-color: #708090;
+}
+
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-800 rounded-full hover:bg-emerald-500/50 transition-colors;
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: linear-gradient(135deg, #0a0a0a 0%, #1f1f1f 100%);
-    color: #ededed;
+    background: radial-gradient(circle at top right, #0a1128 0%, #020617 100%);
   }
 }
