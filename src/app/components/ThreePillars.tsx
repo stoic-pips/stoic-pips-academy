@@ -28,35 +28,35 @@ export default function ThreePillars() {
     const pillars = [
         {
             id: "01",
-            title: "Proprietary Tech",
-            description: "The Dunam AI engine, built for speed and zero-emotion execution. Institutional precision at your fingertips.",
-            icon: <CpuChipIcon className="w-8 h-8 text-[#708090]" />,
-            color: "text-[#708090]",
-            border: "border-[#708090]/20",
-            bg: "bg-[#708090]/5"
+            title: "Dunam Ai Infrastructure",
+            description: "Proprietary HFT ecosystem built on neural-network architecture and institutional liquidity.",
+            icon: <CpuChipIcon className="w-8 h-8 text-secondary" />,
+            color: "text-secondary",
+            border: "border-secondary/20",
+            bg: "bg-secondary/5"
         },
         {
             id: "02",
-            title: "Academy & Mentorship",
-            description: "The legacy education branch, training the next generation of disciplined traders through stoic principles.",
-            icon: <AcademicCapIcon className="w-8 h-8 text-[#C5A059]" />,
-            color: "text-[#C5A059]",
-            border: "border-[#C5A059]/20",
-            bg: "bg-[#C5A059]/5"
+            title: "Institutional Methodology",
+            description: "Professional desk-level training designed to bridge the gap between retail and quantitative analysis.",
+            icon: <AcademicCapIcon className="w-8 h-8 text-primary" />,
+            color: "text-primary",
+            border: "border-primary/20",
+            bg: "bg-primary/5"
         },
         {
             id: "03",
-            title: "Infrastructure",
-            description: "Our API and developer tools for the wider trading community. Build the future of finance with us.",
-            icon: <CommandLineIcon className="w-8 h-8 text-[#C5A059]" />,
-            color: "text-[#C5A059]",
-            border: "border-[#C5A059]/20",
-            bg: "bg-[#C5A059]/5"
+            title: "Execution Discipline",
+            description: "Strict risk protocols and emotional neutrality frameworks mandated for institutional-grade performance.",
+            icon: <CommandLineIcon className="w-8 h-8 text-primary" />,
+            color: "text-primary",
+            border: "border-primary/20",
+            bg: "bg-primary/5"
         }
     ];
 
     return (
-        <section id="pillars" className={`relative py-32 px-6 overflow-hidden ${theme === "dark" ? "bg-background" : "bg-white"}`}>
+        <section id="pillars" className={`relative py-32 px-6 overflow-hidden bg-background`}>
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-24">
                     <h2 className={`${playfair.className} text-3xl md:text-4xl lg:text-5xl font-black mb-6 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
@@ -71,7 +71,7 @@ export default function ThreePillars() {
                     {pillars.map((pillar) => (
                         <div key={pillar.id} className={`p-8 rounded-[2rem] border ${pillar.border} ${pillar.bg} backdrop-blur-sm transition-all duration-500 hover:scale-[1.02] group`}>
                             <div className="flex justify-between items-start mb-8">
-                                <div className={`p-4 rounded-2xl transition-colors ${theme === "dark" ? "bg-white/5 border border-white/10 group-hover:border-[#C5A059]/30" : "bg-slate-50 border border-slate-200 group-hover:border-[#C5A059]/30"}`}>
+                                <div className={`p-4 rounded-2xl transition-colors ${theme === "dark" ? "bg-white/5 border border-white/10 group-hover:border-primary/30" : "bg-slate-50 border border-slate-200 group-hover:border-primary/30"}`}>
                                     {pillar.icon}
                                 </div>
                                 <span className={`text-5xl font-black opacity-10 ${pillar.color}`}>{pillar.id}</span>

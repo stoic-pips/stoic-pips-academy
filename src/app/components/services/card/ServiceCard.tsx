@@ -10,18 +10,12 @@ export default function ServiceCard({ title, description, icon: Icon, link, imag
   // Text colors based on theme
   const titleColor = theme === "dark" ? "text-white" : "text-gray-900";
   const descColor = theme === "dark" ? "text-gray-300" : "text-gray-600";
-  const iconColor = theme === "dark" ? "text-purple-400" : "text-blue-600";
+  const iconColor = "text-primary";
 
   // Card styling based on theme
-  const cardBg = theme === "dark"
-    ? "bg-gray-800/50 backdrop-blur-sm"
-    : "bg-white/80 backdrop-blur-sm";
-  const borderColor = theme === "dark"
-    ? "border-gray-700 hover:border-purple-500/50"
-    : "border-gray-200 hover:border-blue-500/50";
-  const hoverGlow = theme === "dark"
-    ? "hover:shadow-2xl hover:shadow-purple-500/10"
-    : "hover:shadow-2xl hover:shadow-blue-500/10";
+  const cardBg = "bg-glass backdrop-blur-sm";
+  const borderColor = "border-glass-border hover:border-primary/50";
+  const hoverGlow = "hover:shadow-2xl hover:shadow-primary/10";
 
   return (
     <div
@@ -47,9 +41,9 @@ export default function ServiceCard({ title, description, icon: Icon, link, imag
         <div className="flex justify-center mb-8">
           {Icon && (
             <div className="relative group/icon">
-              <div className="absolute -inset-4 bg-[#C5A059]/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="p-5 rounded-3xl relative border border-[#C5A059]/20 glass-pill transition-all duration-300">
-                <Icon className={`w-10 h-10 ${theme === "dark" ? "text-[#C5A059]" : "text-[#C5A059]"}`} />
+              <div className="absolute -inset-4 bg-primary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="p-5 rounded-3xl relative border border-primary/20 glass-pill transition-all duration-300">
+                <Icon className={`w-10 h-10 text-primary`} />
               </div>
             </div>
           )}
@@ -67,8 +61,7 @@ export default function ServiceCard({ title, description, icon: Icon, link, imag
 
         {/* CTA Button */}
         <div className="mt-10 text-center">
-          <span className={`inline-flex items-center gap-3 px-6 py-3 rounded-full font-black text-[10px] tech-tracking uppercase tracking-widest border transition-all duration-300 glass-pill ${theme === "dark" ? "text-[#C5A059] border-[#C5A059]/20 group-hover:bg-[#C5A059]/10" : "text-[#C5A059] border-[#C5A059]/30 group-hover:bg-[#C5A059]/5"
-            }`}>
+          <span className={`inline-flex items-center gap-3 px-6 py-3 rounded-full font-black text-[10px] tech-tracking uppercase tracking-widest border transition-all duration-300 glass-pill text-primary border-primary/20 group-hover:bg-primary/10`}>
             Secure Edge
             <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
           </span>

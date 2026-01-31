@@ -61,12 +61,10 @@ export default function NewsletterSection() {
     }
   };
 
-  const sectionBg = theme === "dark"
-    ? "bg-background"
-    : "bg-white";
+
 
   const cardBg = theme === "dark"
-    ? "bg-[#1B1B1B]/90 backdrop-blur-sm border border-white/5"
+    ? "bg-deep-slate/90 backdrop-blur-sm border border-white/5"
     : "bg-slate-50 border border-slate-200";
 
   const textColor = theme === "dark" ? "text-gray-300" : "text-gray-600";
@@ -96,10 +94,10 @@ export default function NewsletterSection() {
   ];
 
   return (
-    <section className={`py-32 px-6 overflow-hidden ${sectionBg}`}>
+    <section className={`py-32 px-6 overflow-hidden bg-background`}>
       <div className="max-w-7xl mx-auto space-y-20">
         <div className="text-center">
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 glass-pill text-[#708090] mb-8">
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 glass-pill text-secondary mb-8">
             <span className="text-sm font-black uppercase tracking-[0.2em] tech-tracking">Institutional Intelligence</span>
           </div>
 
@@ -112,7 +110,7 @@ export default function NewsletterSection() {
           </p>
         </div>
 
-        <div className="luminous-card p-1 bg-gradient-to-r from-[#C5A059]/20 via-white/5 to-[#708090]/20 max-w-5xl mx-auto">
+        <div className="luminous-card p-1 bg-gradient-to-r from-primary/20 via-white/5 to-secondary/20 max-w-5xl mx-auto">
           <div className={`${cardBg} rounded-[1.9rem] p-12 md:p-16 flex flex-col lg:flex-row items-center gap-16 relative overflow-hidden transition-colors duration-500`}>
 
             {/* Benefits Grid */}
@@ -134,16 +132,16 @@ export default function NewsletterSection() {
             <div className="lg:w-1/2 w-full">
               {isSubscribed ? (
                 <div className="text-center space-y-6">
-                  <div className="w-20 h-20 rounded-full bg-[#C5A059]/20 border border-[#C5A059]/40 flex items-center justify-center mx-auto text-3xl text-[#C5A059]">
+                  <div className="w-20 h-20 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center mx-auto text-3xl text-primary">
                     ✓
                   </div>
-                  <h3 className={`text-3xl font-black ${headingColor}`}>Transmission <span className="text-[#C5A059]">Locked.</span></h3>
+                  <h3 className={`text-3xl font-black ${headingColor}`}>Transmission <span className="text-primary">Locked.</span></h3>
                   <p className="opacity-60">Success. You are now synchronized with our intelligence stream.</p>
                 </div>
               ) : (
                 <div className="space-y-10">
                   <div className="space-y-2">
-                    <h3 className={`text-3xl font-black ${headingColor}`}>Join the <span className="text-[#C5A059]">Core.</span></h3>
+                    <h3 className={`text-3xl font-black ${headingColor}`}>Join the <span className="text-primary">Core.</span></h3>
                     <p className="text-xs opacity-40 uppercase tracking-[0.2em] font-black tech-tracking">Secure executive synchronization</p>
                   </div>
 
@@ -153,7 +151,7 @@ export default function NewsletterSection() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Your primary secure email"
-                      className={`w-full bg-white/5 border rounded-2xl px-8 py-5 outline-none transition-all font-bold ${theme === "dark" ? "border-white/10 focus:border-[#C5A059]/50 text-white" : "border-slate-200 focus:border-[#C5A059] text-gray-900"
+                      className={`w-full bg-white/5 border rounded-2xl px-8 py-5 outline-none transition-all font-bold ${theme === "dark" ? "border-white/10 focus:border-primary/50 text-white" : "border-slate-200 focus:border-primary text-gray-900"
                         }`}
                       required
                       disabled={isLoading}
@@ -162,8 +160,8 @@ export default function NewsletterSection() {
                       type="submit"
                       disabled={isLoading}
                       className={`w-full py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] text-white transition-all duration-500 hover:scale-[1.02] active:scale-95 disabled:opacity-50 tech-tracking ${theme === "dark"
-                        ? "bg-[#C5A059] text-[#121212] shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-[#C5A059]/50"
-                        : "bg-[#121212] text-white shadow-xl hover:bg-black"
+                        ? "bg-primary text-matte-charcoal shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-primary/50"
+                        : "bg-matte-charcoal text-white shadow-xl hover:bg-black"
                         }`}
                     >
                       {isLoading ? "Synchronizing..." : "Initiate Access"}

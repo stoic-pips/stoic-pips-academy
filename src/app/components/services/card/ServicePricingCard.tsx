@@ -23,36 +23,30 @@ interface ServiceCardProps {
 export default function ServiceCard({ service, isHovered, onHover, theme }: ServiceCardProps) {
   const router = useRouter();
 
-  const buttonGradient = theme === "dark"
-    ? "bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500"
-    : "bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600";
+  const buttonGradient = "bg-primary text-matte-charcoal";
 
   return (
     <div
       className={`
-        relative group transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] flex-shrink-0
-        w-85 md:w-65 lg:w-[420px] mx-6 p-1 rounded-[2rem]
-        ${theme === "dark" ? "luminous-card" : "bg-white border border-slate-200 shadow-xl shadow-slate-200/50"}
-        ${isHovered ? (theme === "dark" ? 'shadow-2xl shadow-[#C5A059]/10' : 'shadow-2xl shadow-[#C5A059]/15 ring-2 ring-[#C5A059]/20') + ' -translate-y-4' : ''}
+        relative group luminous-card flex-shrink-0 transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]
+        w-85 md:w-65 lg:w-[420px] mx-6
+        ${isHovered ? 'shadow-[0_0_50px_rgba(197,160,89,0.15)] -translate-y-4 border-primary/30' : ''}
       `}
       onMouseEnter={() => onHover(service.id)}
       onMouseLeave={() => onHover(null)}
     >
       <div className={`
-        rounded-[1.9rem] p-10 flex flex-col h-full relative overflow-hidden transition-colors duration-500
-        ${theme === "dark" ? "bg-slate-950/90" : "bg-white"}
+        p-10 flex flex-col h-full relative overflow-hidden transition-colors duration-500
       `}>
 
         {/* Floating Accent */}
-        <div className={`absolute -top-24 -right-24 w-48 h-48 blur-[60px] transition-all duration-700 ${theme === "dark" ? "bg-[#C5A059]/10 group-hover:bg-[#C5A059]/20" : "bg-[#C5A059]/5 group-hover:bg-[#C5A059]/10"
-          }`}></div>
+        <div className={`absolute -top-24 -right-24 w-48 h-48 blur-[60px] transition-all duration-700 bg-primary/10 group-hover:bg-primary/20`}></div>
 
         {/* Service Header */}
-        <div className="text-center mb-10">
-          <div className={`inline-flex items-center justify-center w-24 h-24 rounded-3xl mb-8 border transition-all duration-700 ${theme === "dark" ? "glass-pill border-white/5 group-hover:border-[#C5A059]/40" : "bg-slate-50 border-slate-200 group-hover:border-[#C5A059]/30"
-            }`}>
+        <div className="text-center mb-10 relative z-10">
+          <div className={`inline-flex items-center justify-center w-24 h-24 rounded-3xl mb-8 border transition-all duration-700 border-glass-border group-hover:border-primary/40 glass-pill`}>
             <span className="text-4xl">
-              {service.icon ? <service.icon size={36} color={isHovered ? "#C5A059" : (theme === "dark" ? service.iconColor : "#475569")} /> : "🚀"}
+              {service.icon ? <service.icon size={36} color={isHovered ? "#C5A059" : (theme === "dark" ? "#C5A059" : "#475569")} /> : "🚀"}
             </span>
           </div>
 
@@ -67,7 +61,7 @@ export default function ServiceCard({ service, isHovered, onHover, theme }: Serv
         </div>
 
         {/* Pricing */}
-        <div className="text-center mb-12 relative">
+        <div className="text-center mb-12 relative z-10">
           {service.originalPrice && (
             <p className={`text-xs line-through mb-2 font-black tracking-widest ${theme === "dark" ? "opacity-40" : "text-slate-400"}`}>
               {service.originalPrice}
@@ -84,16 +78,15 @@ export default function ServiceCard({ service, isHovered, onHover, theme }: Serv
         </div>
 
         {/* Features List */}
-        <div className="flex-1 mb-12">
+        <div className="flex-1 mb-12 relative z-10">
           <ul className="space-y-4">
             {service.features.map((feature, idx) => (
               <li
                 key={idx}
                 className="flex items-center gap-4 group/item transition-all duration-300"
               >
-                <div className={`w-6 h-6 rounded-full flex items-center justify-center border transition-colors ${theme === "dark" ? "glass-pill border-white/5 group-hover/item:border-[#C5A059]/40" : "bg-slate-50 border-slate-200"
-                  }`}>
-                  <span className="text-[10px] text-[#C5A059] font-black">✓</span>
+                <div className={`w-6 h-6 rounded-full flex items-center justify-center border transition-colors glass-pill border-glass-border group-hover/item:border-primary/40`}>
+                  <span className="text-[10px] text-primary font-black">✓</span>
                 </div>
                 <span className={`text-sm font-bold transition-opacity ${theme === "dark" ? "opacity-70 group-hover/item:opacity-100" : "text-slate-600 group-hover/item:text-slate-900"}`}>
                   {feature}
@@ -107,10 +100,10 @@ export default function ServiceCard({ service, isHovered, onHover, theme }: Serv
         <Button
           onClick={() => router.push(`/get-started/${service.id}`)}
           className={`
-            w-full py-5 font-black uppercase tracking-[0.2em] rounded-2xl transition-all duration-500 border
+            w-full py-5 font-black uppercase tracking-[0.2em] rounded-2xl transition-all duration-500 border relative z-10
             ${theme === "dark"
-              ? "bg-[#C5A059] text-[#121212] shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-[#C5A059]/50 border-transparent"
-              : "bg-[#C5A059] text-[#121212] shadow-xl hover:bg-[#B8860B] border-transparent"
+              ? "bg-primary text-matte-charcoal shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-primary/50 border-transparent"
+              : "bg-primary text-matte-charcoal shadow-xl hover:bg-brand-gold/90 border-transparent"
             }
             ${isHovered ? '-translate-y-1' : ''}
           `}
@@ -118,6 +111,6 @@ export default function ServiceCard({ service, isHovered, onHover, theme }: Serv
           Secure Access
         </Button>
       </div>
-    </div >
+    </div>
   );
 }

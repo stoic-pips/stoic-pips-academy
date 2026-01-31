@@ -37,30 +37,30 @@ export default function AboutSection() {
     : "bg-white/80 border-gray-100";
 
   return (
-    <section id="about" className={`relative py-32 px-6 overflow-hidden ${theme === "dark" ? "bg-background" : "bg-white"}`}>
+    <section id="about" className={`relative py-32 px-6 overflow-hidden bg-background`}>
 
       {/* Decorative Orbs */}
-      <div className={`absolute top-0 right-0 w-[500px] h-[500px] ${theme === "dark" ? "bg-[#708090]/5" : "bg-[#708090]/3"} blur-[120px] -z-10 animate-pulse`}></div>
-      <div className={`absolute bottom-0 left-0 w-[300px] h-[300px] ${theme === "dark" ? "bg-[#C5A059]/5" : "bg-[#C5A059]/3"} blur-[100px] -z-10`}></div>
+      <div className={`absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 blur-[120px] -z-10 animate-pulse`}></div>
+      <div className={`absolute bottom-0 left-0 w-[300px] h-[300px] bg-primary/5 blur-[100px] -z-10`}></div>
 
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
 
           {/* Left: The "Insight" Visual */}
           <div className="relative order-2 lg:order-1">
-            <div className="luminous-card p-1 lg:p-1.5 bg-gradient-to-br from-[#C5A059]/20 via-white/5 to-[#708090]/20">
+            <div className="luminous-card p-1 lg:p-1.5 bg-gradient-to-br from-primary/20 via-white/5 to-secondary/20">
               <div className={`${theme === "dark" ? "bg-slate-950/90" : "bg-slate-50"} rounded-[1.9rem] p-8 lg:p-12 transition-colors duration-500 border ${theme === "dark" ? "border-transparent" : "border-slate-200"}`}>
                 <div className="grid grid-cols-2 gap-8 mb-12">
                   {[
-                    { label: "Elite Members", value: "2K+", icon: "👥", color: "text-[#708090]" },
-                    { label: "Win Ratio", value: "76%", icon: "🎯", color: "text-[#C5A059]" },
-                    { label: "AI Accuracy", value: "92%", icon: "🤖", color: "text-[#708090]" },
-                    { label: "Success Stories", value: "500+", icon: "🏆", color: "text-[#C5A059]" }
+                    { label: "Elite Members", value: "2K+", icon: "👥", color: "text-secondary" },
+                    { label: "Win Ratio", value: "76%", icon: "🎯", color: "text-primary" },
+                    { label: "AI Accuracy", value: "92%", icon: "🤖", color: "text-secondary" },
+                    { label: "Success Stories", value: "500+", icon: "🏆", color: "text-primary" }
                   ].map((stat, i) => (
                     <div key={i} className="group cursor-default">
                       <span className="text-2xl mb-2 block">{stat.icon}</span>
                       <p className={`text-3xl font-black ${stat.color} mb-1 transition-transform group-hover:scale-110`}>{stat.value}</p>
-                      <p className={`text-[10px] uppercase tracking-[0.2em] font-black tech-tracking opacity-60 ${theme === "dark" ? "text-white" : "text-[#708090]"}`}>{stat.label}</p>
+                      <p className={`text-[10px] uppercase tracking-[0.2em] font-black tech-tracking opacity-60 ${theme === "dark" ? "text-white" : "text-secondary"}`}>{stat.label}</p>
                     </div>
                   ))}
                 </div>
@@ -68,9 +68,9 @@ export default function AboutSection() {
                 {/* Progress Visual */}
                 <div className={`space-y-6 pt-8 border-t ${theme === "dark" ? "border-white/10" : "border-slate-200"}`}>
                   <div className={`relative h-1 w-full ${theme === "dark" ? "bg-white/5" : "bg-slate-200"} rounded-full overflow-hidden`}>
-                    <div className="absolute top-0 left-0 h-full w-[85%] bg-gradient-to-r from-[#C5A059] to-[#708090] animate-pulse"></div>
+                    <div className="absolute top-0 left-0 h-full w-[85%] bg-gradient-to-r from-primary to-secondary animate-pulse"></div>
                   </div>
-                  <div className={`flex justify-between items-center text-[10px] uppercase tracking-[0.2em] font-black opacity-50 tech-tracking ${theme === "dark" ? "text-white" : "text-[#708090]"}`}>
+                  <div className={`flex justify-between items-center text-[10px] uppercase tracking-[0.2em] font-black opacity-50 tech-tracking ${theme === "dark" ? "text-white" : "text-secondary"}`}>
                     <span>Institutional Alignment</span>
                     <span>85% Optimized</span>
                   </div>
@@ -80,8 +80,8 @@ export default function AboutSection() {
 
             {/* Overlapping Floating Element */}
             <div className="absolute -bottom-10 -right-10 hidden md:block animate-bounce shadow-2xl">
-              <div className={`luminous-card p-6 border ${theme === "dark" ? "border-[#C5A059]/20 bg-[#C5A059]/5" : "border-slate-200 bg-white"} backdrop-blur-3xl rounded-2xl`}>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-2 text-[#C5A059] tech-tracking">Master Level</p>
+              <div className={`luminous-card p-6 border ${theme === "dark" ? "border-primary/20 bg-primary/5" : "border-slate-200 bg-background"} backdrop-blur-3xl rounded-2xl`}>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-2 text-primary tech-tracking">Master Level</p>
                 <p className={`text-sm font-medium italic ${theme === "dark" ? "opacity-80 text-white" : "text-gray-900"}`}>"Consistency is the currency of the professional."</p>
               </div>
             </div>
@@ -90,7 +90,7 @@ export default function AboutSection() {
           {/* Right: The Narrative */}
           <div className="order-1 lg:order-2 space-y-10">
             <div className="space-y-4">
-              <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-full border glass-pill text-[#708090] ${theme === "dark" ? "border-white/10" : "border-slate-200"}`}>
+              <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-full border glass-pill text-secondary border-glass-border`}>
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] tech-tracking">{mounted ? "Dunam Ai Story" : "..."}</span>
               </div>
 
@@ -102,11 +102,11 @@ export default function AboutSection() {
 
             <div className={`${inter.className} space-y-8 text-lg md:text-xl leading-relaxed opacity-80`}>
               <p className={theme === "dark" ? "text-slate-300" : "text-gray-600"}>
-                At <span className={`${theme === "dark" ? "text-white" : "text-gray-900"} font-black`}>Stoic Pips Inc.</span>, we don't just teach trading; we engineer <span className="text-[#C5A059] font-black">Emotionless Profitability</span>.
+                At <span className={`${theme === "dark" ? "text-white" : "text-gray-900"} font-black`}>Stoic Pips Inc.</span>, we don't just teach trading; we engineer <span className="text-primary font-black">Emotionless Profitability</span>.
               </p>
 
-              <p className={`border-l-4 border-[#C5A059] pl-8 italic ${theme === "dark" ? "text-slate-300" : "text-gray-600 font-medium"}`}>
-                Our mission is to bridge the gap between retail struggle and institutional mastery through the perfect synergy of human discipline and <span className="text-[#C5A059] font-black underline decoration-[#C5A059]/30 underline-offset-8">Dunam Ai</span> intelligence.
+              <p className={`border-l-4 border-primary pl-8 italic ${theme === "dark" ? "text-slate-300" : "text-gray-600 font-medium"}`}>
+                Our mission is to bridge the gap between retail struggle and institutional mastery through the perfect synergy of human discipline and <span className="text-primary font-black underline decoration-primary/30 underline-offset-8">Dunam Ai</span> intelligence.
               </p>
 
               <p className={theme === "dark" ? "text-slate-300" : "text-gray-600"}>
@@ -115,7 +115,7 @@ export default function AboutSection() {
             </div>
 
             <div className="pt-8">
-              <a href="#pillars" className="inline-flex items-center gap-4 text-[#C5A059] font-black uppercase tracking-[0.2em] group tech-tracking text-xs">
+              <a href="#pillars" className="inline-flex items-center gap-4 text-primary font-black uppercase tracking-[0.2em] group tech-tracking text-xs">
                 <span className="group-hover:mr-2 transition-all">Discover the Ecosystem</span>
                 <span className="text-2xl group-hover:translate-x-2 transition-transform">→</span>
               </a>

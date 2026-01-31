@@ -25,7 +25,7 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <Providers>
-      <div className="flex flex-col min-h-screen bg-[#f0f4f8] dark:bg-[#050a14] transition-all duration-700">
+      <div className="flex flex-col min-h-screen bg-background transition-all duration-700">
 
         <PageWrapper>
           <header className="sticky top-0 z-50">

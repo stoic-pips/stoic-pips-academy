@@ -60,7 +60,7 @@ export default function Navbar() {
     : "bg-transparent py-4";
 
   const linkColor = theme === "dark" ? "text-slate-200" : "text-gray-700";
-  const linkHover = "hover:text-[#C5A059] transition-all duration-300 hover:scale-105";
+  const linkHover = "hover:text-primary transition-all duration-300 hover:scale-105";
 
   const mobileMenuBg = theme === "dark"
     ? "backdrop-blur-xl bg-slate-900/90 border border-white/10 rounded-[2rem] mt-4 p-8 space-y-4 shadow-2xl"
@@ -81,7 +81,7 @@ export default function Navbar() {
                 alt="Stoic Pips Inc."
                 className="h-10 lg:h-12 transition-transform duration-500 group-hover:rotate-12"
               />
-              <div className="absolute -inset-2 bg-[#C5A059]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute -inset-2 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
 
             <h1 className={`${playfair.className} text-lg lg:text-xl font-bold cursor-pointer ml-3 tracking-tight`}>
@@ -118,12 +118,12 @@ export default function Navbar() {
                     {item.label}
                   </Link>
                   {item.children && (
-                    <div className="absolute top-full left-0 mt-4 w-48 py-4 bg-[#1B1B1B] border border-white/10 rounded-2xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 shadow-2xl z-50">
+                    <div className="absolute top-full left-0 mt-4 w-48 py-4 bg-deep-slate border border-white/10 rounded-2xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 shadow-2xl z-50">
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
-                          className="block px-6 py-2 text-[10px] font-black uppercase tracking-[0.2em] tech-tracking text-slate-400 hover:text-[#C5A059] hover:bg-white/5 transition-all"
+                          className="block px-6 py-2 text-[10px] font-black uppercase tracking-[0.2em] tech-tracking text-slate-400 hover:text-primary hover:bg-white/5 transition-all"
                         >
                           {child.label}
                         </Link>
@@ -140,9 +140,9 @@ export default function Navbar() {
               {/* CTA Button */}
               <Link
                 href="https://app.stoicpips.com"
-                className={`px-8 py-2.5 rounded-full font-black text-[#121212] transition-all duration-300 hover:scale-110 active:scale-95 text-[10px] uppercase tracking-[0.2em] tech-tracking ${theme === "dark"
-                  ? "bg-[#C5A059] shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-[#C5A059]/50"
-                  : "bg-[#121212] text-white shadow-xl hover:bg-black"
+                className={`px-8 py-2.5 rounded-full font-black text-matte-charcoal transition-all duration-300 hover:scale-110 active:scale-95 text-[10px] uppercase tracking-[0.2em] tech-tracking ${theme === "dark"
+                  ? "bg-primary shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-primary/50"
+                  : "bg-matte-charcoal text-white shadow-xl hover:bg-black"
                   } ${inter.className}`}
               >
                 Launch App
@@ -157,7 +157,7 @@ export default function Navbar() {
               className={`${linkColor} p-2 rounded-xl glass-pill focus:outline-none transition-transform active:scale-90 border ${theme === "dark" ? "border-white/10" : "border-slate-200"}`}
               onClick={() => setIsOpen(!isOpen)}
             >
-              {isOpen ? <XMarkIcon className="w-6 h-6 text-[#C5A059]" /> : <Bars3Icon className="w-6 h-6" />}
+              {isOpen ? <XMarkIcon className="w-6 h-6 text-primary" /> : <Bars3Icon className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -175,7 +175,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className={`${linkColor} hover:text-[#C5A059] block font-black py-3 transition-colors tech-tracking uppercase text-[10px] tracking-[0.2em] ${inter.className}`}
+                className={`${linkColor} hover:text-primary block font-black py-3 transition-colors tech-tracking uppercase text-[10px] tracking-[0.2em] ${inter.className}`}
               >
                 {item.label}
               </Link>
@@ -186,8 +186,8 @@ export default function Navbar() {
               href="https://app.stoicpips.com"
               onClick={() => setIsOpen(false)}
               className={`block w-full mt-6 px-6 py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] transition-all duration-300 tech-tracking ${theme === "dark"
-                ? "bg-[#C5A059] text-[#121212] shadow-lg shadow-[#C5A059]/25"
-                : "bg-[#121212] text-white"
+                ? "bg-primary text-matte-charcoal shadow-lg shadow-primary/25"
+                : "bg-matte-charcoal text-white"
                 } ${inter.className}`}
             >
               Launch Platform

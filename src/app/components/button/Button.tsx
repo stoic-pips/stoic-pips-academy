@@ -24,8 +24,8 @@ export default function Button({
     }
 
     const buttonStyles = theme === "dark"
-      ? "bg-[#C5A059] text-[#121212] hover:bg-[#B8860B]"
-      : "bg-[#121212] text-white hover:bg-black";
+      ? "bg-primary text-matte-charcoal hover:bg-brand-gold/90"
+      : "bg-matte-charcoal text-white hover:bg-black";
 
     return `${buttonStyles} cursor-pointer`;
   };

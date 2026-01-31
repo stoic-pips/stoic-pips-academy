@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import ServiceCard from "./card/ServiceCard";
 import { services } from "./services";
+import { motion } from "framer-motion";
 import { Playfair_Display, Inter } from "next/font/google";
 
 const playfair = Playfair_Display({
@@ -30,13 +31,9 @@ export default function OurServices() {
     ? "bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-500"
     : "bg-gradient-to-r from-emerald-600 via-teal-700 to-amber-600";
 
-  const sectionBg = theme === "dark"
-    ? "bg-[#050a14]"
-    : "bg-slate-50";
 
-  const buttonGradient = theme === "dark"
-    ? "bg-gradient-to-r from-emerald-500 to-teal-600"
-    : "bg-gradient-to-r from-emerald-600 to-teal-700";
+
+  const buttonGradient = "bg-primary text-matte-charcoal";
 
   return (
     <div id="services" className="relative py-12 px-6 overflow-hidden">
@@ -48,8 +45,14 @@ export default function OurServices() {
 
       <div className="relative max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-24">
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 glass-pill text-[#708090] mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-24"
+        >
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-glass-border glass-pill text-secondary mb-8">
             <span className="text-sm font-black uppercase tracking-[0.2em] tech-tracking">Institutional Ecosystem</span>
           </div>
 
@@ -59,21 +62,28 @@ export default function OurServices() {
           </h2>
 
           <p className={`max-w-3xl mx-auto text-xl leading-relaxed opacity-70 ${inter.className}`}>
-            Explore the <span className="text-white font-bold">Dunam Ai</span> ecosystem — a seamless integration of high-frequency intelligence and professional methodology.
+            Explore the <span className="text-primary font-bold">Dunam Ai</span> ecosystem — a seamless integration of high-frequency intelligence and professional methodology.
           </p>
-        </div>
+        </motion.div>
 
         {/* Services Grid */}
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
-            <ServiceCard
+            <motion.div
               key={service.title}
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
-              link={service.link}
-              index={index}
-            />
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ServiceCard
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+                link={service.link}
+                index={index}
+              />
+            </motion.div>
           ))}
         </div>
 

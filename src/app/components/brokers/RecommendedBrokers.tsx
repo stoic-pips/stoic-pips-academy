@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import Button from "../button/Button";
 import { brokers } from "./brokers";
+import { motion } from "framer-motion";
 import { Playfair_Display, Inter } from "next/font/google";
 
 const playfair = Playfair_Display({
@@ -43,18 +44,10 @@ export default function RecommendedBrokers() {
     );
   }
 
-  const sectionBg = theme === "dark"
-    ? "bg-[#121212]"
-    : "bg-white";
+  const sectionBg = "bg-background";
 
   const headingColor = theme === "dark" ? "text-white" : "text-gray-900";
   const textColor = theme === "dark" ? "text-gray-300" : "text-gray-600";
-  const cardBg = theme === "dark"
-    ? "bg-[#1B1B1B]/40 backdrop-blur-sm"
-    : "bg-white/80 backdrop-blur-sm";
-  const borderColor = theme === "dark"
-    ? "border-white/5 hover:border-[#C5A059]/30"
-    : "border-slate-100 hover:border-[#C5A059]/30";
   const bgImage = theme === "dark" ? "/world_light.svg" : "/world_dark.svg";
 
   return (
@@ -68,20 +61,21 @@ export default function RecommendedBrokers() {
         style={{ backgroundImage: `url(${bgImage})` }}
       />
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute top-1/4 -left-20 w-80 h-80 rounded-full blur-[100px] opacity-10 ${theme === "dark" ? "bg-[#708090]" : "bg-[#708090]/50"
-          }`} />
-        <div className={`absolute bottom-1/4 -right-20 w-96 h-96 rounded-full blur-[100px] opacity-10 ${theme === "dark" ? "bg-[#C5A059]" : "bg-[#C5A059]/50"
-          }`} />
+        <div className={`absolute top-1/4 -left-20 w-80 h-80 rounded-full blur-[100px] opacity-10 bg-secondary`} />
+        <div className={`absolute bottom-1/4 -right-20 w-96 h-96 rounded-full blur-[100px] opacity-10 bg-primary`} />
       </div>
 
       <div className="relative max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
           {/* Section Badge */}
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-6 ${theme === "dark"
-            ? "border-white/10 bg-white/5 text-[#C5A059]"
-            : "border-slate-200 bg-slate-50 text-[#C5A059]"
-            }`}>
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-6 border-glass-border bg-glass text-primary`}>
             <span className="w-2 h-2 bg-current rounded-full animate-pulse"></span>
             <span className={`text-xs font-black uppercase tracking-[0.2em] tech-tracking ${inter.className}`}>Trusted Partners</span>
           </div>
@@ -99,16 +93,18 @@ export default function RecommendedBrokers() {
             We personally vet and trade with these trusted brokers. Start with confidence
             using platforms we know and recommend for optimal trading performance.
           </p>
-        </div>
+        </motion.div>
 
         {/* Brokers Grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {brokers.map((broker, index) => (
-            <div
+            <motion.div
               key={broker.name}
-              className={`group relative rounded-[2rem] ${cardBg} backdrop-blur-sm border border-transparent ${borderColor} 
-                         shadow-lg hover:shadow-2xl transform transition-all duration-500 hover:-translate-y-2 
-                         flex flex-col items-center overflow-hidden p-10 text-center h-full`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className={`group relative luminous-card h-full flex flex-col items-center p-10 text-center hover:-translate-y-2`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Broker Logo */}
@@ -139,7 +135,7 @@ export default function RecommendedBrokers() {
                 <div className="w-full mb-8 space-y-3">
                   {broker.features.slice(0, 3).map((feature, i) => (
                     <div key={i} className={`text-xs font-bold ${textColor} flex items-center justify-center gap-3`}>
-                      <span className={`w-1.5 h-1.5 rounded-full bg-[#C5A059]`} />
+                      <span className={`w-1.5 h-1.5 rounded-full bg-primary`} />
                       {feature}
                     </div>
                   ))}
@@ -150,7 +146,7 @@ export default function RecommendedBrokers() {
               {/* Rating */}
               {broker.rating && (
                 <div className="flex items-center justify-center gap-2 mb-10">
-                  <div className="flex text-[#C5A059]">
+                  <div className="flex text-primary">
                     {[...Array(5)].map((_, i) => (
                       <span key={i} className="text-sm">
                         {i < Math.floor(broker.rating) ? "★" : "☆"}
@@ -177,11 +173,8 @@ export default function RecommendedBrokers() {
               </a>
 
               {/* Hover Effect Background */}
-              <div className={`absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none ${theme === "dark"
-                ? "bg-gradient-to-br from-[#C5A059]/5 to-[#708090]/5"
-                : "bg-gradient-to-br from-[#708090]/5 to-[#C5A059]/5"
-                }`} />
-            </div>
+              <div className={`absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
+            </motion.div>
           ))}
         </div>
 

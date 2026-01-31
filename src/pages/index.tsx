@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import ThreePillars from "@/app/components/ThreePillars";
 import StoicEdge from "@/app/components/StoicEdge";
 import NewsletterSection from "@/app/components/NewsletterSection";
+import Loading from "@/app/loading";
 import { Playfair_Display } from "next/font/google";
 
 const playfair = Playfair_Display({
@@ -30,7 +31,7 @@ export default function Home() {
   }, [theme]);
 
   if (!mounted) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (
@@ -44,7 +45,7 @@ export default function Home() {
       <StoicEdge />
 
       {/* Academy Dedicated Section */}
-      <section id="academy" className={`scroll-mt-20 border-y ${theme === "dark" ? "border-white/5 bg-background" : "border-slate-200 bg-white"}`}>
+      <section id="academy" className="scroll-mt-20 bg-background">
         <div className="py-32">
           <div className="max-w-7xl mx-auto px-6 text-center mb-24">
             <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-full border mb-8 ${theme === "dark" ? "border-white/10 glass-pill text-[#708090]" : "border-slate-200 text-[#708090]"}`}>

@@ -31,17 +31,13 @@ export default function PricingServices() {
 
   const currentTheme = mounted ? (theme || 'light') : 'light';
 
-  const sectionBg = currentTheme === "dark"
-    ? "bg-transparent"
-    : "bg-gradient-to-br from-white via-indigo-50 to-cyan-50";
+  const sectionBg = "bg-background";
 
   const gradientText = currentTheme === "dark"
     ? "bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-500"
     : "bg-gradient-to-r from-emerald-600 via-teal-700 to-amber-600";
 
-  const buttonGradient = currentTheme === "dark"
-    ? "bg-gradient-to-r from-cyan-500 to-blue-600"
-    : "bg-gradient-to-r from-blue-600 to-indigo-600";
+  const buttonGradient = "bg-primary text-matte-charcoal";
 
   const servicesArray: Service[] = Object.entries(services).map(([id, service]) => ({
     id,
@@ -83,14 +79,14 @@ export default function PricingServices() {
 
       {/* Atmospheric Glows */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[20%] right-0 w-[600px] h-[600px] bg-[#708090]/5 blur-[150px] rounded-full"></div>
-        <div className="absolute bottom-[10%] left-0 w-[400px] h-[400px] bg-[#C5A059]/5 blur-[120px] rounded-full"></div>
+        <div className="absolute top-[20%] right-0 w-[600px] h-[600px] bg-secondary/5 blur-[150px] rounded-full"></div>
+        <div className="absolute bottom-[10%] left-0 w-[400px] h-[400px] bg-primary/5 blur-[120px] rounded-full"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto w-full z-10">
         {/* Header Section */}
         <div className="text-center mb-24">
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 glass-pill text-[#C5A059] mb-8">
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-glass-border glass-pill text-primary mb-8">
             <span className="text-sm font-black uppercase tracking-[0.2em] tech-tracking">Institutional Access</span>
           </div>
 
@@ -100,7 +96,7 @@ export default function PricingServices() {
           </h2>
 
           <p className={`max-w-3xl mx-auto text-xl leading-relaxed opacity-70 ${inter.className}`}>
-            Choose the membership tier that aligns with your professional ambitions. All plans include full <span className="text-white font-bold">Dunam Ai</span> synchronization.
+            Choose the membership tier that aligns with your professional ambitions. All plans include full <span className="text-primary font-bold">Dunam Ai</span> synchronization.
           </p>
         </div>
 

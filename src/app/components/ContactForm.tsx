@@ -82,16 +82,16 @@ export default function ContactForm() {
 
   // Input classes
   const inputClasses = `w-full p-4 rounded-xl border transition-all duration-300 font-bold text-sm ${inter.className} ${currentTheme === "dark"
-    ? "border-white/10 bg-white/5 text-white placeholder-white/20 focus:border-[#C5A059]/50"
-    : "border-slate-200 bg-white text-gray-900 placeholder-slate-400 focus:border-[#C5A059]"
+    ? "border-white/10 bg-white/5 text-white placeholder-white/20 focus:border-primary/50"
+    : "border-slate-200 bg-background text-gray-900 placeholder-slate-400 focus:border-primary"
     } focus:outline-none`;
 
-  const labelClasses = `block mb-2 text-[10px] font-black uppercase tracking-[0.2em] tech-tracking ${currentTheme === "dark" ? "text-[#C5A059]/60" : "text-[#708090]"
+  const labelClasses = `block mb-2 text-[10px] font-black uppercase tracking-[0.2em] tech-tracking ${currentTheme === "dark" ? "text-primary/60" : "text-secondary"
     }`;
 
   const buttonClasses = `w-full py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] text-white transition-all duration-500 tech-tracking ${currentTheme === "dark"
-    ? "bg-[#C5A059] text-[#121212] shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-[#C5A059]/50"
-    : "bg-[#121212] text-white shadow-xl hover:bg-black"
+    ? "bg-primary text-matte-charcoal shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-primary/50"
+    : "bg-matte-charcoal text-white shadow-xl hover:bg-black"
     } hover:scale-[1.02] active:scale-95 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`;
 
   return (
