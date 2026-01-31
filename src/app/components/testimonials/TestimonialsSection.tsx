@@ -34,7 +34,7 @@ export default function TestimonialsSection() {
     : "bg-gradient-to-b from-white via-emerald-50/30 to-white";
 
   return (
-    <section id="testimonials" className={`relative py-24 px-4 sm:px-6 lg:px-8 ${sectionBg}`}>
+    <div id="testimonials" className="relative py-12 px-4 sm:px-6 lg:px-8">
 
       <div className="relative max-w-7xl mx-auto">
         {/* Header Section */}
@@ -131,6 +131,6 @@ export default function TestimonialsSection() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

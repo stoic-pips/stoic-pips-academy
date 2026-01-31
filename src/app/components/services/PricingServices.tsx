@@ -79,7 +79,7 @@ export default function PricingServices() {
   }
 
   return (
-    <section id="pricing" className={`relative py-32 px-6 overflow-hidden ${currentTheme === "dark" ? "bg-background" : "bg-white"}`}>
+    <div id="pricing" className="relative py-12 px-6 overflow-hidden">
 
       {/* Atmospheric Glows */}
       <div className="absolute inset-0 pointer-events-none">
@@ -135,6 +135,6 @@ export default function PricingServices() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

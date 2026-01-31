@@ -39,7 +39,7 @@ export default function OurServices() {
     : "bg-gradient-to-r from-emerald-600 to-teal-700";
 
   return (
-    <section id="services" className={`relative py-32 px-6 overflow-hidden ${theme === "dark" ? "bg-background" : "bg-white"}`}>
+    <div id="services" className="relative py-12 px-6 overflow-hidden">
 
       {/* Mesh Gradient Background */}
       <div className="absolute inset-0 pointer-events-none opacity-50">
@@ -79,6 +79,6 @@ export default function OurServices() {
 
 
       </div>
-    </section>
+    </div>
   );
 }
