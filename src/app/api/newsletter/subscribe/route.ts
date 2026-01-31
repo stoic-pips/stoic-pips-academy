@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     const body = await request.json();
     const { email } = body;
@@ -34,7 +35,7 @@ export async function POST(request: Request) {
             padding: 20px; 
           }
           .header { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            background: linear-gradient(135deg, #10b981 0%, #064e3b 100%); 
             color: white; 
             padding: 30px; 
             text-align: center; 
@@ -50,7 +51,7 @@ export async function POST(request: Request) {
             padding: 15px; 
             margin: 10px 0; 
             border-radius: 8px; 
-            border-left: 4px solid #667eea; 
+            border-left: 4px solid #00e5ff; 
           }
           .footer { 
             text-align: center; 
@@ -64,14 +65,14 @@ export async function POST(request: Request) {
       </head>
       <body>
         <div class="header">
-          <h1>Welcome to Stoic Pips! 🎉</h1>
-          <p>Your journey to trading mastery begins now</p>
+          <h1>Welcome to Dunam Ai! 🚀</h1>
+          <p>Your journey to AI-driven trading mastery begins now</p>
         </div>
         
         <div class="content">
           <p>Hello Future Pro Trader,</p>
           
-          <p>Thank you for joining the Stoic Pips newsletter! You've just taken an important step toward transforming your trading journey.</p>
+          <p>Thank you for joining the Dunam Ai newsletter! You've just taken an important step toward transforming your trading journey with AI-driven insights.</p>
           
           <h3>What You'll Receive:</h3>
           
@@ -97,16 +98,16 @@ export async function POST(request: Request) {
           
           <p><strong>Your first trading insights will arrive in your inbox soon!</strong></p>
           
-          <p>In the meantime, feel free to explore our <a href="https://stoicpips.com/mentorship" style="color: #667eea;">mentorship program</a> or check out our <a href="https://stoicpips.com/services" style="color: #667eea;">other services</a>.</p>
+          <p>In the meantime, feel free to explore our <a href="https://dunam.stoicpips.com" style="color: #00e5ff;">trading platform</a> or check out our <a href="https://docs.stoicpips.com" style="color: #00e5ff;">documentation</a>.</p>
           
           <p>To your trading success,<br>
-          <strong>The Stoic Pips Team</strong></p>
+          <strong>The Dunam Ai Team</strong></p>
         </div>
         
         <div class="footer">
-          <p>You're receiving this email because you subscribed to the Stoic Pips newsletter.<br>
-          <a href="#" style="color: #667eea;">Unsubscribe</a> at any time.</p>
-          <p>Stoic Pips Academy | Transforming Traders</p>
+          <p>You're receiving this email because you subscribed to the Dunam Ai newsletter.<br>
+          <a href="#" style="color: #00e5ff;">Unsubscribe</a> at any time.</p>
+          <p>Dunam Ai | Next-Gen AI Trading Ecosystem</p>
         </div>
       </body>
       </html>
@@ -132,31 +133,31 @@ export async function POST(request: Request) {
 
     // Send welcome email to subscriber
     const welcomeEmail = await resend.emails.send({
-      from: 'Stoic Pips <onboarding@resend.dev>',
+      from: 'Dunam Ai <onboarding@resend.dev>',
       to: email,
-      subject: 'Welcome to the Stoic Pips Trading Newsletter! 🎉',
+      subject: 'Welcome to the Dunam Ai Ecosystem! 🚀',
       html: welcomeEmailHtml,
     });
 
     // Send notification to admin
     const adminEmail = await resend.emails.send({
-      from: 'Stoic Pips <onboarding@resend.dev>',
-      to: ['stoicpip@gmail.com'],
-      subject: `🎯 New Newsletter Subscriber: ${email}`,
+      from: 'Dunam Ai <onboarding@resend.dev>',
+      to: ['stoicpips.com'],
+      subject: `🎯 New Dunam Ai Subscriber: ${email}`,
       html: adminEmailHtml,
     });
 
     console.log('✅ Welcome email sent successfully');
     console.log('✅ Admin notification sent successfully');
 
-    return NextResponse.json({ 
-      success: true, 
+    return NextResponse.json({
+      success: true,
       message: 'Successfully subscribed to newsletter. Welcome email sent!'
     });
 
   } catch (error: any) {
     console.error('❌ Newsletter subscription error:', error);
-    
+
     return NextResponse.json(
       { error: 'Failed to subscribe. Please try again.' },
       { status: 500 }

@@ -10,7 +10,7 @@ export default function Resources() {
   const headingColor = theme === "dark" ? "text-white" : "text-gray-900";
   const textColor = theme === "dark" ? "text-gray-300" : "text-gray-700";
   const bgColor = theme === "dark" ? "bg-gray-900" : "bg-gray-50";
-  const linkColor = theme === "dark" ? "text-blue-400 hover:text-blue-500" : "text-blue-600 hover:text-blue-700";
+  const linkColor = theme === "dark" ? "text-emerald-400 hover:text-emerald-500" : "text-blue-600 hover:text-emerald-700";
 
   return (
     <SubPageLayout>
@@ -21,7 +21,7 @@ export default function Resources() {
           </h2>
 
           <p className={`mb-6 ${textColor}`}>
-            Founded in 2024, Stoic Pips focuses on discipline, mindset, and strategy to grow your trading journey. Below are some helpful resources, educational links, and recommended books for traders of all levels.
+            Founded in 2024, Dunam Ai focuses on discipline, mindset, and strategy to grow your trading journey. Below are some helpful resources, educational links, and recommended books for traders of all levels.
           </p>
 
           <div className="mb-8">
@@ -66,7 +66,7 @@ export default function Resources() {
             </ul>
           </div>
 
-            <BookRecommendations />
+          <BookRecommendations />
         </div>
       </section>
     </SubPageLayout>

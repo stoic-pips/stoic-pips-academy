@@ -10,95 +10,66 @@ export default function ServiceCard({ title, description, icon: Icon, link, imag
   // Text colors based on theme
   const titleColor = theme === "dark" ? "text-white" : "text-gray-900";
   const descColor = theme === "dark" ? "text-gray-300" : "text-gray-600";
-  const iconColor = theme === "dark" ? "text-purple-400" : "text-blue-600";
+  const iconColor = "text-primary";
 
   // Card styling based on theme
-  const cardBg = theme === "dark" 
-    ? "bg-gray-800/50 backdrop-blur-sm" 
-    : "bg-white/80 backdrop-blur-sm";
-  const borderColor = theme === "dark" 
-    ? "border-gray-700 hover:border-purple-500/50" 
-    : "border-gray-200 hover:border-blue-500/50";
-  const hoverGlow = theme === "dark"
-    ? "hover:shadow-2xl hover:shadow-purple-500/10"
-    : "hover:shadow-2xl hover:shadow-blue-500/10";
+  const cardBg = "bg-glass backdrop-blur-sm";
+  const borderColor = "border-glass-border hover:border-primary/50";
+  const hoverGlow = "hover:shadow-2xl hover:shadow-primary/10";
 
   return (
     <div
-      className={`group relative rounded-3xl overflow-hidden border-2 ${cardBg} ${borderColor} 
-                 shadow-lg ${hoverGlow} transform transition-all duration-500 hover:-translate-y-2 
-                 cursor-pointer h-full flex flex-col`}
+      className={`group relative luminous-card h-full flex flex-col cursor-pointer transition-all duration-700 hover:-translate-y-4`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       {/* Optional Image */}
       {image && (
-        <div className="relative h-48 w-full overflow-hidden">
+        <div className="relative h-56 w-full overflow-hidden">
           <Image
             src={image}
             alt={title}
             fill
-            className="object-cover group-hover:scale-110 transition-transform duration-700"
+            className="object-cover group-hover:scale-110 transition-transform duration-1000"
           />
-          {/* Gradient overlay */}
-          <div className={`absolute inset-0 bg-gradient-to-t ${
-            theme === "dark" 
-              ? "from-gray-900/80 via-gray-900/20 to-transparent" 
-              : "from-white/50 via-white/10 to-transparent"
-          } pointer-events-none`} />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />
         </div>
       )}
 
       {/* Content Container */}
-      <div className="flex flex-col flex-grow p-8 relative z-10">
+      <div className="flex flex-col flex-grow p-10 relative z-10">
         {/* Icon */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-8">
           {Icon && (
-            <div className={`p-4 rounded-2xl ${
-              theme === "dark" 
-                ? "bg-purple-500/10 border border-purple-500/20" 
-                : "bg-blue-500/10 border border-blue-500/20"
-            }`}>
-              <Icon className={`w-8 h-8 ${iconColor}`} />
+            <div className="relative group/icon">
+              <div className="absolute -inset-4 bg-primary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="p-5 rounded-3xl relative border border-primary/20 glass-pill transition-all duration-300">
+                <Icon className={`w-10 h-10 text-primary`} />
+              </div>
             </div>
           )}
         </div>
 
         {/* Title */}
-        <h3 className={`text-2xl font-bold text-center mb-4 leading-tight ${titleColor}`}>
+        <h3 className={`text-2xl font-black text-center mb-6 leading-tight ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
           {title}
         </h3>
 
         {/* Description */}
-        <p className={`text-center leading-relaxed flex-grow ${descColor}`}>
+        <p className={`text-center leading-relaxed flex-grow text-lg opacity-70 ${theme === "dark" ? "text-slate-300" : "text-gray-600"}`}>
           {description}
         </p>
 
         {/* CTA Button */}
-        <div className="mt-6 text-center">
-          <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-2xl font-semibold text-sm transition-all duration-300 group-hover:gap-3 ${
-            theme === "dark"
-              ? "text-purple-300 bg-purple-500/10 hover:bg-purple-500/20"
-              : "text-blue-600 bg-blue-500/10 hover:bg-blue-500/20"
-          }`}>
-            Learn More
-            <svg 
-              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
+        <div className="mt-10 text-center">
+          <span className={`inline-flex items-center gap-3 px-6 py-3 rounded-full font-black text-[10px] tech-tracking uppercase tracking-widest border transition-all duration-300 glass-pill text-primary border-primary/20 group-hover:bg-primary/10`}>
+            Secure Edge
+            <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
           </span>
         </div>
       </div>
 
-      {/* Hover effect background */}
-      <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-        theme === "dark"
-          ? "bg-gradient-to-br from-purple-500/5 to-pink-500/5"
-          : "bg-gradient-to-br from-blue-500/5 to-purple-500/5"
-      }`} />
+      {/* Radiant Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
     </div>
   );
 }

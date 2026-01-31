@@ -26,7 +26,7 @@ const defaultService: Partial<Service> = {
   price: "$299",
   features: [
     "Daily market analysis",
-    "Risk management strategies", 
+    "Risk management strategies",
     "Trading community access",
     "Lifetime course updates"
   ]
@@ -84,13 +84,13 @@ export default function GetStartedPage({
   const textColor = theme === "dark" ? "text-gray-300" : "text-gray-600";
   const borderColor = theme === "dark" ? "border-gray-700" : "border-gray-200";
 
-  const gradientText = theme === "dark" 
-    ? "bg-gradient-to-r from-purple-400 via-pink-400 to-red-400"
-    : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600";
+  const gradientText = theme === "dark"
+    ? "bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-400"
+    : "bg-gradient-to-r from-emerald-600 via-teal-600 to-amber-600";
 
-  const sectionBg = theme === "dark" 
-    ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" 
-    : "bg-gradient-to-br from-white via-blue-50 to-purple-50";
+  const sectionBg = theme === "dark"
+    ? "bg-background"
+    : "bg-gradient-to-br from-white via-indigo-50 to-cyan-50";
 
   const cardBg = theme === "dark"
     ? "bg-gray-800/50 border-gray-700"
@@ -120,23 +120,20 @@ export default function GetStartedPage({
       <section className={`px-4 sm:px-6 lg:px-8 py-24 transition-all duration-700 ${sectionBg}`}>
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className={`absolute top-1/4 -left-20 w-80 h-80 rounded-full blur-3xl opacity-10 ${
-            theme === "dark" ? "bg-purple-500" : "bg-blue-400"
-          }`} />
-          <div className={`absolute bottom-1/4 -right-20 w-96 h-96 rounded-full blur-3xl opacity-10 ${
-            theme === "dark" ? "bg-pink-500" : "bg-purple-400"
-          }`} />
+          <div className={`absolute top-1/4 -left-20 w-80 h-80 rounded-full blur-3xl opacity-10 ${theme === "dark" ? "bg-emerald-500" : "bg-blue-400"
+            }`} />
+          <div className={`absolute bottom-1/4 -right-20 w-96 h-96 rounded-full blur-3xl opacity-10 ${theme === "dark" ? "bg-blue-500" : "bg-emerald-400"
+            }`} />
         </div>
 
         <div className={`relative max-w-7xl mx-auto z-10 ${sectionBg}`}>
           {/* Header Section */}
           <div className="text-center mb-16">
             {/* Section Badge */}
-            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-6 ${
-              theme === "dark"
-                ? "border-purple-500/30 bg-purple-500/10 text-purple-200"
-                : "border-blue-500/30 bg-blue-500/10 text-blue-700"
-            }`}>
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-6 ${theme === "dark"
+              ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-200"
+              : "border-blue-500/30 bg-blue-500/10 text-blue-700"
+              }`}>
               <span className="w-2 h-2 bg-current rounded-full animate-pulse"></span>
               <span className={`text-sm font-medium ${inter.className}`}>Complete Enrollment</span>
             </div>
@@ -144,7 +141,7 @@ export default function GetStartedPage({
             <h1 className={`${playfair.className} text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight ${headingColor}`}>
               Join{" "}
               <span className={`bg-clip-text text-transparent ${gradientText}`}>
-                Stoic Pips
+                Dunam Ai
               </span>{" "}
               Academy
             </h1>
@@ -164,9 +161,9 @@ export default function GetStartedPage({
                   </span>
                 </h3>
 
-                <PriceSummary 
-                  title={safeTitle} 
-                  description={safeDescription} 
+                <PriceSummary
+                  title={safeTitle}
+                  description={safeDescription}
                   price={safePrice}
                   originalPrice={safeOriginalPrice}
                   features={safeFeatures}
@@ -175,11 +172,10 @@ export default function GetStartedPage({
                 />
 
                 {/* Customer Information Form */}
-                <div className={`mb-8 p-6 rounded-2xl border-2 backdrop-blur-sm ${
-                  theme === "dark" 
-                    ? "bg-gray-800/30 border-gray-700" 
-                    : "bg-white/60 border-gray-200"
-                }`}>
+                <div className={`mb-8 p-6 rounded-2xl border-2 backdrop-blur-sm ${theme === "dark"
+                  ? "bg-gray-800/30 border-gray-700"
+                  : "bg-white/60 border-gray-200"
+                  }`}>
                   <h4 className={`text-xl font-bold mb-4 ${inter.className} ${headingColor}`}>
                     Your Information
                   </h4>
@@ -192,11 +188,10 @@ export default function GetStartedPage({
                         type="text"
                         value={formData.name || ""}
                         onChange={(e) => handleFormDataChange('name', e.target.value)}
-                        className={`w-full p-3 rounded-xl border-2 ${inter.className} ${
-                          theme === "dark" 
-                            ? "border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 focus:border-purple-500" 
-                            : "border-gray-300 bg-white/80 text-gray-900 placeholder-gray-500 focus:border-blue-500"
-                        } focus:outline-none focus:ring-2 focus:ring-opacity-20 transition-all duration-300`}
+                        className={`w-full p-3 rounded-xl border-2 ${inter.className} ${theme === "dark"
+                          ? "border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 focus:border-purple-500"
+                          : "border-gray-300 bg-white/80 text-gray-900 placeholder-gray-500 focus:border-blue-500"
+                          } focus:outline-none focus:ring-2 focus:ring-opacity-20 transition-all duration-300`}
                         placeholder="John Doe"
                         required
                       />
@@ -209,11 +204,10 @@ export default function GetStartedPage({
                         type="email"
                         value={formData.email || ""}
                         onChange={(e) => handleFormDataChange('email', e.target.value)}
-                        className={`w-full p-3 rounded-xl border-2 ${inter.className} ${
-                          theme === "dark" 
-                            ? "border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 focus:border-purple-500" 
-                            : "border-gray-300 bg-white/80 text-gray-900 placeholder-gray-500 focus:border-blue-500"
-                        } focus:outline-none focus:ring-2 focus:ring-opacity-20 transition-all duration-300`}
+                        className={`w-full p-3 rounded-xl border-2 ${inter.className} ${theme === "dark"
+                          ? "border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 focus:border-emerald-500"
+                          : "border-gray-300 bg-white/80 text-gray-900 placeholder-gray-500 focus:border-emerald-600"
+                          } focus:outline-none focus:ring-2 focus:ring-opacity-20 transition-all duration-300`}
                         placeholder="john@example.com"
                         required
                       />
@@ -226,11 +220,10 @@ export default function GetStartedPage({
                         type="tel"
                         value={formData.phone || ""}
                         onChange={(e) => handleFormDataChange('phone', e.target.value)}
-                        className={`w-full p-3 rounded-xl border-2 ${inter.className} ${
-                          theme === "dark" 
-                            ? "border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 focus:border-purple-500" 
-                            : "border-gray-300 bg-white/80 text-gray-900 placeholder-gray-500 focus:border-blue-500"
-                        } focus:outline-none focus:ring-2 focus:ring-opacity-20 transition-all duration-300`}
+                        className={`w-full p-3 rounded-xl border-2 ${inter.className} ${theme === "dark"
+                          ? "border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 focus:border-purple-500"
+                          : "border-gray-300 bg-white/80 text-gray-900 placeholder-gray-500 focus:border-blue-500"
+                          } focus:outline-none focus:ring-2 focus:ring-opacity-20 transition-all duration-300`}
                         placeholder="+256 712 345 678"
                       />
                     </div>
@@ -241,11 +234,10 @@ export default function GetStartedPage({
                       <select
                         value={formData.country || ""}
                         onChange={(e) => handleFormDataChange('country', e.target.value)}
-                        className={`w-full p-3 rounded-xl border-2 ${inter.className} ${
-                          theme === "dark" 
-                            ? "border-gray-600 bg-gray-700/50 text-white focus:border-purple-500" 
-                            : "border-gray-300 bg-white/80 text-gray-900 focus:border-blue-500"
-                        } focus:outline-none focus:ring-2 focus:ring-opacity-20 transition-all duration-300`}
+                        className={`w-full p-3 rounded-xl border-2 ${inter.className} ${theme === "dark"
+                          ? "border-gray-600 bg-gray-700/50 text-white focus:border-emerald-500"
+                          : "border-gray-300 bg-white/80 text-gray-900 focus:border-blue-500"
+                          } focus:outline-none focus:ring-2 focus:ring-opacity-20 transition-all duration-300`}
                       >
                         <option value="">Select your country</option>
                         <option value="UG">Uganda</option>
@@ -256,16 +248,14 @@ export default function GetStartedPage({
                       </select>
                     </div>
                   </div>
-                  
+
                   {!isFormValid() && (
-                    <div className={`mt-4 p-4 rounded-xl border-2 ${
-                      theme === "dark" 
-                        ? "bg-yellow-900/20 border-yellow-700/50" 
-                        : "bg-yellow-50 border-yellow-200"
-                    }`}>
-                      <p className={`text-sm ${inter.className} ${
-                        theme === "dark" ? "text-yellow-300" : "text-yellow-700"
+                    <div className={`mt-4 p-4 rounded-xl border-2 ${theme === "dark"
+                      ? "bg-yellow-900/20 border-yellow-700/50"
+                      : "bg-yellow-50 border-yellow-200"
                       }`}>
+                      <p className={`text-sm ${inter.className} ${theme === "dark" ? "text-yellow-300" : "text-yellow-700"
+                        }`}>
                         💡 Please fill in your name and email to see payment options.
                       </p>
                     </div>
@@ -286,22 +276,19 @@ export default function GetStartedPage({
 
                 {/* Payment Status Display */}
                 {paymentStatus === 'success' && (
-                  <div className={`mt-6 p-6 rounded-2xl border-2 ${
-                    theme === "dark" 
-                      ? "bg-green-900/20 border-green-700/50" 
-                      : "bg-green-50 border-green-200"
-                  }`}>
+                  <div className={`mt-6 p-6 rounded-2xl border ${theme === "dark"
+                    ? "bg-emerald-500/10 border-emerald-500/30"
+                    : "bg-emerald-50 border-emerald-200"
+                    }`}>
                     <div className="flex items-center space-x-3">
                       <span className="text-green-600 dark:text-green-400 text-2xl">✅</span>
                       <div>
-                        <p className={`font-bold ${inter.className} ${
-                          theme === "dark" ? "text-green-300" : "text-green-800"
-                        }`}>
+                        <p className={`font-bold ${inter.className} ${theme === "dark" ? "text-green-300" : "text-green-800"
+                          }`}>
                           Tron Payment Instructions Ready!
                         </p>
-                        <p className={`text-sm ${inter.className} ${
-                          theme === "dark" ? "text-green-400" : "text-green-700"
-                        }`}>
+                        <p className={`text-sm ${inter.className} ${theme === "dark" ? "text-green-400" : "text-green-700"
+                          }`}>
                           Please complete the payment using the Tron instructions above.
                           Access will be granted within 30 minutes of payment confirmation.
                         </p>
@@ -311,22 +298,19 @@ export default function GetStartedPage({
                 )}
 
                 {paymentStatus === 'error' && (
-                  <div className={`mt-6 p-6 rounded-2xl border-2 ${
-                    theme === "dark" 
-                      ? "bg-red-900/20 border-red-700/50" 
-                      : "bg-red-50 border-red-200"
-                  }`}>
+                  <div className={`mt-6 p-6 rounded-2xl border-2 ${theme === "dark"
+                    ? "bg-red-900/20 border-red-700/50"
+                    : "bg-red-50 border-red-200"
+                    }`}>
                     <div className="flex items-center space-x-3">
                       <span className="text-red-600 dark:text-red-400 text-2xl">❌</span>
                       <div>
-                        <p className={`font-bold ${inter.className} ${
-                          theme === "dark" ? "text-red-300" : "text-red-800"
-                        }`}>
+                        <p className={`font-bold ${inter.className} ${theme === "dark" ? "text-red-300" : "text-red-800"
+                          }`}>
                           Payment Setup Failed
                         </p>
-                        <p className={`text-sm ${inter.className} ${
-                          theme === "dark" ? "text-red-400" : "text-red-700"
-                        }`}>
+                        <p className={`text-sm ${inter.className} ${theme === "dark" ? "text-red-400" : "text-red-700"
+                          }`}>
                           Please refresh the page and try again.
                         </p>
                       </div>
@@ -335,35 +319,31 @@ export default function GetStartedPage({
                 )}
 
                 <div className="mt-8 text-center">
-                  <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-4 ${
-                    theme === "dark"
-                      ? "border-purple-500/30 bg-purple-500/10 text-purple-200"
-                      : "border-blue-500/30 bg-blue-500/10 text-blue-700"
-                  }`}>
+                  <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-4 ${theme === "dark"
+                    ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-200"
+                    : "border-blue-500/30 bg-blue-500/10 text-blue-700"
+                    }`}>
                     <span className="text-lg">Ⓣ</span>
                     <span className={`text-sm font-medium ${inter.className}`}>Pay with Tron (TRX/USDT)</span>
                   </div>
                   <p className={`text-sm ${inter.className} ${textColor} mb-4`}>
                     Fast & Low Fees • 7-day money-back guarantee • Instant access
                   </p>
-                  
+
                   {/* Support Info */}
-                  <div className={`p-4 rounded-2xl backdrop-blur-sm border ${
-                    theme === "dark" 
-                      ? "bg-gray-800/30 border-gray-700" 
-                      : "bg-white/60 border-gray-200"
-                  }`}>
-                    <p className={`text-sm ${inter.className} ${
-                      theme === "dark" ? "text-gray-400" : "text-gray-600"
+                  <div className={`p-4 rounded-2xl backdrop-blur-sm border ${theme === "dark"
+                    ? "bg-gray-800/30 border-gray-700"
+                    : "bg-white/60 border-gray-200"
                     }`}>
+                    <p className={`text-sm ${inter.className} ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+                      }`}>
                       Need help with Tron payment? Contact:{' '}
-                      <a 
-                        href="mailto:stoicpip@gmail.com" 
-                        className={`font-semibold hover:underline ${
-                          theme === "dark" ? "text-purple-400" : "text-blue-600"
-                        }`}
+                      <a
+                        href="mailto:support@stoicpips.com"
+                        className={`font-semibold hover:underline ${theme === "dark" ? "text-emerald-400" : "text-blue-600"
+                          }`}
                       >
-                        stoicpip@gmail.com
+                        support@stoicpips.com
                       </a>
                     </p>
                   </div>
@@ -372,8 +352,8 @@ export default function GetStartedPage({
             </div>
 
             <ServiceDetails
-              title={safeTitle} 
-              description={safeDescription} 
+              title={safeTitle}
+              description={safeDescription}
               price={safePrice}
               originalPrice={safeOriginalPrice}
               features={safeFeatures}

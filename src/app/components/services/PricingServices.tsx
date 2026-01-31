@@ -30,21 +30,17 @@ export default function PricingServices() {
   }, []);
 
   const currentTheme = mounted ? (theme || 'light') : 'light';
-  
-  const sectionBg = currentTheme === "dark" 
-    ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" 
-    : "bg-gradient-to-br from-white via-blue-50 to-purple-50";
 
-  const gradientText = currentTheme === "dark" 
-    ? "bg-gradient-to-r from-purple-400 via-pink-400 to-red-400"
-    : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600";
+  const sectionBg = "bg-background";
 
-  const buttonGradient = currentTheme === "dark"
-    ? "bg-gradient-to-r from-purple-500 to-pink-500"
-    : "bg-gradient-to-r from-blue-500 to-purple-600";
+  const gradientText = currentTheme === "dark"
+    ? "bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-500"
+    : "bg-gradient-to-r from-emerald-600 via-teal-700 to-amber-600";
+
+  const buttonGradient = "bg-primary text-matte-charcoal";
 
   const servicesArray: Service[] = Object.entries(services).map(([id, service]) => ({
-    id, 
+    id,
     ...service,
   }));
 
@@ -79,90 +75,62 @@ export default function PricingServices() {
   }
 
   return (
-    <section className={`relative min-h-screen flex items-center justify-center py-24 px-4 sm:px-6 lg:px-8 overflow-hidden transition-all duration-700 ${sectionBg}`}>
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute top-1/4 -left-20 w-80 h-80 rounded-full blur-3xl opacity-10 ${
-          currentTheme === "dark" ? "bg-purple-500" : "bg-blue-400"
-        }`} />
-        <div className={`absolute bottom-1/4 -right-20 w-96 h-96 rounded-full blur-3xl opacity-10 ${
-          currentTheme === "dark" ? "bg-pink-500" : "bg-purple-400"
-        }`} />
+    <div id="pricing" className="relative py-12 px-6 overflow-hidden">
+
+      {/* Atmospheric Glows */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[20%] right-0 w-[600px] h-[600px] bg-secondary/5 blur-[150px] rounded-full"></div>
+        <div className="absolute bottom-[10%] left-0 w-[400px] h-[400px] bg-primary/5 blur-[120px] rounded-full"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto w-full z-10">
         {/* Header Section */}
-        <div className="text-center mb-20">
-          {/* Section Badge */}
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-6 ${
-            currentTheme === "dark"
-              ? "border-purple-500/30 bg-purple-500/10 text-purple-200"
-              : "border-blue-500/30 bg-blue-500/10 text-blue-700"
-          }`}>
-            <span className="w-2 h-2 bg-current rounded-full animate-pulse"></span>
-            <span className={`text-sm font-medium ${inter.className}`}>Pricing Plans</span>
+        <div className="text-center mb-24">
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-glass-border glass-pill text-primary mb-8">
+            <span className="text-sm font-black uppercase tracking-[0.2em] tech-tracking">Institutional Access</span>
           </div>
-          
-          {/* Main Heading */}
-          <h1 className={`${playfair.className} text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight ${
-            currentTheme === "dark" ? "text-white" : "text-gray-900"
-          }`}>
-            Choose Your{" "}
-            <span className={`bg-clip-text text-transparent ${gradientText}`}>
-              Trading Plan
-            </span>
-          </h1>
-          
-          {/* Subheading */}
-          <p className={`max-w-2xl mx-auto text-lg md:text-xl leading-relaxed ${inter.className} ${
-            currentTheme === "dark" ? "text-gray-300" : "text-gray-600"
-          }`}>
-            Select the perfect mentorship program to accelerate your trading journey and achieve consistent profitability.
+
+          <h2 className={`${playfair.className} text-3xl md:text-4xl lg:text-5xl font-black mb-8 leading-tight ${currentTheme === "dark" ? "text-white" : "text-gray-900"}`}>
+            Secure Your <br />
+            <span className="text-gradient-emerald-gold italic">Legacy.</span>
+          </h2>
+
+          <p className={`max-w-3xl mx-auto text-xl leading-relaxed opacity-70 ${inter.className}`}>
+            Choose the membership tier that aligns with your professional ambitions. All plans include full <span className="text-primary font-bold">Dunam Ai</span> synchronization.
           </p>
         </div>
 
         {/* Carousel Container */}
-        <Carousel className="mb-16">
-          {servicesArray.map((service) => (
-            <div key={service.id} className="snap-start flex-shrink-0">
-              <ServiceCard
-                service={service}
-                isHovered={hoveredCard === service.id}
-                onHover={setHoveredCard}
-                theme={currentTheme}
-              />
-            </div>
-          ))}
-        </Carousel>
+        <div className="relative -mx-6 lg:mx-0">
+          <Carousel className="pb-12">
+            {servicesArray.map((service) => (
+              <div key={service.id} className="snap-start flex-shrink-0">
+                <ServiceCard
+                  service={service}
+                  isHovered={hoveredCard === service.id}
+                  onHover={setHoveredCard}
+                  theme={currentTheme}
+                />
+              </div>
+            ))}
+          </Carousel>
+        </div>
 
-        {/* Trust Badge */}
-        <div className="text-center mt-16">
-          <div className={`inline-flex flex-col sm:flex-row items-center gap-6 p-8 rounded-3xl backdrop-blur-sm border max-w-2xl mx-auto ${
-            currentTheme === "dark"
-              ? "bg-gray-800/50 border-gray-700"
-              : "bg-white/50 border-gray-200"
-          }`}>
-            <div className="text-left">
-              <h3 className={`text-xl font-bold mb-2 ${inter.className} ${
-                currentTheme === "dark" ? "text-white" : "text-gray-900"
-              }`}>
-                Start Your Trading Transformation Today
-              </h3>
-              <p className={`${inter.className} ${
-                currentTheme === "dark" ? "text-gray-300" : "text-gray-600"
-              }`}>
-                Join 2,000+ successful traders with our proven mentorship programs.
-              </p>
+        {/* Trust & Verification */}
+        <div className="text-center mt-20">
+          <div className="inline-flex items-center gap-8 py-6 px-12 glass-pill rounded-full border-white/5">
+            <div className="flex flex-col">
+              <span className="text-xs uppercase tracking-[0.2em] opacity-40 font-black tech-tracking">Secure Checkout</span>
+              <span className="text-sm font-bold">Encrypted via Blockchain & Stripe</span>
             </div>
-            <a
-              href="#contact"
-              className={`px-8 py-3 rounded-2xl font-semibold text-white transition-all duration-300 hover:scale-105 ${buttonGradient}`}
-            >
-              Start Now
-            </a>
+            <div className="w-px h-8 bg-white/10"></div>
+            <div className="flex flex-col">
+              <span className="text-xs uppercase tracking-[0.2em] opacity-40 font-black tech-tracking">Satisfaction</span>
+              <span className="text-sm font-bold">98% Retention Rate</span>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
